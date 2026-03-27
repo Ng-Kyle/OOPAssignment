@@ -1,5 +1,5 @@
 package oopAssignment;
 
 public interface CouponDiscountStrategy {
-	public double applyCoupon(double totalPrice);
+	public double applyCoupon(double totalPrice, double value);
 }
