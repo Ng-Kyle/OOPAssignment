@@ -5,6 +5,6 @@ public abstract class ConcessionItem {
 	private double price;
 	
 	public double getPrice() {
-		return 0;
+		return price;
 	}
 }
