@@ -1,4 +1,4 @@
-package oopAssignment;
+package coupon;
 
 public abstract class Coupon {
 	private String code;

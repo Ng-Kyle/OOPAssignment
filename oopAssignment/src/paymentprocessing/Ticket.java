@@ -1,4 +1,6 @@
-package oopAssignment;
+package paymentprocessing;
+
+import seatbooking.TicketType;
 
 public class Ticket {
 	private TicketType ticketType;

@@ -1,4 +1,4 @@
-package oopAssignment;
+package coupon;
 //Only used by the NoCoupon Class
 public class NoDiscountStrategy implements CouponDiscountStrategy {
 

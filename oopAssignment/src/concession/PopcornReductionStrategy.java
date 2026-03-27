@@ -1,4 +1,4 @@
-package oopAssignment;
+package concession;
 
 public class PopcornReductionStrategy implements StockReductionStrategy {
 	public void reduceStock(IndividualItem item) {

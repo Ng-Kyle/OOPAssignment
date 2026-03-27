@@ -1,4 +1,4 @@
-package oopAssignment;
+package seatbooking;
 
 public enum SeatType {
 	STANDARD("Standard"),VIP("VIP");

@@ -1,4 +1,4 @@
-package oopAssignment;
+package paymentprocessing;
 
 public class QRCode {
 	

@@ -1,4 +1,4 @@
-package oopAssignment;
+package seatbooking;
 
 public class ScreenSize {
 	private int width;

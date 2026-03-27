@@ -1,4 +1,4 @@
-package oopAssignment;
+package concession;
 
 public abstract class ConcessionItem {
 	private String name;

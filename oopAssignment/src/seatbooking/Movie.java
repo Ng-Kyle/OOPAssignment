@@ -1,4 +1,4 @@
-package oopAssignment;
+package seatbooking;
 
 public class Movie {
 	private String title;

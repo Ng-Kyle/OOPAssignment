@@ -1,4 +1,4 @@
-package oopAssignment;
+package concession;
 
 //This can be anything like a drink, a box of popcorn and even hotdogs and other things in the future.
 public class IndividualItem extends ConcessionItem{

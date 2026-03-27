@@ -1,4 +1,4 @@
-package oopAssignment;
+package concession;
 
 public enum SizeType {
 	MEDIUM,LARGE

@@ -1,4 +1,4 @@
-package oopAssignment;
+package seatbooking;
 import java.util.HashMap;
 import java.util.Map;
 

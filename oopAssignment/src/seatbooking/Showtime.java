@@ -1,4 +1,4 @@
-package oopAssignment;
+package seatbooking;
 import java.time.LocalDateTime;
 
 public class Showtime {
