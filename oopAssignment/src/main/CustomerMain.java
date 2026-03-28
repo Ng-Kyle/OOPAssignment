@@ -1,5 +1,6 @@
 package main;
 import java.util.Scanner;
+import concession.*;
 import coupon.*;
 import paymentprocessing.*;
 import seatbooking.*;
@@ -18,11 +19,15 @@ public class CustomerMain {
 		showtimes.add(new Showtime(movies.get(0),halls.get(0)));
 		Showtime userShowtime = selectShowtime(selectMovie(movies),showtimes);
 		ArrayList<Seat> userSeats = selectSeats(userShowtime.getHall());
-		ArrayList<SeatBooking> seatBookings = new ArrayList<>();
+		ArrayList<SeatBooking> userSeatBookings = new ArrayList<>();
 		for(Seat seat:userSeats) {
-			seatBookings.add(new SeatBooking(seat,TicketType.ADULT));
+			userSeatBookings.add(new SeatBooking(seat,TicketType.ADULT));
 		}
+		ArrayList<ConcessionItem> userItems = new ArrayList<>();
+		userItems.add(ConcessionItemFactory.selectConcessionItem(Integer.parseInt(scan.nextLine())));
 		Coupon userCoupon = CouponFactory.selectCoupon(scan.nextLine());
+		Order userOrder = new Order(userShowtime, userItems, userCoupon, userSeatBookings);
+		System.out.println(userOrder.calculateFinalPrice());
 		
 		
 	}
