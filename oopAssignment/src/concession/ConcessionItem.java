@@ -9,6 +9,10 @@ public abstract class ConcessionItem {
         this.price = price;
     }
 	
+	public ConcessionItem() {
+		this.name = "";
+		this.price = 0;
+	}
 
     public String getName() { 
     	return name;
