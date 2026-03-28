@@ -22,7 +22,6 @@ public abstract class ConcessionItem {
     }
     public void setPrice(double price) { 
     	this.price = price; 
-    	System.out.println("test");
     }
 
     @Override
