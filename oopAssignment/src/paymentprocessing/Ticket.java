@@ -1,12 +1,8 @@
 package paymentprocessing;
 
-import seatbooking.TicketType;
 
 public class Ticket {
-	private TicketType ticketType;
-	private double price;
+	private Order orderDetails;
+	private QRCode qrCode;
 	
-	public double getPrice() {
-		return price;
-	}
 }

@@ -13,6 +13,7 @@ public class Order {
 	private Coupon coupon;
 	private ArrayList<SeatBooking> seatBookings = new ArrayList<>();
 	
+	
 	public double calculateFinalPrice() {
 		double finalPrice = 0;
 		for(int i = 0; i < seatBookings.size(); i++) {
@@ -24,5 +25,6 @@ public class Order {
 		finalPrice = coupon.applyCoupon(finalPrice);
 		return finalPrice;
 	}
+	
 	
 }
