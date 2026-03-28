@@ -1,5 +1,5 @@
 package coupon;
 
 public interface CouponDiscountStrategy {
-	public double applyCoupon(double totalPrice, double value);
+	public double applyCoupon(double totalPrice, double discountValue);
 }

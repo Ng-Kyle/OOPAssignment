@@ -23,7 +23,21 @@ public class IndividualItem extends ConcessionItem {
     public void setStockQuantity(double stockQuantity) {
         this.stockQuantity = stockQuantity;
     }
+    
+    public SizeType getSize() {
+    	return size;
+    }
+    public void setSize(SizeType size) {
+    	this.size = size;
+    }
 
+    public UnitType getUnitType() {
+    	return unit;
+    }
+    
+    public void setUnitType(UnitType unit) {
+    	this.unit = unit;
+    }
     public void reduceStock() {
         if (strategy != null) {
             strategy.reduceStock(this);

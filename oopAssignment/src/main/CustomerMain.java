@@ -1,8 +1,8 @@
 package main;
 import java.util.Scanner;
-
+import coupon.*;
+import paymentprocessing.*;
 import seatbooking.*;
-
 import java.util.ArrayList;
 
 
@@ -13,28 +13,32 @@ public class CustomerMain {
 		ArrayList<Movie> movies = new ArrayList<>();
 		ArrayList<Showtime> showtimes = new ArrayList<>();
 		ArrayList<Hall> halls = new ArrayList<>();
-		Scanner scan = new Scanner(System.in);
 		movies.add(new Movie("Among Us"));
 		halls.add(new Hall());
 		showtimes.add(new Showtime(movies.get(0),halls.get(0)));
 		Showtime userShowtime = selectShowtime(selectMovie(movies),showtimes);
 		ArrayList<Seat> userSeats = selectSeats(userShowtime.getHall());
+		ArrayList<SeatBooking> seatBookings = new ArrayList<>();
+		for(Seat seat:userSeats) {
+			seatBookings.add(new SeatBooking(seat,TicketType.ADULT));
+		}
+		Coupon userCoupon = CouponFactory.selectCoupon(scan.nextLine());
+		
 		
 	}
 	
 	private static Movie selectMovie(ArrayList<Movie> movies) {
 		System.out.println(movies.get(0));
 		System.out.println("Pick a movie");
-		int userInput = scan.nextInt();
-		scan.nextLine();
+		int userInput = Integer.parseInt(scan.nextLine());
+		
 		return movies.get(userInput);
 	}
 	
 	private static Showtime selectShowtime(Movie movie, ArrayList<Showtime> showtimes) {
 			System.out.println(showtimes.get(0));
 			System.out.println("Pick a showtime");
-			int userInput = scan.nextInt();
-			scan.nextLine();
+			int userInput = Integer.parseInt(scan.nextLine());
 			return showtimes.get(userInput);
 		
 	}
@@ -47,8 +51,10 @@ public class CustomerMain {
 			String userRow = seatInput.substring(0,1);
 			int userColumn = Integer.parseInt(seatInput.substring(1));
 			userSeats.add(hall.findSeat(userRow, userColumn));
-			menuInput = scan.nextInt();
+			menuInput = Integer.parseInt(scan.nextLine());
 		}
 		return userSeats;
 	}
+	
+	
 }

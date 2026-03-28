@@ -16,4 +16,8 @@ public class SeatBooking {
 	public double getPrice() {
 		return price;
 	}
+	public SeatBooking(Seat seat, TicketType ticketType) {
+		this.seat = seat;
+		price = ticketPrices.get(ticketType);
+	}
 }

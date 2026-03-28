@@ -13,6 +13,12 @@ public class Order {
 	private Coupon coupon;
 	private ArrayList<SeatBooking> seatBookings = new ArrayList<>();
 	
+	public Order(Showtime showtime, ArrayList<ConcessionItem> orderedConcessionItems, Coupon coupon, ArrayList<SeatBooking> seatBookings) {
+		this.showtime = showtime;
+		this.orderedConcessionItems = orderedConcessionItems;
+		this.coupon = coupon;
+		this.seatBookings = seatBookings;
+	}
 	
 	public double calculateFinalPrice() {
 		double finalPrice = 0;
