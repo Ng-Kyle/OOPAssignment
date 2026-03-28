@@ -11,7 +11,7 @@ public abstract class ConcessionItem {
 	
 	public ConcessionItem() {
 		this.name = "";
-		this.price = 0;
+		
 	}
 
     public String getName() { 
