@@ -10,11 +10,9 @@ public class Hall {
 		screenSize = null;
 		hallID = 0;
 	}
-	
 	public Seat[] getSeats() {
 		return seats;
 	}
-	
 	public ScreenSize getScreenSize(){
 		return screenSize;
 	}
