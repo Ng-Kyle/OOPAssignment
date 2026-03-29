@@ -14,6 +14,6 @@ public class PopcornReductionStrategy implements StockReductionStrategy {
 			reductionAmount = 0;
 			break;
 		}
-		item.setStockQuantity(item.getStockQuantity()-reductionAmount);
+		ConcessionItemStorage.reduceStock(item.getName(),reductionAmount);
 	}
 }

@@ -6,9 +6,9 @@ Example: Family Combo that includes 2 Popcorn boxes and 4 Drinks
 public class Combo extends ConcessionItem {
     private ConcessionItem[] comboItems;
 
-    public Combo(String name, double price,ConcessionItem[] items) {
+    public Combo(String name, double price,ConcessionItem[] comboItems) {
         super(name,price);
-        this.comboItems = items;
+        this.comboItems = comboItems;
     }
 
     public ConcessionItem[] getComboItems() {
