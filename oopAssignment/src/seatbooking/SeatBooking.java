@@ -16,6 +16,26 @@ public class SeatBooking {
 	public double getPrice() {
 		return price;
 	}
+	public SeatBooking(){
+		seat = null;
+		ticketType = null;
+		price = 0.0;
+	}
+	public void setPrice(double price){
+		this.price = price;
+	}
+	public Seat getSeat(){
+		return seat;
+	}
+	public void setSeat(Seat seat){
+		this.seat = seat; 
+	}
+	public TicketType getTicketType(){
+		return ticketType;
+	}
+	public void setTicketType(TicketType ticketType){
+		this.ticketType = ticketType;
+	}
 	public SeatBooking(Seat seat, TicketType ticketType) {
 		this.seat = seat;
 		price = ticketPrices.get(ticketType);
