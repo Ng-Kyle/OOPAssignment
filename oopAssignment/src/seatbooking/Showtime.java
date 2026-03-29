@@ -14,7 +14,32 @@ public class Showtime {
 	public Hall getHall() {
 		return hall;
 	}
+	public Showtime(){
+		movie = null;  
+		hall = null;
+		time = null;
+	}
+	public Movie getMovie(){
+		return movie;
+	}
+	
+	public LocalDateTime getTime(){
+		return time;
+	}
+	public void setMovie(Movie movie){
+		this.movie = movie;
+	}
+	public void setHall(Hall hall){
+		this.hall = hall;
+	}
+	public void setTime(LocalDateTime time){
+		this.time = time; 
+	}
+	
+	
 	public String toString() {
 		return movie.toString();
 	}
+	
+	
 }

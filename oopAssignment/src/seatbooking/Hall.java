@@ -13,6 +13,25 @@ public class Hall {
 	public Seat[] getSeats() {
 		return seats;
 	}
+	public ScreenSize getScreenSize(){
+		return screenSize;
+	}
+	public Seat[] getSeat(){
+		return seats;
+	}
+	public int getHallID(){
+		return hallID;
+	}
+	public void setScreenSize(ScreenSize screenSize){
+		this.screenSize = screenSize;
+	}
+	public void setSeat(Seat[] seats){
+		this.seats = seats;
+	}
+	public void setHallID(int hallID){
+		this.hallID = hallID;
+	}
+	
 	public Seat findSeat(String row, int column) {
 		for(int i = 0; i<seats.length; i++) {
 			SeatLocation seatLocation = seats[i].getSeatLocation();
