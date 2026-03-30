@@ -24,7 +24,9 @@ public class ConcessionItemStorage {
 	public static ConcessionItem getItem(int index) {
 		return availableItems.get(index);
 	}
-	
+	public static Map<String,Double> getStockQuantity(){
+		return stockQuantity;
+	}
 	public static void addItem(ConcessionItem item) {
 		availableItems.add(item);
 	}
