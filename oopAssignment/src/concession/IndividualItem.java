@@ -10,13 +10,34 @@ public class IndividualItem extends ConcessionItem {
     	this.unit = unit;
     	this.stockReductionStrategy = stockReductionStrategy;
     }
+<<<<<<< Upstream, based on origin/master
 
     public IndividualItem() {
     	this.unit = null;
     	
     public IndividualItem(String name,SizeType size,StockReductionStrategy stockReductionStrategy) {
     	super(name,size);
+=======
+<<<<<<< Upstream, based on origin/master
+    public IndividualItem(String name,StockReductionStrategy stockReductionStrategy) {
+    	super(name);
+>>>>>>> 945b062 testing
     	this.stockReductionStrategy = stockReductionStrategy;
+=======
+
+    public IndividualItem() {
+    	this.stockQuantity = 0;
+    	this.unit = null;
+    	this.size = null;
+    }
+    
+    public double getStockQuantity() {
+        return this.stockQuantity;
+    }
+
+    public void setStockQuantity(double stockQuantity) {
+        this.stockQuantity = stockQuantity;
+>>>>>>> d37e78f testing
     }
 
     public IndividualItem() {
