@@ -1,5 +1,5 @@
 package concession;
 
 public interface StockReductionStrategy {
-	public void reduceStock(OrderItem item);
+	public void reduceStock(ConcessionItem item);
 }

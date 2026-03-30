@@ -21,11 +21,13 @@ public class CustomerMain {
 		ArrayList<Seat> userSeats = selectSeats(userShowtime.getHall());
 		ArrayList<SeatBooking> userSeatBookings = new ArrayList<>();
 		for(Seat seat:userSeats) {
-			userSeatBookings.add(new SeatBooking(seat,TicketType.ADULT));
+			userSeatBookings.add(new SeatBooking(seat));
 		}
-		ArrayList<OrderItem> userItems = new ArrayList<>();
-		ConcessionItem chosenItem = ConcessionItemFactory.selectConcessionItem(Integer.parseInt(scan.nextLine()));
-		userItems.add(new OrderItem(chosenItem,SizeType.MEDIUM));
+		ArrayList<ConcessionItem> userItems = new ArrayList<>();
+		userItems.add(ConcessionItemFactory.selectConcessionItem(Integer.parseInt(scan.nextLine())));
+		if(userItems.get(0) instanceof IndividualItem) {
+			userItems.get(0).setSize(SizeType.MEDIUM); //TODO: CHANGE THIS TO USER INPUT
+		}
 		Coupon userCoupon = CouponFactory.selectCoupon(scan.nextLine());
 		Order userOrder = new Order(userShowtime, userItems, userCoupon, userSeatBookings);
 		System.out.println(userOrder.calculateFinalPrice());
