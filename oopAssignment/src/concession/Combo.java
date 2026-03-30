@@ -6,8 +6,8 @@ Example: Family Combo that includes 2 Popcorn boxes and 4 Drinks
 public class Combo extends ConcessionItem {
     private ConcessionItem[] comboItems;
 
-    public Combo(String name, double price,ConcessionItem[] comboItems) {
-        super(name,price);
+    public Combo(String name,ConcessionItem[] comboItems) {
+        super(name);
         this.comboItems = comboItems;
     }
 
@@ -21,6 +21,6 @@ public class Combo extends ConcessionItem {
 
     @Override
     public String toString() {
-        return String.format("%s (Combo) - $%.2f", getName(), getPrice());
+        return String.format("%s (Combo)", getName());
     }
 }

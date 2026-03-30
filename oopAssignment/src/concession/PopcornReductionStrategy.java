@@ -1,7 +1,7 @@
 package concession;
 
 public class PopcornReductionStrategy implements StockReductionStrategy {
-	public void reduceStock(IndividualItem item) {
+	public void reduceStock(OrderItem item) {
 		double reductionAmount;
 		switch(item.getSize()) {
 		case MEDIUM:
@@ -14,6 +14,6 @@ public class PopcornReductionStrategy implements StockReductionStrategy {
 			reductionAmount = 0;
 			break;
 		}
-		ConcessionItemStorage.reduceStock(item.getName(),reductionAmount);
+		ConcessionItemStorage.reduceStock(item.getOrderItem().getName(),reductionAmount);
 	}
 }

@@ -10,8 +10,8 @@ public class ConcessionItemFactory {
 	public static ConcessionItem copyItem(ConcessionItem userItem) {
 		if(userItem instanceof IndividualItem) {
 			IndividualItem userIndividualItem = (IndividualItem)userItem;
-			return new IndividualItem(userIndividualItem.getName(),userIndividualItem.getPrice(),userIndividualItem.getSize(),
-					userIndividualItem.getUnit(),userIndividualItem.getStrategy());
+			return new IndividualItem(userIndividualItem.getName(),
+					userIndividualItem.getStockReductionStrategy());
 		}
 		if(userItem instanceof Combo) {
 			Combo userComboItem = (Combo)userItem;
@@ -20,7 +20,7 @@ public class ConcessionItemFactory {
 			for(int i=0; i<copiedItems.length;i++) {
 				copiedItems[i] = copyItem(originalItems[i]);
 			}
-			return new Combo(userComboItem.getName(),userComboItem.getPrice(),copiedItems);
+			return new Combo(userComboItem.getName(),copiedItems);
 		}
 		return null;
 	}

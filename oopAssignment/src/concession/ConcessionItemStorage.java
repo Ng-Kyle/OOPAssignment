@@ -7,8 +7,8 @@ public class ConcessionItemStorage {
 	private static ArrayList<ConcessionItem> availableItems = new ArrayList<>();
 	private static Map<String,Double> stockQuantity = new HashMap<>();
 	static {
-		availableItems.add(new IndividualItem("Popcorn",20.00,SizeType.MEDIUM,UnitType.ML,new PopcornReductionStrategy()));
-		for(int i =0; i<availableItems.size();i++) {
+		availableItems.add(new IndividualItem("Popcorn",UnitType.ML,new PopcornReductionStrategy()));
+		for(int i =0; i<availableItems.size();i++) {//change to file reading later on
 			stockQuantity.put(availableItems.get(i).getName(),200.00);
 		}
 	}

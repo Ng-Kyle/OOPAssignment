@@ -23,8 +23,9 @@ public class CustomerMain {
 		for(Seat seat:userSeats) {
 			userSeatBookings.add(new SeatBooking(seat,TicketType.ADULT));
 		}
-		ArrayList<ConcessionItem> userItems = new ArrayList<>();
-		userItems.add(ConcessionItemFactory.selectConcessionItem(Integer.parseInt(scan.nextLine())));
+		ArrayList<OrderItem> userItems = new ArrayList<>();
+		ConcessionItem chosenItem = ConcessionItemFactory.selectConcessionItem(Integer.parseInt(scan.nextLine()));
+		userItems.add(new OrderItem(chosenItem,SizeType.MEDIUM));
 		Coupon userCoupon = CouponFactory.selectCoupon(scan.nextLine());
 		Order userOrder = new Order(userShowtime, userItems, userCoupon, userSeatBookings);
 		System.out.println(userOrder.calculateFinalPrice());

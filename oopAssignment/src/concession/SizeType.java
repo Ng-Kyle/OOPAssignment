@@ -1,5 +1,5 @@
 package concession;
 
 public enum SizeType {
-	MEDIUM,LARGE
+	MEDIUM,LARGE,NONE
 }
