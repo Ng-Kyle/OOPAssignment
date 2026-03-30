@@ -10,11 +10,10 @@ public class IndividualItem extends ConcessionItem {
     	this.unit = unit;
     	this.stockReductionStrategy = stockReductionStrategy;
     }
-<<<<<<< Upstream, based on origin/master
+
     public IndividualItem(String name,StockReductionStrategy stockReductionStrategy) {
     	super(name);
     	this.stockReductionStrategy = stockReductionStrategy;
-=======
 
     public IndividualItem() {
     	this.stockQuantity = 0;
