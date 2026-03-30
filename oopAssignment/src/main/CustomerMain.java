@@ -30,7 +30,11 @@ public class CustomerMain {
 		}
 		Coupon userCoupon = CouponFactory.selectCoupon(scan.nextLine());
 		Order userOrder = new Order(userShowtime, userItems, userCoupon, userSeatBookings);
-		System.out.println(userOrder.calculateFinalPrice());
+		double finalPrice = userOrder.calculateFinalPrice();
+		System.out.println(finalPrice);
+		processPayment(finalPrice,userOrder);
+		
+		
 		
 		
 	}
@@ -63,6 +67,14 @@ public class CustomerMain {
 		}
 		return userSeats;
 	}
-	
+	private static void processPayment(double finalPrice, Order order) {
+		double userPayment = Double.parseDouble(scan.nextLine());
+		if(userPayment<finalPrice) {
+			System.out.println("Funds insufficient. Order was cancelled.");
+		}
+		System.out.println("Order successful! Enjoy your movie.");
+		order.reduceStock();
+		System.out.println(ConcessionItemStorage.getStockQuantity());
+	}
 	
 }
