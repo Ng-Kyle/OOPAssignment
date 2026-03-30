@@ -9,16 +9,11 @@ public abstract class ConcessionItem {
 	
 	public ConcessionItem() {
 		this.name = "";
-<<<<<<< HEAD
-=======
-		
->>>>>>> branch 'Classes_Sub' of git@github.com:Ng-Kyle/OOPAssignment.git
 	}
 
     public String getName() { 
     	return name;
     }
-    
     
     public void setName(String name) { 
     	this.name = name; 
