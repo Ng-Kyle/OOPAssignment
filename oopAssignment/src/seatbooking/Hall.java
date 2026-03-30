@@ -16,9 +16,6 @@ public class Hall {
 	public ScreenSize getScreenSize(){
 		return screenSize;
 	}
-	public Seat[] getSeat(){
-		return seats;
-	}
 	public int getHallID(){
 		return hallID;
 	}
