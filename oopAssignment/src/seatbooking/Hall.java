@@ -16,10 +16,7 @@ public class Hall {
 	public ScreenSize getScreenSize(){
 		return screenSize;
 	}
-<<<<<<< HEAD
 
-=======
->>>>>>> branch 'Sub_Classes' of git@github.com:Ng-Kyle/OOPAssignment.git
 	public int getHallID(){
 		return hallID;
 	}
