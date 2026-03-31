@@ -4,21 +4,17 @@ import java.util.Map;
 
 public class SeatBooking {
 	private Seat seat;
-	private TicketType ticketType;
 	private double price;
-	private static Map<TicketType, Double > ticketPrices = new HashMap<>();
+	private static Map<SeatType, Double > seatPrices = new HashMap<>();
 	static { //Replace this with json file loading later on
-		ticketPrices.put(TicketType.ADULT, 21.0);
-		ticketPrices.put(TicketType.CHILD, 11.0);
-		ticketPrices.put(TicketType.OKU, 11.0);
-		ticketPrices.put(TicketType.SENIOR, 11.0);
+		seatPrices.put(SeatType.STANDARD, 20.0);
+		seatPrices.put(SeatType.VIP, 30.0);
 	}
 	public double getPrice() {
 		return price;
 	}
 	public SeatBooking(){
 		seat = null;
-		ticketType = null;
 		price = 0.0;
 	}
 	public void setPrice(double price){
@@ -30,14 +26,9 @@ public class SeatBooking {
 	public void setSeat(Seat seat){
 		this.seat = seat; 
 	}
-	public TicketType getTicketType(){
-		return ticketType;
-	}
-	public void setTicketType(TicketType ticketType){
-		this.ticketType = ticketType;
-	}
-	public SeatBooking(Seat seat, TicketType ticketType) {
+	
+	public SeatBooking(Seat seat) {
 		this.seat = seat;
-		price = ticketPrices.get(ticketType);
+		price = seatPrices.get(seat.getSeatType());
 	}
 }

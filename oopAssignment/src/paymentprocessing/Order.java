@@ -1,18 +1,19 @@
 package paymentprocessing;
 
 import java.util.ArrayList;
-import concession.OrderItem;
+
+import concession.ConcessionItem;
 import coupon.Coupon;
 import seatbooking.SeatBooking;
 import seatbooking.Showtime;
 
 public class Order {
 	private Showtime showtime;
-	private ArrayList<OrderItem> orderedConcessionItems = new ArrayList<>();
+	private ArrayList<ConcessionItem> orderedConcessionItems = new ArrayList<>();
 	private Coupon coupon;
 	private ArrayList<SeatBooking> seatBookings = new ArrayList<>();
 	
-	public Order(Showtime showtime, ArrayList<OrderItem> orderedConcessionItems, Coupon coupon, ArrayList<SeatBooking> seatBookings) {
+	public Order(Showtime showtime, ArrayList<ConcessionItem> orderedConcessionItems, Coupon coupon, ArrayList<SeatBooking> seatBookings) {
 		this.showtime = showtime;
 		this.orderedConcessionItems = orderedConcessionItems;
 		this.coupon = coupon;
@@ -31,5 +32,10 @@ public class Order {
 		return finalPrice;
 	}
 	
+	public void reduceStock() {
+		for(ConcessionItem concessionItem:orderedConcessionItems) {
+			concessionItem.reduceStock();
+		}
+	}
 	
 }
