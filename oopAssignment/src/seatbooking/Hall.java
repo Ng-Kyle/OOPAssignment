@@ -16,10 +16,7 @@ public class Hall {
 	public ScreenSize getScreenSize(){
 		return screenSize;
 	}
-<<<<<<< Upstream, based on origin/Classes_Sub
 
-=======
->>>>>>> 8b7c3e7 Just remove the getSeats method
 	public int getHallID(){
 		return hallID;
 	}
