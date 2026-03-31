@@ -3,14 +3,14 @@ package seatbooking;
 public class Movie { 
 	private String title;
 	private String genre;
-	private String movieClassification;
+	private AgeRating ageRating;
 	private double durationMinutes;
 	
-	public Movie(String title) { //testing
+	public Movie(String title, String genre, AgeRating ageRating, double durationMinutes) { //testing
 		this.title = title;
-		genre = "";
-		movieClassification = "";
-		durationMinutes = 0;
+		this.genre = genre;
+		this.ageRating = ageRating;
+		this.durationMinutes = durationMinutes;
 	}
 	public String getTitle(){
 		return title;
@@ -18,8 +18,8 @@ public class Movie {
 	public String getGenre(){
 		return genre;
 	}
-	public String getMovieClassification(){
-		return movieClassification; 
+	public AgeRating getAgeRating(){
+		return ageRating; 
 	}
 	public double getDurationMinutes(){
 		return durationMinutes;
@@ -31,8 +31,8 @@ public class Movie {
 	public void setGenre(String genre){
 		this.genre = genre;
 	}
-	public void setMovieClassification(String movieClassification){
-		this.movieClassification = movieClassification; 
+	public void setMovieClassification(AgeRating ageRating){
+		this.ageRating = ageRating; 
 	}
 	public void setDurationMinutes(double durationMinutes){
 		this.durationMinutes = durationMinutes;
@@ -40,5 +40,21 @@ public class Movie {
 	
 	public String toString() {
 		return title;
+	}
+	public static Movie fromCSV(String content) {
+		String[] values = content.split(",");
+		AgeRating ageRating = null;
+		switch(values[2]) {
+		case "U":
+			ageRating = AgeRating.U;
+			break;
+		case "P13":
+			ageRating = AgeRating.P13;
+			break;
+		case "18":
+			ageRating = AgeRating._18;
+			break;
+		}
+		return new Movie(values[0],values[1],ageRating,Double.parseDouble(values[3]));
 	}
 }

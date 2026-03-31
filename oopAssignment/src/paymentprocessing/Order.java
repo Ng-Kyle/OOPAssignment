@@ -12,6 +12,7 @@ public class Order {
 	private ArrayList<ConcessionItem> orderedConcessionItems = new ArrayList<>();
 	private Coupon coupon;
 	private ArrayList<SeatBooking> seatBookings = new ArrayList<>();
+	private double finalPrice;
 	
 	public Order(Showtime showtime, ArrayList<ConcessionItem> orderedConcessionItems, Coupon coupon, ArrayList<SeatBooking> seatBookings) {
 		this.showtime = showtime;
@@ -21,7 +22,7 @@ public class Order {
 	}
 	
 	public double calculateFinalPrice() {
-		double finalPrice = 0;
+		finalPrice = 0;
 		for(int i = 0; i < seatBookings.size(); i++) {
 			finalPrice += seatBookings.get(i).getPrice();
 		}
@@ -36,6 +37,10 @@ public class Order {
 		for(ConcessionItem concessionItem:orderedConcessionItems) {
 			concessionItem.reduceStock();
 		}
+	}
+	
+	public String toString() {
+		return showtime.toString();//TODO: Nigel/Emily make a CSV format for this
 	}
 	
 }

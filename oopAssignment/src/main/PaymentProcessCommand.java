@@ -4,8 +4,9 @@ import java.util.Scanner;
 
 import concession.ConcessionItemStorage;
 import paymentprocessing.Order;
+import paymentprocessing.Ticket;
 
-public class PaymentProcessCommand implements Command<Void> {
+public class PaymentProcessCommand implements Command<Ticket> {
 	private Order userOrder;
 	private Scanner scan;
 	public PaymentProcessCommand(Order userOrder, Scanner scan) {
@@ -13,7 +14,7 @@ public class PaymentProcessCommand implements Command<Void> {
 		this.scan = scan;
 	}
 	
-	public Void execute(){
+	public Ticket execute(){
 		double finalPrice = userOrder.calculateFinalPrice();
 		System.out.println(finalPrice);
 		double userPayment = Double.parseDouble(scan.nextLine());
@@ -21,9 +22,15 @@ public class PaymentProcessCommand implements Command<Void> {
 			System.out.println("Funds insufficient. Order was cancelled.");
 		}
 		else {
-			System.out.println("Order successful! Enjoy your movie.");
-			userOrder.reduceStock();
-			System.out.println(ConcessionItemStorage.getStockQuantity());
+			try {
+				userOrder.reduceStock();
+				System.out.println("Order successful! Enjoy your movie.");
+				System.out.println(ConcessionItemStorage.getStockQuantity());
+				return new Ticket(userOrder);
+			}
+			catch(InsufficientStockException isfe){
+				System.out.println("Insufficient stock. Order was cancelled.");
+			}
 		}
 		return null;
 	}
