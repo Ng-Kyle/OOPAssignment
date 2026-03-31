@@ -12,7 +12,7 @@ public class ConcessionItemStorage {
 		availableItems.add(new Combo("Popcorn Combo",new ConcessionItem[] {new IndividualItem(availableItems.get(0).getName(), SizeType.MEDIUM,new PopcornReductionStrategy())}));
 		
 		for(int i =0; i<availableItems.size();i++) {//change to file reading later on
-			stockQuantity.put(availableItems.get(i).getName(),200.00);
+			stockQuantity.put(availableItems.get(i).getName(),1000.00);
 		}
 	}
 	

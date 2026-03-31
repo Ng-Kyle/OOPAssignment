@@ -1,5 +1,9 @@
 package concession;
 
+import java.util.Map;
+
+import main.InsufficientStockException;
+
 public class DrinkReductionStrategy implements StockReductionStrategy {
 	public void reduceStock(ConcessionItem item) {
 		double reductionAmount;
@@ -13,6 +17,10 @@ public class DrinkReductionStrategy implements StockReductionStrategy {
 		default:
 			reductionAmount = 0;
 			break;
+		}	
+		Map<String,Double> stockQuantity = ConcessionItemStorage.getStockQuantity();
+		if(stockQuantity.get(item.getName()) - reductionAmount < 0) {
+			throw new InsufficientStockException();
 		}
 		ConcessionItemStorage.reduceStock(item.getName(),reductionAmount);
 	}
