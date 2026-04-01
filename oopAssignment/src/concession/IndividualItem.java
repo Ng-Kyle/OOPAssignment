@@ -18,7 +18,6 @@ public class IndividualItem extends ConcessionItem {
 
     public IndividualItem() {
     	this.unit = null;
-    	this.size = null;
     }
 
     public UnitType getUnit() {
