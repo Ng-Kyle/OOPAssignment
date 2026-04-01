@@ -11,25 +11,10 @@ public class IndividualItem extends ConcessionItem {
     	this.stockReductionStrategy = stockReductionStrategy;
     }
 
-<<<<<<< HEAD
-    public IndividualItem(String name,SizeType size,StockReductionStrategy stockReductionStrategy) {
-    	super(name,size);
-    	this.stockReductionStrategy = stockReductionStrategy;
-=======
-
-    public IndividualItem() {
-    	this.unit = null;
->>>>>>> branch 'Classes_Sub' of git@github.com:Ng-Kyle/OOPAssignment.git
-    }
-<<<<<<< HEAD
-
     public IndividualItem() {
     	this.unit = null;
     }
 
-=======
-    
->>>>>>> branch 'Classes_Sub' of git@github.com:Ng-Kyle/OOPAssignment.git
     public UnitType getUnit() {
     	return unit;
     }
