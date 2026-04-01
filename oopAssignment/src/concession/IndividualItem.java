@@ -11,9 +11,6 @@ public class IndividualItem extends ConcessionItem {
     	this.stockReductionStrategy = stockReductionStrategy;
     }
 
-    public IndividualItem(String name,StockReductionStrategy stockReductionStrategy) {
-    	super(name);
-    	this.stockReductionStrategy = stockReductionStrategy;
 
     public IndividualItem() {
     	this.unit = null;
