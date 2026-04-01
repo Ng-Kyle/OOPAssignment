@@ -14,6 +14,7 @@ public abstract class ConcessionItem {
 	
 	public ConcessionItem() {
 		this.name = "";
+
 	}
 
     public String getName() { 
