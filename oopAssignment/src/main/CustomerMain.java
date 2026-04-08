@@ -16,6 +16,7 @@ public class CustomerMain {
 		ArrayList<Showtime> availableShowtimes = new ArrayList<>();
 		ArrayList<Hall> halls = new ArrayList<>();
 <<<<<<< Upstream, based on origin/master
+<<<<<<< Upstream, based on origin/master
 		ArrayList<Ticket> storedTickets = new ArrayList<>();
 		
 		CustomerInvoker menuInvoker = new CustomerInvoker();
@@ -27,7 +28,11 @@ public class CustomerMain {
 		Coupon userCoupon = menuInvoker.executeCommand(new SelectCouponCommand(scan));
 =======
 		movies.add(new Movie("Among Us"));
+=======
+		availableMovies.add(new Movie("Among Us"));
+>>>>>>> 3730c27 System flow seperated into individual commands
 		halls.add(new Hall());
+<<<<<<< Upstream, based on origin/master
 		showtimes.add(new Showtime(movies.get(0),halls.get(0)));
 		Showtime userShowtime = selectShowtime(selectMovie(movies),showtimes);
 		ArrayList<Seat> userSeats = selectSeats(userShowtime.getHall());
@@ -42,7 +47,19 @@ public class CustomerMain {
 		}
 		Coupon userCoupon = CouponFactory.selectCoupon(scan.nextLine());
 >>>>>>> 41c216c testing why is it im 4 behind even when i just open up my eclipse and just pull
+=======
+		availableShowtimes.add(new Showtime(availableMovies.get(0),halls.get(0)));
+		
+		CustomerInvoker menuInvoker = new CustomerInvoker();
+		Movie userMovie = menuInvoker.executeCommand(new SelectMovieCommand(availableMovies,scan));
+		ArrayList<Showtime> filteredShowtimes = menuInvoker.executeCommand(new FilterShowtimesCommand(userMovie,availableShowtimes));
+		Showtime userShowtime = menuInvoker.executeCommand(new SelectShowtimeCommand(filteredShowtimes,scan));
+		ArrayList<SeatBooking> userSeatBookings = menuInvoker.executeCommand(new SelectSeatsCommand(userShowtime.getHall(),scan));
+		ArrayList<ConcessionItem> userItems = menuInvoker.executeCommand(new SelectConcessionItemsCommand(scan));
+		Coupon userCoupon = menuInvoker.executeCommand(new SelectCouponCommand(scan));
+>>>>>>> 3730c27 System flow seperated into individual commands
 		Order userOrder = new Order(userShowtime, userItems, userCoupon, userSeatBookings);
+<<<<<<< Upstream, based on origin/master
 <<<<<<< Upstream, based on origin/master
 		storedTickets.add(menuInvoker.executeCommand(new PaymentProcessCommand(userOrder,scan)));
 		menuInvoker.executeCommand(new DisplayReceiptCommand(storedTickets.get(storedTickets.size()-1)));
@@ -95,6 +112,9 @@ public class CustomerMain {
 		System.out.println("Order successful! Enjoy your movie.");
 		order.reduceStock();
 		System.out.println(ConcessionItemStorage.getStockQuantity());
+=======
+		menuInvoker.executeCommand(new PaymentProcessCommand(userOrder,scan));
+>>>>>>> 3730c27 System flow seperated into individual commands
 	}
 	
 >>>>>>> afc18c6 basic customer system flow complete
