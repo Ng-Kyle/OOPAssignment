@@ -10,13 +10,26 @@ public class IndividualItem extends ConcessionItem {
     	this.unit = unit;
     	this.stockReductionStrategy = stockReductionStrategy;
     }
+
     public IndividualItem(String name,SizeType size,StockReductionStrategy stockReductionStrategy) {
     	super(name,size);
     	this.stockReductionStrategy = stockReductionStrategy;
     }
-    public IndividualItem(String name,StockReductionStrategy stockReductionStrategy) {
-    	super(name);
-    	this.stockReductionStrategy = stockReductionStrategy;
+
+
+    public IndividualItem() {
+    	this.stockQuantity = 0;
+    	this.unit = null;
+    	this.size = null;
+    }
+    
+    public double getStockQuantity() {
+        return this.stockQuantity;
+    }
+
+    public void setStockQuantity(double stockQuantity) {
+        this.stockQuantity = stockQuantity;
+
     }
 
     public UnitType getUnit() {
@@ -25,6 +38,7 @@ public class IndividualItem extends ConcessionItem {
     
     public void setUnit(UnitType unit) {
     	this.unit = unit;
+    	
     }
     public StockReductionStrategy getStockReductionStrategy() {
     	return stockReductionStrategy;

@@ -13,6 +13,8 @@ public class Combo extends ConcessionItem {
         super.setSize(SizeType.NONE);
         
     }
+    
+    
 
     public ConcessionItem[] getComboItems() {
         return comboItems;
