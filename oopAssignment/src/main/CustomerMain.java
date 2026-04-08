@@ -43,8 +43,59 @@ public class CustomerMain {
 		Coupon userCoupon = CouponFactory.selectCoupon(scan.nextLine());
 >>>>>>> 41c216c testing why is it im 4 behind even when i just open up my eclipse and just pull
 		Order userOrder = new Order(userShowtime, userItems, userCoupon, userSeatBookings);
+<<<<<<< Upstream, based on origin/master
 		storedTickets.add(menuInvoker.executeCommand(new PaymentProcessCommand(userOrder,scan)));
 		menuInvoker.executeCommand(new DisplayReceiptCommand(storedTickets.get(storedTickets.size()-1)));
+=======
+		double finalPrice = userOrder.calculateFinalPrice();
+		System.out.println(finalPrice);
+		processPayment(finalPrice,userOrder);
+		
+		
+		
+		
+>>>>>>> afc18c6 basic customer system flow complete
 	}
 	
+<<<<<<< Upstream, based on origin/master
+=======
+	private static Movie selectMovie(ArrayList<Movie> movies) {
+		System.out.println(movies.get(0));
+		System.out.println("Pick a movie");
+		int userInput = Integer.parseInt(scan.nextLine());
+		
+		return movies.get(userInput);
+	}
+	
+	private static Showtime selectShowtime(Movie movie, ArrayList<Showtime> showtimes) {
+			System.out.println(showtimes.get(0));
+			System.out.println("Pick a showtime");
+			int userInput = Integer.parseInt(scan.nextLine());
+			return showtimes.get(userInput);
+		
+	}
+	private static ArrayList<Seat> selectSeats(Hall hall) {
+		int menuInput = 0;
+		ArrayList<Seat> userSeats = new ArrayList<>();
+		System.out.println("Select your seats, input 2 if done.");
+		while(menuInput != 2) {
+			String seatInput = scan.nextLine();
+			String userRow = seatInput.substring(0,1);
+			int userColumn = Integer.parseInt(seatInput.substring(1));
+			userSeats.add(hall.findSeat(userRow, userColumn));
+			menuInput = Integer.parseInt(scan.nextLine());
+		}
+		return userSeats;
+	}
+	private static void processPayment(double finalPrice, Order order) {
+		double userPayment = Double.parseDouble(scan.nextLine());
+		if(userPayment<finalPrice) {
+			System.out.println("Funds insufficient. Order was cancelled.");
+		}
+		System.out.println("Order successful! Enjoy your movie.");
+		order.reduceStock();
+		System.out.println(ConcessionItemStorage.getStockQuantity());
+	}
+	
+>>>>>>> afc18c6 basic customer system flow complete
 }
