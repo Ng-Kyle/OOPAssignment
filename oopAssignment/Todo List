@@ -2,4 +2,10 @@ System Requirements Not Finished:
 File Reading/Writing
 Menus
 Admin/Customer/Staff Login/UserRights
+<<<<<<< Upstream, based on origin/master
 Reports
+=======
+Generation/Validation QR Code Ticket
+Reports
+Stock Level Management
+>>>>>>> 41c216c testing why is it im 4 behind even when i just open up my eclipse and just pull

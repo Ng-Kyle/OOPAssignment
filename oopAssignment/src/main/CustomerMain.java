@@ -15,6 +15,7 @@ public class CustomerMain {
 		ArrayList<Movie> availableMovies = new ArrayList<>();
 		ArrayList<Showtime> availableShowtimes = new ArrayList<>();
 		ArrayList<Hall> halls = new ArrayList<>();
+<<<<<<< Upstream, based on origin/master
 		ArrayList<Ticket> storedTickets = new ArrayList<>();
 		
 		CustomerInvoker menuInvoker = new CustomerInvoker();
@@ -24,6 +25,23 @@ public class CustomerMain {
 		ArrayList<SeatBooking> userSeatBookings = menuInvoker.executeCommand(new SelectSeatsCommand(userShowtime.getHall(),scan));
 		ArrayList<ConcessionItem> userItems = menuInvoker.executeCommand(new SelectConcessionItemsCommand(scan));
 		Coupon userCoupon = menuInvoker.executeCommand(new SelectCouponCommand(scan));
+=======
+		movies.add(new Movie("Among Us"));
+		halls.add(new Hall());
+		showtimes.add(new Showtime(movies.get(0),halls.get(0)));
+		Showtime userShowtime = selectShowtime(selectMovie(movies),showtimes);
+		ArrayList<Seat> userSeats = selectSeats(userShowtime.getHall());
+		ArrayList<SeatBooking> userSeatBookings = new ArrayList<>();
+		for(Seat seat:userSeats) {
+			userSeatBookings.add(new SeatBooking(seat));
+		}
+		ArrayList<ConcessionItem> userItems = new ArrayList<>();
+		userItems.add(ConcessionItemFactory.selectConcessionItem(Integer.parseInt(scan.nextLine())));
+		if(userItems.get(0) instanceof IndividualItem) {
+			userItems.get(0).setSize(SizeType.MEDIUM); //TODO: CHANGE THIS TO USER INPUT
+		}
+		Coupon userCoupon = CouponFactory.selectCoupon(scan.nextLine());
+>>>>>>> 41c216c testing why is it im 4 behind even when i just open up my eclipse and just pull
 		Order userOrder = new Order(userShowtime, userItems, userCoupon, userSeatBookings);
 		storedTickets.add(menuInvoker.executeCommand(new PaymentProcessCommand(userOrder,scan)));
 		menuInvoker.executeCommand(new DisplayReceiptCommand(storedTickets.get(storedTickets.size()-1)));
