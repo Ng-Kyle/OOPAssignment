@@ -17,6 +17,7 @@ public class CustomerMain {
 		ArrayList<Hall> halls = new ArrayList<>();
 <<<<<<< Upstream, based on origin/master
 <<<<<<< Upstream, based on origin/master
+<<<<<<< Upstream, based on origin/master
 		ArrayList<Ticket> storedTickets = new ArrayList<>();
 		
 		CustomerInvoker menuInvoker = new CustomerInvoker();
@@ -49,6 +50,9 @@ public class CustomerMain {
 >>>>>>> 41c216c testing why is it im 4 behind even when i just open up my eclipse and just pull
 =======
 		availableShowtimes.add(new Showtime(availableMovies.get(0),halls.get(0)));
+=======
+		ArrayList<Ticket> storedTickets = new ArrayList<>();
+>>>>>>> da6f9d2 QRCode and file IO methods
 		
 		CustomerInvoker menuInvoker = new CustomerInvoker();
 		Movie userMovie = menuInvoker.executeCommand(new SelectMovieCommand(availableMovies,scan));
@@ -59,6 +63,7 @@ public class CustomerMain {
 		Coupon userCoupon = menuInvoker.executeCommand(new SelectCouponCommand(scan));
 >>>>>>> 3730c27 System flow seperated into individual commands
 		Order userOrder = new Order(userShowtime, userItems, userCoupon, userSeatBookings);
+<<<<<<< Upstream, based on origin/master
 <<<<<<< Upstream, based on origin/master
 <<<<<<< Upstream, based on origin/master
 		storedTickets.add(menuInvoker.executeCommand(new PaymentProcessCommand(userOrder,scan)));
@@ -72,6 +77,10 @@ public class CustomerMain {
 		
 		
 >>>>>>> afc18c6 basic customer system flow complete
+=======
+		storedTickets.add(menuInvoker.executeCommand(new PaymentProcessCommand(userOrder,scan)));
+		menuInvoker.executeCommand(new DisplayReceiptCommand(storedTickets.get(storedTickets.size()-1)));
+>>>>>>> da6f9d2 QRCode and file IO methods
 	}
 	
 <<<<<<< Upstream, based on origin/master

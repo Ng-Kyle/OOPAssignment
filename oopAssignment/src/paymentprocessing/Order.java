@@ -46,4 +46,8 @@ public class Order {
 =======
 >>>>>>> 41c216c testing why is it im 4 behind even when i just open up my eclipse and just pull
 	
+	public String toString() {
+		return showtime.toString();//TODO: Nigel/Emily make a CSV format for this
+	}
+	
 }

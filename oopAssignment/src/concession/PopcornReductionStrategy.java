@@ -18,7 +18,7 @@ public class PopcornReductionStrategy implements StockReductionStrategy {
 			reductionAmount = 0;
 			break;
 		}
-<<<<<<< Upstream, based on origin/master
+
 		Map<String,Double> stockQuantity = ConcessionItemStorage.getStockQuantity();
 		
 		if(stockQuantity.get(item.getName()) - reductionAmount < 0) {
@@ -26,8 +26,8 @@ public class PopcornReductionStrategy implements StockReductionStrategy {
 		}
 		ConcessionItemStorage.reduceStock(item.getName(),reductionAmount);
 		
-=======
+
 		ConcessionItemStorage.reduceStock(item.getName(),reductionAmount);
->>>>>>> 41c216c testing why is it im 4 behind even when i just open up my eclipse and just pull
+
 	}
 }
