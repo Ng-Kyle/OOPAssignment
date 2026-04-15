@@ -13,7 +13,7 @@ public class SelectConcessionItemsCommand implements Command<ArrayList<Concessio
 		int menuInput = 0;
 		while(menuInput != 2) {
 			System.out.println("Select Concession Items");
-			selectedItems.add(ConcessionItemFactory.selectConcessionItem(Integer.parseInt(scan.nextLine())));
+			selectedItems.add(ConcessionItemFactory.selectConcessionItemByIndex(Integer.parseInt(scan.nextLine())));
 			if(selectedItems.get(selectedItems.size()-1) instanceof IndividualItem) {
 				int userInput = 0;
 				System.out.println("Select Size");

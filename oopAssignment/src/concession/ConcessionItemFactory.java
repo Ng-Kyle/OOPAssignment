@@ -1,11 +1,14 @@
 package concession;
 
 public class ConcessionItemFactory {
-	public static ConcessionItem selectConcessionItem(int index) {
-		ConcessionItem userItem = ConcessionItemStorage.getItem(index);
+	public static ConcessionItem selectConcessionItemByIndex(int index) {
+		ConcessionItem userItem = ConcessionItemStorage.getItemByIndex(index);
 		return copyItem(userItem);
 	}
-
+	public static ConcessionItem selectConcessionItemByName(String name) {
+		ConcessionItem userItem = ConcessionItemStorage.getItemByName(name);
+		return copyItem(userItem);
+	}
 	
 	public static ConcessionItem copyItem(ConcessionItem userItem) {
 		if(userItem instanceof IndividualItem) {

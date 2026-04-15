@@ -38,4 +38,25 @@ public class IndividualItem extends ConcessionItem {
     public String toString() {
         return String.format("%s", super.toString());
     }
+    public String toCSV() {
+    	return super.getName() + "," + "INDIVIDUAL" + "," + this.getUnit() + "," + this.getStockReductionStrategy().getClass().getSimpleName();
+    }
+    public static IndividualItem fromCSV(String content) {
+    	String[] values = content.split(",");
+    	UnitType unitValue = UnitType.valueOf(values[1]);
+    	StockReductionStrategy strategy = null;
+    	
+    	switch(values[2]) {
+    	case "PopcornReductionStrategy":
+    		strategy = new PopcornReductionStrategy();
+    		break;
+
+    	case "DrinkReductionStrategy":
+    		strategy = new DrinkReductionStrategy();
+    		break;
+    	default:
+    		break;
+    	}
+    	return new IndividualItem(values[0],unitValue,strategy);
+    }
 }
