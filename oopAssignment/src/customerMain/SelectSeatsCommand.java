@@ -1,4 +1,4 @@
-package main;
+package customerMain;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -19,7 +19,7 @@ public class SelectSeatsCommand implements Command<ArrayList<SeatBooking>> {
 		System.out.println("Select your seats, input 2 if done.");
 		while(menuInput != 2) {
 			String seatInput = scan.nextLine();
-			String userRow = seatInput.substring(0,1);
+			char userRow = seatInput.substring(0,1).charAt(0);
 			int userColumn = Integer.parseInt(seatInput.substring(1));
 			userSeats.add(hall.findSeat(userRow, userColumn));
 			menuInput = Integer.parseInt(scan.nextLine());

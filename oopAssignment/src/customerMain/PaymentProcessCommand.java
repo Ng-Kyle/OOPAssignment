@@ -1,4 +1,4 @@
-package main;
+package customerMain;
 
 import java.util.Scanner;
 

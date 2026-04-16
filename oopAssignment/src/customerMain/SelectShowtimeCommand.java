@@ -1,4 +1,4 @@
-package main;
+package customerMain;
 import seatbooking.Showtime;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -15,7 +15,7 @@ public class SelectShowtimeCommand implements Command<Showtime> {
 	public Showtime execute() {
 		System.out.println("Pick a showtime");
 		int userInput = Integer.parseInt(scan.nextLine());
-		return availableShowtimes.get(userInput);
+		return availableShowtimes.get(userInput - 1);
 	}
 
 }

@@ -1,4 +1,4 @@
-package main;
+package customerMain;
 import concession.*;
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ public class SelectConcessionItemsCommand implements Command<ArrayList<Concessio
 		int menuInput = 0;
 		while(menuInput != 2) {
 			System.out.println("Select Concession Items");
-			selectedItems.add(ConcessionItemFactory.selectConcessionItemByIndex(Integer.parseInt(scan.nextLine())));
+			selectedItems.add(ConcessionItemFactory.selectConcessionItemByIndex(Integer.parseInt(scan.nextLine())-1));
 			if(selectedItems.get(selectedItems.size()-1) instanceof IndividualItem) {
 				int userInput = 0;
 				System.out.println("Select Size");

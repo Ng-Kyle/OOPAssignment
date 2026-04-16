@@ -1,4 +1,4 @@
-package main;
+package customerMain;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -13,8 +13,8 @@ public class SelectMovieCommand implements Command<Movie> {
 		this.scan = scan;
 	}
 	public Movie execute() {
-		System.out.println("Select a movie"); //TODO: Selection Menu
+		System.out.println("Select a movie"); //TODO: Selection Menu + Exception Handling
 		int userChoice = Integer.parseInt(scan.nextLine());
-		return availableMovies.get(userChoice);
+		return availableMovies.get(userChoice - 1);
 	}
 }

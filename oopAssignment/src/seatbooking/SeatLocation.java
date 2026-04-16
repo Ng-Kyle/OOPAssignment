@@ -1,25 +1,25 @@
 package seatbooking;
 
 public class SeatLocation {
-	private String row;
+	private char row;
 	private int column;
 	
-	public SeatLocation(String row, int column) {
+	public SeatLocation(char row, int column) {
 		this.row = row;
 		this.column = column;
 	}
 	public SeatLocation(){
-		row = "";
+		row = ' ';
 		column = 0;
 	}
 	
-	public String getRow() {
+	public char getRow() {
 		return row;
 	}
 	public int getColumn() {
 		return column;
 	}
-	public void setRow(String row){
+	public void setRow(char row){
 		this.row = row;
 	}
 	public void setColumn(int column){

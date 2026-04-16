@@ -1,6 +1,9 @@
-package main;
+package customerMain;
 
 import java.util.ArrayList;
+
+import main.FileIO;
+
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.BufferedReader;

@@ -2,7 +2,7 @@ package concession;
 
 import java.util.Map;
 
-import main.InsufficientStockException;
+import customerMain.InsufficientStockException;
 
 public class PopcornReductionStrategy implements StockReductionStrategy {
 	public void reduceStock(ConcessionItem item) {
