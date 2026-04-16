@@ -4,12 +4,35 @@ public class Hall {
 	private ScreenSize screenSize;
 	private Seat[] seats;
 	private int hallID;
+	private static int totalHalls;
+	private int columns;
+	private int rows;
 	
 	public Hall() {
-		seats = SeatFactory.createSeats(new int[]{1, 2, 3}, new String[]{"A","B","C"} );
+		columns = 1;
+		rows = 1;
+		seats = SeatFactory.createSeats(1,1);
 		screenSize = null;
-		hallID = 0;
+		hallID = totalHalls++;
 	}
+	
+	public Hall(int hallID, ScreenSize screenSize, Seat[] seats, int columns, int rows) {
+		this.screenSize = screenSize;
+		this.seats = seats;
+		this.hallID = hallID;
+		this.columns = columns;
+		this.rows = rows;
+		totalHalls++;
+	}
+	
+	public Hall(ScreenSize screenSize, Seat[] seats, int columns, int rows) {
+		this.screenSize = screenSize;
+		this.seats = seats;
+		this.columns = columns;
+		this.rows = rows;
+		hallID = totalHalls++;
+	}
+	
 	public Seat[] getSeats() {
 		return seats;
 	}
@@ -30,13 +53,26 @@ public class Hall {
 		this.hallID = hallID;
 	}
 	
-	public Seat findSeat(String row, int column) {
+	public Seat findSeat(char row, int column) {
 		for(int i = 0; i<seats.length; i++) {
 			SeatLocation seatLocation = seats[i].getSeatLocation();
-			if(seatLocation.getRow().equalsIgnoreCase(row) && seatLocation.getColumn() == column){
+			if(seatLocation.getRow() == row && seatLocation.getColumn() == column){
 				return seats[i];
 			}
 		}
 		return null;
 	}
+	
+	public String toCSV() {
+		return hallID + "," + screenSize + "," + rows + "," + columns; 
+	}
+	
+	public static Hall fromCSV(String content) {
+		String[] values = content.split(",");
+		int storedRows = Integer.parseInt(values[2]);
+		int storedColumns = Integer.parseInt(values[3]);
+		
+		return new Hall(Integer.parseInt(values[0]), ScreenSize.valueOf(values[1]),SeatFactory.createSeats(storedRows, storedColumns), storedRows, storedColumns);
+	}
+	
 }

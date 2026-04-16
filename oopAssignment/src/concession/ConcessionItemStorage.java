@@ -9,7 +9,7 @@ public class ConcessionItemStorage {
 	private static ArrayList<ConcessionItem> availableItems = new ArrayList<>();
 	private static Map<String,Double> stockQuantity = new HashMap<>();
 	static {
-		ArrayList<String> csvContent = FileIO.readFile("availableitems.csv");
+		ArrayList<String> csvContent = FileIO.readFile("storedData/availableItems.csv");
 		for(int i = 0; i < csvContent.size(); i++) {
 			String[] values = csvContent.get(i).split(",");
 			if(values[1].equals("INDIVIDUAL")) {
@@ -22,13 +22,21 @@ public class ConcessionItemStorage {
 				availableItems.add(Combo.fromCSV(csvContent.get(i)));
 			}
 		}
-		for(int i =0; i<availableItems.size();i++) {//change to file reading later on
-			stockQuantity.put(availableItems.get(i).getName(),1000.00);
+		
+		ArrayList<String> csvStockContent = FileIO.readFile("storedData/stockQuantity.csv");
+		for(int i =0; i<csvStockContent.size();i++) {
+			String[] values = csvStockContent.get(i).split(",");
+			stockQuantity.put(values[0],Double.parseDouble(values[1]));
 		}
 	}
-	public static String availableItemsToCSV(ConcessionItem availableItem) {
-		return null;
+	public static String availableItemsToCSV() {
+		String csvLine = "";
+		for(int i = 0; i < availableItems.size(); i++) {
+			csvLine += availableItems.get(i).toCSV() + "\n";
+		}
+		return csvLine;
 	}
+	
 	public static String stockQuantityToCSV() { 
 		String csvLine =""; 
 		for(Map.Entry<String,Double> entry: stockQuantity.entrySet()) {
@@ -36,10 +44,7 @@ public class ConcessionItemStorage {
 		}
 		return csvLine;
 	}
-	public static Map<String,Double> stockQuantityFromCSV(String content){
-		
-		return null; //TODO:fix this
-	}
+
 	
 	public static ArrayList<ConcessionItem> getAllItems() {
 		return availableItems;

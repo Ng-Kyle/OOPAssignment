@@ -1,4 +1,4 @@
-package main;
+package customerMain;
 import seatbooking.Movie;
 import seatbooking.Showtime;
 import java.util.ArrayList;
@@ -17,7 +17,6 @@ public class FilterShowtimesCommand implements Command<ArrayList<Showtime>>{
 		for(int i=0; i<availableShowtimes.size();i++) {
 			if(userMovie.equals(availableShowtimes.get(i).getMovie())) {
 				filteredShowtimes.add(availableShowtimes.get(i));
-				System.out.println(availableShowtimes.get(i));
 			}
 		}
 		return filteredShowtimes;

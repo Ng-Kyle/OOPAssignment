@@ -41,6 +41,10 @@ public class Movie {
 	public String toString() {
 		return title;
 	}
+	
+	public String toCSV() {
+		return title + "," + genre + "," + ageRating + "," + durationMinutes;
+	}
 	public static Movie fromCSV(String content) {
 		String[] values = content.split(",");
 		AgeRating ageRating = null;

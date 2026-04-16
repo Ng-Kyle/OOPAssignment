@@ -42,14 +42,14 @@ public class IndividualItem extends ConcessionItem {
         return String.format("%s", super.toString());
     }
     public String toCSV() {
-    	return super.getName() + "," + "INDIVIDUAL" + "," + this.getUnit() + "," + this.getStockReductionStrategy().getClass().getSimpleName();
+    	return super.getName() + "," + "INDIVIDUAL" + "," + unit + "," + stockReductionStrategy.getClass().getSimpleName();
     }
     public static IndividualItem fromCSV(String content) {
     	String[] values = content.split(",");
-    	UnitType unitValue = UnitType.valueOf(values[1]);
+    	UnitType unitValue = UnitType.valueOf(values[2]);
     	StockReductionStrategy strategy = null;
     	
-    	switch(values[2]) {
+    	switch(values[3]) {
     	case "PopcornReductionStrategy":
     		strategy = new PopcornReductionStrategy();
     		break;

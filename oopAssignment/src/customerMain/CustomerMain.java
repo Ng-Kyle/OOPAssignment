@@ -1,7 +1,8 @@
-package main;
+package customerMain;
 import java.util.Scanner;
 import concession.*;
 import coupon.*;
+import main.CSVLoader;
 import paymentprocessing.*;
 import seatbooking.*;
 import java.util.ArrayList;
@@ -12,10 +13,12 @@ public class CustomerMain {
 	
 	public static void main(String[] args) {
 		//Object Construction Testing
-		ArrayList<Movie> availableMovies = new ArrayList<>();
-		ArrayList<Showtime> availableShowtimes = new ArrayList<>();
-		ArrayList<Hall> halls = new ArrayList<>();
+		ArrayList<Movie> availableMovies = CSVLoader.readMovies("storedData/movies.csv");
+		ArrayList<Hall> halls = CSVLoader.readHalls("storedData/halls.csv");
+		ArrayList<Showtime> availableShowtimes = CSVLoader.readShowtimes("storedData/showtimes.csv",availableMovies,halls);
 		ArrayList<Ticket> storedTickets = new ArrayList<>();
+		ConcessionItemStorage storedItems = new ConcessionItemStorage();
+		ItemPriceStorage itemPrice = new ItemPriceStorage();
 		
 		CustomerInvoker menuInvoker = new CustomerInvoker();
 		Movie userMovie = menuInvoker.executeCommand(new SelectMovieCommand(availableMovies,scan));

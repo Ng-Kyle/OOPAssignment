@@ -4,8 +4,8 @@ public class Seat {
 	private SeatType seatType;
 	private SeatLocation seatLocation;
 	
-	public Seat(SeatLocation seatLocation) {
-		seatType = SeatType.STANDARD;//UPDATE THIS LATER TO BE CUSTOMER CHOSEN
+	public Seat(SeatLocation seatLocation, SeatType seatType) {
+		this.seatType = seatType;
 		this.seatLocation = seatLocation;
 	}
 	public SeatLocation getSeatLocation(){
