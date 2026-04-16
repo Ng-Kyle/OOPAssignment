@@ -13,6 +13,7 @@ public class SelectShowtimeCommand implements Command<Showtime> {
 	}
 	@Override
 	public Showtime execute() {
+		//TODO: DISPLAY AVAILABLE SHOWTIMES
 		System.out.println("Pick a showtime");
 		int userInput = Integer.parseInt(scan.nextLine());
 		return availableShowtimes.get(userInput - 1);

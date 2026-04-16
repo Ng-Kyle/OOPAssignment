@@ -8,7 +8,7 @@ public class SelectConcessionItemsCommand implements Command<ArrayList<Concessio
 	public SelectConcessionItemsCommand(Scanner scan) {
 		this.scan = scan;
 	}
-	public ArrayList<ConcessionItem> execute(){
+	public ArrayList<ConcessionItem> execute(){ //TODO: SHOW AVAILABLE ITEMS
 		ArrayList<ConcessionItem> selectedItems = new ArrayList<>();
 		int menuInput = 0;
 		while(menuInput != 2) {
