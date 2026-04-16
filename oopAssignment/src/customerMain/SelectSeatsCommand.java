@@ -13,7 +13,7 @@ public class SelectSeatsCommand implements Command<ArrayList<SeatBooking>> {
 		this.hall = hall;
 		this.scan = scan;
 	}
-	public ArrayList<SeatBooking> execute() {
+	public ArrayList<SeatBooking> execute() { //TODO:DISPLAY SEATMAP
 		int menuInput = 0;
 		ArrayList<Seat> userSeats = new ArrayList<>();
 		System.out.println("Select your seats, input 2 if done.");

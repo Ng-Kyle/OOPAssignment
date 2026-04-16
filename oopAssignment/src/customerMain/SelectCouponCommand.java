@@ -8,7 +8,7 @@ public class SelectCouponCommand implements Command<Coupon> {
 	public SelectCouponCommand(Scanner scan) {
 		this.scan = scan;
 	}
-	public Coupon execute() {
+	public Coupon execute() { //TODO: ASK FOR COUPON CODE
 		return CouponFactory.selectCoupon(scan.nextLine());
 	}
 }
