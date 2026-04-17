@@ -13,8 +13,9 @@ public class ConcessionItemFactory {
 	public static ConcessionItem copyItem(ConcessionItem userItem) {
 		if(userItem instanceof IndividualItem) {
 			IndividualItem userIndividualItem = (IndividualItem)userItem;
-			return new IndividualItem(userIndividualItem.getName(),
-					userIndividualItem.getStockReductionStrategy());
+			IndividualItem copyItem = new IndividualItem(userIndividualItem.getName(), userIndividualItem.getStockReductionStrategy());
+			copyItem.setSize(userIndividualItem.getSize());
+			return copyItem;
 		}
 		if(userItem instanceof Combo) {
 			Combo userComboItem = (Combo)userItem;

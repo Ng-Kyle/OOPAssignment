@@ -4,7 +4,7 @@ public class Hall {
 	private ScreenSize screenSize;
 	private Seat[] seats;
 	private int hallID;
-	private static int totalHalls;
+	private static int totalHalls = 0;
 	private int columns;
 	private int rows;
 	

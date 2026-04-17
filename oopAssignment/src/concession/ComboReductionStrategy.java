@@ -5,7 +5,7 @@ public class ComboReductionStrategy implements StockReductionStrategy {
 	@Override
 	public void reduceStock(ConcessionItem item) {
 		if(item instanceof IndividualItem) {
-			item.reduceStock();
+			item.reduceStock(1);
 		}
 		else if(item instanceof Combo) {
 			Combo comboItem = (Combo)item;

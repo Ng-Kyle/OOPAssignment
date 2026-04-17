@@ -22,7 +22,7 @@ public abstract class Coupon {
 	public String getCode(){
 		return code;
 	}
-	public CouponDiscountStrategy getstrategy(){
+	public CouponDiscountStrategy getStrategy(){
 		return strategy;
 	}
 	public double getDiscountValue(){
@@ -42,4 +42,5 @@ public abstract class Coupon {
 	public String toString(){
 		return String.format("Code: \n Discount Value: %.2f \n Strategy:%.2f",code,discountValue,strategy);
 	}
+
 }

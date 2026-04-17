@@ -25,8 +25,10 @@ public class Combo extends ConcessionItem {
     }
     
 
-    public void reduceStock() {
-    	strategy.reduceStock(this);
+    public void reduceStock(int quantity) {
+    	for(int i = 0; i < quantity; i++) {
+    		strategy.reduceStock(this);
+    	}
     }
     @Override
     public String toString() {
