@@ -19,6 +19,7 @@ public class CustomerMain {
 		ArrayList<Ticket> storedTickets = new ArrayList<>();
 		ConcessionItemStorage storedItems = new ConcessionItemStorage();
 		ItemPriceStorage itemPrice = new ItemPriceStorage();
+		CouponCodeStorage storedCoupons = new CouponCodeStorage();
 		
 		CustomerInvoker menuInvoker = new CustomerInvoker();
 		Movie userMovie = menuInvoker.executeCommand(new SelectMovieCommand(availableMovies,scan));
@@ -27,7 +28,8 @@ public class CustomerMain {
 		ArrayList<SeatBooking> userSeatBookings = menuInvoker.executeCommand(new SelectSeatsCommand(userShowtime.getHall(),scan));
 		ArrayList<ConcessionItem> userItems = menuInvoker.executeCommand(new SelectConcessionItemsCommand(scan));
 		Coupon userCoupon = menuInvoker.executeCommand(new SelectCouponCommand(scan));
-		Order userOrder = new Order(userShowtime, userItems, userCoupon, userSeatBookings);
+		ArrayList<OrderItem> orderedItems = menuInvoker.executeCommand(new ProcessItemsCommand(userItems));
+		Order userOrder = new Order(userShowtime, orderedItems, userCoupon, userSeatBookings);
 		storedTickets.add(menuInvoker.executeCommand(new PaymentProcessCommand(userOrder,scan)));
 		menuInvoker.executeCommand(new DisplayReceiptCommand(storedTickets.get(storedTickets.size()-1)));
 	}

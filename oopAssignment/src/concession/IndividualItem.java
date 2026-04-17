@@ -33,8 +33,10 @@ public class IndividualItem extends ConcessionItem {
     	this.stockReductionStrategy = stockReductionStrategy;
     }
     
-    public void reduceStock() {
-    	stockReductionStrategy.reduceStock(this);
+    public void reduceStock(int quantity) {
+    	for(int i = 0; i < quantity; i++) {
+    		stockReductionStrategy.reduceStock(this);
+    	}
     }
     
     @Override

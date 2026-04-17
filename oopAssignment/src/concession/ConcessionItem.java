@@ -31,7 +31,7 @@ public abstract class ConcessionItem {
     	this.size = size;
     }
     
-    public abstract void reduceStock();
+    public abstract void reduceStock(int quantity);
     public abstract String toCSV();
 	public double calculatePrice() {
 		return ItemPriceStorage.getItemPrices().get(name).get(size);

@@ -1,16 +1,27 @@
 package seatbooking;
 
 public class Movie { 
+	private int movieID;
 	private String title;
 	private String genre;
 	private AgeRating ageRating;
 	private double durationMinutes;
+	private static int totalMovies = 1;
 	
 	public Movie(String title, String genre, AgeRating ageRating, double durationMinutes) { //testing
 		this.title = title;
 		this.genre = genre;
 		this.ageRating = ageRating;
 		this.durationMinutes = durationMinutes;
+		movieID = totalMovies++;
+	}
+	public Movie(int movieID,String title, String genre, AgeRating ageRating, double durationMinutes) { //testing
+		this.title = title;
+		this.genre = genre;
+		this.ageRating = ageRating;
+		this.durationMinutes = durationMinutes;
+		this.movieID = movieID;
+		totalMovies++;
 	}
 	public String getTitle(){
 		return title;
@@ -43,7 +54,7 @@ public class Movie {
 	}
 	
 	public String toCSV() {
-		return title + "," + genre + "," + ageRating + "," + durationMinutes;
+		return movieID + "," + title + "," + genre + "," + ageRating + "," + durationMinutes;
 	}
 	public static Movie fromCSV(String content) {
 		String[] values = content.split(",");
@@ -59,6 +70,6 @@ public class Movie {
 			ageRating = AgeRating._18;
 			break;
 		}
-		return new Movie(values[0],values[1],ageRating,Double.parseDouble(values[3]));
+		return new Movie(Integer.parseInt(values[0]),values[1],values[2],ageRating,Double.parseDouble(values[4]));
 	}
 }

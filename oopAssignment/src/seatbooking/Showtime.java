@@ -3,14 +3,24 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class Showtime {
+	private int showtimeID;
+	private static int totalShowtimes = 0;
 	private Movie movie;
 	private Hall hall;
 	private LocalDateTime time;
 	
-	public Showtime(Movie movie, Hall hall, LocalDateTime time) { //testing
+	public Showtime(Movie movie, Hall hall, LocalDateTime time) { 
 		this.movie = movie;
 		this.hall = hall;
 		this.time = time;
+		showtimeID = totalShowtimes++;
+	}
+	
+	public Showtime(int showtimeID, Movie movie, Hall hall, LocalDateTime time) { 
+		this.movie = movie;
+		this.hall = hall;
+		this.time = time;
+		this.showtimeID = showtimeID;
 	}
 	public Hall getHall() {
 		return hall;
@@ -52,7 +62,7 @@ public class Showtime {
 		Hall storedHall = null;
 		
 		for(int i = 0; i < availableMovies.size(); i++) {
-			if(values[0].equals(availableMovies.get(i).getTitle())) {
+			if(values[1].equals(availableMovies.get(i).getTitle())) { //TODO: replace this with get id instead
 				storedMovie = availableMovies.get(i);
 				break;
 			}			
@@ -61,7 +71,7 @@ public class Showtime {
 			throw new IllegalArgumentException("No corresponding movies found!");
 		}
 		for(int i = 0; i < availableHalls.size(); i++) {
-			if(Integer.parseInt(values[1]) == availableHalls.get(i).getHallID()) {
+			if(Integer.parseInt(values[2]) == availableHalls.get(i).getHallID()) {
 				storedHall = availableHalls.get(i);
 				break;
 			}
@@ -71,7 +81,7 @@ public class Showtime {
 			throw new IllegalArgumentException("No corresponding halls found!");
 		}
 		
-		return new Showtime(storedMovie, storedHall, LocalDateTime.parse(values[2]));
+		return new Showtime(Integer.parseInt(values[0]),storedMovie, storedHall, LocalDateTime.parse(values[3]));
 	}
 	
 }
