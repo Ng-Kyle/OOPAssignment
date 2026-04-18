@@ -10,12 +10,14 @@ public class IndividualItem extends ConcessionItem {
     	this.unit = unit;
     	this.stockReductionStrategy = stockReductionStrategy;
     }
-    
+
     public IndividualItem() {
     	this.unit = null;
 
+
     public IndividualItem(String name,SizeType size,StockReductionStrategy stockReductionStrategy) {
     	super(name,size);
+
 
     public IndividualItem(String name,StockReductionStrategy stockReductionStrategy) {
     	super(name);
@@ -39,7 +41,6 @@ public class IndividualItem extends ConcessionItem {
 
     }
 
->>>>>>> 5ecb9b7 test
     public UnitType getUnit() {
     	return unit;
     }
