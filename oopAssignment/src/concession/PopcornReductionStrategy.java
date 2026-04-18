@@ -18,6 +18,7 @@ public class PopcornReductionStrategy implements StockReductionStrategy {
 			reductionAmount = 0;
 			break;
 		}
+<<<<<<< HEAD
 
 		Map<String,Double> stockQuantity = ConcessionItemStorage.getStockQuantity();
 		
@@ -29,5 +30,14 @@ public class PopcornReductionStrategy implements StockReductionStrategy {
 
 		ConcessionItemStorage.reduceStock(item.getName(),reductionAmount);
 
+=======
+		Map<String,Double> stockQuantity = ConcessionItemStorage.getStockQuantity();
+		
+		if(stockQuantity.get(item.getName()) - reductionAmount < 0) {
+			throw new InsufficientStockException();
+		}
+		ConcessionItemStorage.reduceStock(item.getName(),reductionAmount);
+		
+>>>>>>> branch 'Sub_Classes' of git@github.com:Ng-Kyle/OOPAssignment.git
 	}
 }

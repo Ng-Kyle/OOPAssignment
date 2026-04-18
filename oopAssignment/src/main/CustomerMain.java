@@ -15,6 +15,7 @@ public class CustomerMain {
 		ArrayList<Movie> availableMovies = new ArrayList<>();
 		ArrayList<Showtime> availableShowtimes = new ArrayList<>();
 		ArrayList<Hall> halls = new ArrayList<>();
+<<<<<<< HEAD
 <<<<<<< Upstream, based on origin/master
 <<<<<<< Upstream, based on origin/master
 <<<<<<< Upstream, based on origin/master
@@ -62,7 +63,19 @@ public class CustomerMain {
 		ArrayList<ConcessionItem> userItems = menuInvoker.executeCommand(new SelectConcessionItemsCommand(scan));
 		Coupon userCoupon = menuInvoker.executeCommand(new SelectCouponCommand(scan));
 >>>>>>> 3730c27 System flow seperated into individual commands
+=======
+		ArrayList<Ticket> storedTickets = new ArrayList<>();
+		
+		CustomerInvoker menuInvoker = new CustomerInvoker();
+		Movie userMovie = menuInvoker.executeCommand(new SelectMovieCommand(availableMovies,scan));
+		ArrayList<Showtime> filteredShowtimes = menuInvoker.executeCommand(new FilterShowtimesCommand(userMovie,availableShowtimes));
+		Showtime userShowtime = menuInvoker.executeCommand(new SelectShowtimeCommand(filteredShowtimes,scan));
+		ArrayList<SeatBooking> userSeatBookings = menuInvoker.executeCommand(new SelectSeatsCommand(userShowtime.getHall(),scan));
+		ArrayList<ConcessionItem> userItems = menuInvoker.executeCommand(new SelectConcessionItemsCommand(scan));
+		Coupon userCoupon = menuInvoker.executeCommand(new SelectCouponCommand(scan));
+>>>>>>> branch 'Sub_Classes' of git@github.com:Ng-Kyle/OOPAssignment.git
 		Order userOrder = new Order(userShowtime, userItems, userCoupon, userSeatBookings);
+<<<<<<< HEAD
 <<<<<<< Upstream, based on origin/master
 <<<<<<< Upstream, based on origin/master
 <<<<<<< Upstream, based on origin/master
@@ -81,8 +94,13 @@ public class CustomerMain {
 		storedTickets.add(menuInvoker.executeCommand(new PaymentProcessCommand(userOrder,scan)));
 		menuInvoker.executeCommand(new DisplayReceiptCommand(storedTickets.get(storedTickets.size()-1)));
 >>>>>>> da6f9d2 QRCode and file IO methods
+=======
+		storedTickets.add(menuInvoker.executeCommand(new PaymentProcessCommand(userOrder,scan)));
+		menuInvoker.executeCommand(new DisplayReceiptCommand(storedTickets.get(storedTickets.size()-1)));
+>>>>>>> branch 'Sub_Classes' of git@github.com:Ng-Kyle/OOPAssignment.git
 	}
 	
+<<<<<<< HEAD
 <<<<<<< Upstream, based on origin/master
 =======
 	private static Movie selectMovie(ArrayList<Movie> movies) {
@@ -127,4 +145,6 @@ public class CustomerMain {
 	}
 	
 >>>>>>> afc18c6 basic customer system flow complete
+=======
+>>>>>>> branch 'Sub_Classes' of git@github.com:Ng-Kyle/OOPAssignment.git
 }

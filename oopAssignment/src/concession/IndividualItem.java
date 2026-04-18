@@ -10,11 +10,25 @@ public class IndividualItem extends ConcessionItem {
     	this.unit = unit;
     	this.stockReductionStrategy = stockReductionStrategy;
     }
+<<<<<<< HEAD
 
 
     public IndividualItem(String name,SizeType size,StockReductionStrategy stockReductionStrategy) {
     	super(name,size);
+=======
+<<<<<<< Upstream, based on origin/Classes_Sub
+
+=======
+    public IndividualItem(String name,SizeType size,StockReductionStrategy stockReductionStrategy) {
+    	super(name,size);
     	this.stockReductionStrategy = stockReductionStrategy;
+    }
+>>>>>>> f85c0da stock reduction functionality done
+    public IndividualItem(String name,StockReductionStrategy stockReductionStrategy) {
+    	super(name);
+>>>>>>> branch 'Sub_Classes' of git@github.com:Ng-Kyle/OOPAssignment.git
+    	this.stockReductionStrategy = stockReductionStrategy;
+<<<<<<< HEAD
     }
 
     public IndividualItem(String name,StockReductionStrategy stockReductionStrategy) {
@@ -38,7 +52,17 @@ public class IndividualItem extends ConcessionItem {
         this.stockQuantity = stockQuantity;
 
     }
+=======
+>>>>>>> branch 'Sub_Classes' of git@github.com:Ng-Kyle/OOPAssignment.git
 
+    public IndividualItem() {
+    	this.unit = null;
+    }
+<<<<<<< Upstream, based on origin/Classes_Sub
+    
+=======
+
+>>>>>>> f85c0da stock reduction functionality done
     public UnitType getUnit() {
     	return unit;
     }

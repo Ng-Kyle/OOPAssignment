@@ -2,6 +2,7 @@ System Requirements Not Finished:
 File Reading/Writing
 Menus
 Admin/Customer/Staff Login/UserRights
+<<<<<<< HEAD
 <<<<<<< Upstream, based on origin/master
 <<<<<<< Upstream, based on origin/master
 Reports
@@ -13,3 +14,6 @@ Stock Level Management
 =======
 Reports
 >>>>>>> da6f9d2 QRCode and file IO methods
+=======
+Reports
+>>>>>>> branch 'Sub_Classes' of git@github.com:Ng-Kyle/OOPAssignment.git
