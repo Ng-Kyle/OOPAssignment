@@ -26,11 +26,10 @@ public class IndividualItem extends ConcessionItem {
 =======
 
     public IndividualItem() {
-    	this.stockQuantity = 0;
     	this.unit = null;
-    	this.size = null;
     }
     
+<<<<<<< Upstream, based on origin/master
     public double getStockQuantity() {
         return this.stockQuantity;
     }
@@ -46,6 +45,8 @@ public class IndividualItem extends ConcessionItem {
 
     }
 
+=======
+>>>>>>> 5ecb9b7 test
     public UnitType getUnit() {
     	return unit;
     }
