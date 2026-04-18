@@ -1,9 +1,9 @@
 package adminMain;
 
-import customerMain.CustomerInvoker;
+import main.CommandInvoker;
 
 public class AdminMain {
 	//TODO: Validate Tickets, Manage stock levels, Reports, Set Codes
-	CustomerInvoker adminInvoker = new CustomerInvoker();
+	CommandInvoker adminInvoker = new CommandInvoker();
 	
 }

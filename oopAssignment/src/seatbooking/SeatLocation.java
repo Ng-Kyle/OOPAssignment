@@ -25,4 +25,8 @@ public class SeatLocation {
 	public void setColumn(int column){
 		this.column = column;
 	}
+	
+	public String toString() {
+		return  row + "" + column;
+	}
 }

@@ -2,6 +2,7 @@ package customerMain;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import main.Command;
 import seatbooking.Movie;
 
 public class SelectMovieCommand implements Command<Movie> {

@@ -2,6 +2,8 @@ package customerMain;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import main.Command;
 import seatbooking.Hall;
 import seatbooking.Seat;
 import seatbooking.SeatBooking;

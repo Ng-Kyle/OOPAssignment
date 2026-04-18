@@ -1,6 +1,8 @@
 package seatbooking;
 
-public class Movie { 
+import main.CSVStored;
+
+public class Movie implements CSVStored{ 
 	private int movieID;
 	private String title;
 	private String genre;
@@ -49,6 +51,9 @@ public class Movie {
 		this.durationMinutes = durationMinutes;
 	}
 	
+	public double getMovieID() {
+		return movieID;
+	}
 	public String toString() {
 		return title;
 	}

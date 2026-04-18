@@ -1,7 +1,6 @@
-package customerMain;
+package main;
 
-
-public class CustomerInvoker {
+public class CommandInvoker {
 	public <T> T executeCommand(Command<T> command) {
 		return command.execute();
 	}

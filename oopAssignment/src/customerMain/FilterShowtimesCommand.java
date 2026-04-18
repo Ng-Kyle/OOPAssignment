@@ -3,6 +3,8 @@ import seatbooking.Movie;
 import seatbooking.Showtime;
 import java.util.ArrayList;
 
+import main.Command;
+
 public class FilterShowtimesCommand implements Command<ArrayList<Showtime>>{
 	private ArrayList<Showtime> availableShowtimes;
 	private Movie userMovie;

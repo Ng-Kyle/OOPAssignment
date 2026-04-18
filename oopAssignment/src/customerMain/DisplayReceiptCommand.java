@@ -1,5 +1,6 @@
 package customerMain;
 
+import main.Command;
 import paymentprocessing.Ticket;
 
 public class DisplayReceiptCommand implements Command<Void>{

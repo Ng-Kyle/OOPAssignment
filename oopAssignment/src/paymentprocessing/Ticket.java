@@ -6,7 +6,7 @@ public class Ticket {
 
 	public Ticket(Order orderDetails) {
 		this.orderDetails = orderDetails;
-		QRCode.generateQR(orderDetails.toString(), "receipt.png");
+		QRCode.generateQR(Integer.toString(orderDetails.getOrderID()), "receipt_" + orderDetails.getOrderID() + ".png");
 	}	
 	
 	

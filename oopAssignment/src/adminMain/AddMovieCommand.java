@@ -1,6 +1,6 @@
 package adminMain;
 
-import customerMain.Command;
+import main.Command;
 
 public class AddMovieCommand implements Command<Void> {
 	

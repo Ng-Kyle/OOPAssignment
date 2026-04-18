@@ -23,6 +23,17 @@ public class SeatBooking {
 		seat = null;
 		price = 0.0;
 	}
+	
+	public SeatBooking(Seat seat) {
+		this.seat = seat;
+		price = seatPrices.get(seat.getSeatType());
+	}
+	
+	public SeatBooking(Seat seat, double price) {
+		this.seat = seat;
+		this.price = price;
+	}
+	
 	public void setPrice(double price){
 		this.price = price;
 	}
@@ -33,10 +44,7 @@ public class SeatBooking {
 		this.seat = seat; 
 	}
 	
-	public SeatBooking(Seat seat) {
-		this.seat = seat;
-		price = seatPrices.get(seat.getSeatType());
-	}
+	
 	
 	public String seatPricesToCSV() {
 		String csvLine = "";
@@ -46,4 +54,14 @@ public class SeatBooking {
 		return csvLine;
 	}
 	
+	public String toCSV() {
+		return seat.getSeatLocation().getRow() + ":" + seat.getSeatLocation().getColumn() + ":" + seat.getSeatType() +":" + price;
+	}
+	
+	public static SeatBooking fromCSV(String content) {
+		String[] values = content.split(":");
+		SeatLocation csvLocation = new SeatLocation(values[0].charAt(0),Integer.parseInt(values[1]));
+		Seat csvSeat = new Seat(csvLocation,SeatType.valueOf(values[2]));
+		return new SeatBooking(csvSeat,Double.parseDouble(values[3]));
+	}
 }

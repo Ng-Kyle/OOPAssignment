@@ -3,6 +3,7 @@ package customerMain;
 import java.util.ArrayList;
 
 import concession.ConcessionItem;
+import main.Command;
 import paymentprocessing.OrderItem;
 
 public class ProcessItemsCommand implements Command<ArrayList<OrderItem>> {

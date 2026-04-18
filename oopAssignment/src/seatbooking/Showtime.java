@@ -2,9 +2,11 @@ package seatbooking;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-public class Showtime {
+import main.CSVStored;
+
+public class Showtime implements CSVStored{
 	private int showtimeID;
-	private static int totalShowtimes = 0;
+	private static int totalShowtimes = 1;
 	private Movie movie;
 	private Hall hall;
 	private LocalDateTime time;
@@ -21,6 +23,7 @@ public class Showtime {
 		this.hall = hall;
 		this.time = time;
 		this.showtimeID = showtimeID;
+		totalShowtimes++;
 	}
 	public Hall getHall() {
 		return hall;
@@ -46,14 +49,16 @@ public class Showtime {
 	public void setTime(LocalDateTime time){
 		this.time = time; 
 	}
-	
+	public int getShowtimeID() {
+		return showtimeID;
+	}
 	
 	public String toString() {
 		return movie.toString();
 	}
 	
 	public String toCSV() {
-		return movie.getTitle() + "," + hall.getHallID() + "," + time;
+		return showtimeID + "," + movie.getTitle() + "," + hall.getHallID() + "," + time;
 	}
 	
 	public static Showtime fromCSV(String content, ArrayList<Movie> availableMovies, ArrayList<Hall> availableHalls) {
@@ -62,7 +67,7 @@ public class Showtime {
 		Hall storedHall = null;
 		
 		for(int i = 0; i < availableMovies.size(); i++) {
-			if(values[1].equals(availableMovies.get(i).getTitle())) { //TODO: replace this with get id instead
+			if(Integer.parseInt(values[0]) == availableMovies.get(i).getMovieID()) { //TODO: replace this with get id instead
 				storedMovie = availableMovies.get(i);
 				break;
 			}			

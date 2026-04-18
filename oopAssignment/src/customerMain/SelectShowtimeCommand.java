@@ -3,6 +3,8 @@ import seatbooking.Showtime;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import main.Command;
+
 public class SelectShowtimeCommand implements Command<Showtime> {
 	private ArrayList<Showtime> availableShowtimes;
 	private Scanner scan;

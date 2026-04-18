@@ -1,5 +1,7 @@
 package customerMain;
 import concession.*;
+import main.Command;
+
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -10,8 +12,12 @@ public class SelectConcessionItemsCommand implements Command<ArrayList<Concessio
 	}
 	public ArrayList<ConcessionItem> execute(){ //TODO: SHOW AVAILABLE ITEMS
 		ArrayList<ConcessionItem> selectedItems = new ArrayList<>();
-		int menuInput = 0;
-		while(menuInput != 2) {
+		while(true) {
+			System.out.println("Do you want to add concession items? Y/N");
+			String menuInput = scan.nextLine().trim();
+			if(menuInput.isEmpty() ||Character.toUpperCase(menuInput.charAt(0)) != 'Y') {
+				break;
+			}
 			System.out.println("Select Concession Items");
 			selectedItems.add(ConcessionItemFactory.selectConcessionItemByIndex(Integer.parseInt(scan.nextLine())-1));
 			if(selectedItems.get(selectedItems.size()-1) instanceof IndividualItem) {
@@ -29,9 +35,6 @@ public class SelectConcessionItemsCommand implements Command<ArrayList<Concessio
 					break; //TODO:Add validation later
 				}
 			}
-			
-			System.out.println("Press 2 to stop adding items.");
-			menuInput = Integer.parseInt(scan.nextLine());
 		}
 		return selectedItems;
 	}

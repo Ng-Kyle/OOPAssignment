@@ -1,10 +1,12 @@
 package seatbooking;
 
-public class Hall {
+import main.CSVStored;
+
+public class Hall implements CSVStored{
 	private ScreenSize screenSize;
 	private Seat[] seats;
 	private int hallID;
-	private static int totalHalls = 0;
+	private static int totalHalls = 1;
 	private int columns;
 	private int rows;
 	

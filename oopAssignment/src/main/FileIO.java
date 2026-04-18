@@ -10,7 +10,6 @@ public class FileIO {
 	public static void writeFile(String content, String filePath) {
 		try(BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))){
 			writer.write(content);
-			writer.newLine();
 		}catch(IOException e) {
 			System.out.println("Could not write to file.");
 		}
