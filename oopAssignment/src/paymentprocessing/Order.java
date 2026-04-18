@@ -78,6 +78,12 @@ public class Order implements CSVStored{
 	public int getOrderID() {
 		return orderID;
 	}
+	public ArrayList<SeatBooking> getSeatBooking() {
+		return seatBookings;
+	}
+	public ArrayList<OrderItem> getOrderedItems(){
+		return orderedConcessionItems;
+	}
 	public String toString() {
 		return showtime.toString();//TODO: Nigel/Emily make a CSV format for this
 	}
