@@ -8,7 +8,7 @@ import concession.IndividualItem;
 import coupon.Coupon;
 import coupon.CouponFactory;
 import seatbooking.SeatBooking;
-import seatbooking.Showtime;
+import showtime.Showtime;
 import main.CSVStored;
 
 public class Order implements CSVStored{

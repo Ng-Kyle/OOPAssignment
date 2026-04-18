@@ -1,9 +1,10 @@
-package seatbooking;
+package showtime;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import main.CSVStored;
 import movie.Movie;
+import seatbooking.Hall;
 
 public class Showtime implements CSVStored{
 	private int showtimeID;

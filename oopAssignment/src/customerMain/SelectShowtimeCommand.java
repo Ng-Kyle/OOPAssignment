@@ -1,9 +1,9 @@
 package customerMain;
-import seatbooking.Showtime;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 import main.Command;
+import showtime.Showtime;
 
 public class SelectShowtimeCommand implements Command<Showtime> {
 	private ArrayList<Showtime> availableShowtimes;
