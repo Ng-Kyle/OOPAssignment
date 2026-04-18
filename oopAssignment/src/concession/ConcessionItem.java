@@ -14,16 +14,8 @@ public abstract class ConcessionItem {
 	
 	public ConcessionItem() {
 		this.name = "";
-<<<<<<< Upstream, based on origin/master
-<<<<<<< Upstream, based on origin/master
-
-=======
-		
->>>>>>> 10e4d52 test
-=======
->>>>>>> 5ecb9b7 test
 	}
-
+	
     public String getName() { 
     	return name;
     }
