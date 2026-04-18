@@ -27,7 +27,7 @@ public class DisplayReceiptCommand implements Command<Void>{
 			Seat seat = seatBooking.getSeat();
 			SeatLocation loc = seat.getSeatLocation();
 			String seatDesc = String.format("%s (%s)", loc.toString(), seat.getSeatType());
-			System.out.printf("Seat: %-22s Price: RM%.2f%n ", seatDesc, seatBooking.getPrice() );
+			System.out.printf("Seat: %-22s Price: RM%.2f%n", seatDesc, seatBooking.getPrice() );
 		}
 		
 		System.out.println("\nConcession Items:");
