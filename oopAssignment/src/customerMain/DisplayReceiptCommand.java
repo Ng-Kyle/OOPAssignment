@@ -26,13 +26,13 @@ public class DisplayReceiptCommand implements Command<Void>{
 		for (SeatBooking seatBooking : order.getSeatBooking()) {
 			Seat seat = seatBooking.getSeat();
 			SeatLocation loc = seat.getSeatLocation();
-			System.out.printf("Seat: %-10s", loc.toString());
-			System.out.printf("Price: RM%.2f%n", seatBooking.getPrice());
+			String seatDesc = String.format("%s (%s)", loc.toString(), seat.getSeatType());
+			System.out.printf("Seat: %-22s Price: RM%.2f%n ", seatDesc, seatBooking.getPrice() );
 		}
 		
 		System.out.println("\nConcession Items:");
 		for (OrderItem item : order.getOrderedItems()) {
-			System.out.printf("%-15s (%-6s) x%d RM%.2f%n",
+			System.out.printf("%-1s (%-6s) x%-10d Price: RM%.2f%n",
 			item.getOrderedItem(),
 			item.getSize(),
 			item.getQuantity(),
