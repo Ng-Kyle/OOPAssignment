@@ -3,6 +3,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import main.CSVStored;
+import movie.Movie;
 
 public class Showtime implements CSVStored{
 	private int showtimeID;

@@ -8,9 +8,10 @@ import concession.ItemPriceStorage;
 import coupon.CouponCodeStorage;
 import paymentprocessing.Order;
 import seatbooking.Hall;
-import seatbooking.Movie;
 import seatbooking.Showtime;
 import customerMain.CustomerProcessCommand;
+import movie.Movie;
+import adminMain.AdminProcessCommand;
 
 public class MainProgram {
 	public static void main(String[] args) {
@@ -24,27 +25,26 @@ public class MainProgram {
 		new ItemPriceStorage();
 		new CouponCodeStorage();
 		
-		int menuChoice = 0;
-		while(menuChoice != 3) {
-			menuChoice = Integer.parseInt(scan.nextLine());
+		
+		while(true) {
+			int menuChoice = Integer.parseInt(scan.nextLine());
 			switch(menuChoice) {
-				case 1:
-					menuInvoker.executeCommand(new CustomerProcessCommand(scan,menuInvoker,availableMovies,availableShowtimes,storedOrders));
-					break;
-				case 2:
-					break;
-				case 3:
-					System.out.println("Thanks for using the system!");
-					CSVLoader.saveCSV(availableMovies, "storedData/movies.csv");
-					CSVLoader.saveCSV(halls, "storedData/halls.csv");
-					CSVLoader.saveCSV(availableShowtimes, "storedData/showtimes.csv");
-					CSVLoader.saveCSV(storedOrders, "storedData/order.csv");
-					break;
-				default:
-					System.out.println("Invalid input!");
-					break;
+			case 1:
+				menuInvoker.executeCommand(new CustomerProcessCommand(scan,menuInvoker,availableMovies,availableShowtimes,storedOrders));
+				break;
+			case 2:
+				menuInvoker.executeCommand(new AdminProcessCommand(scan,menuInvoker,availableMovies,availableShowtimes,storedOrders,halls));
+				break;
+			case 3:
+				System.out.println("Thanks for using the system!");
+				CSVLoader.saveCSV(availableMovies, "storedData/movies.csv");
+				CSVLoader.saveCSV(halls, "storedData/halls.csv");
+				CSVLoader.saveCSV(availableShowtimes, "storedData/showtimes.csv");
+				CSVLoader.saveCSV(storedOrders, "storedData/order.csv");
+				return;
+			default:
+				System.out.println("Invalid input!");
 			}
 		}
-		
 	}
 }

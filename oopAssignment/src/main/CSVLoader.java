@@ -2,9 +2,9 @@ package main;
 
 import java.util.ArrayList;
 
+import movie.Movie;
 import paymentprocessing.Order;
 import seatbooking.Hall;
-import seatbooking.Movie;
 import seatbooking.Showtime;
 
 public class CSVLoader {

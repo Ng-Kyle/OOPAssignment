@@ -1,9 +1,9 @@
 package customerMain;
-import seatbooking.Movie;
 import seatbooking.Showtime;
 import java.util.ArrayList;
 
 import main.Command;
+import movie.Movie;
 
 public class FilterShowtimesCommand implements Command<ArrayList<Showtime>>{
 	private ArrayList<Showtime> availableShowtimes;

@@ -1,4 +1,4 @@
-package seatbooking;
+package movie;
 
 import main.CSVStored;
 

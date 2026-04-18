@@ -5,6 +5,7 @@ import coupon.*;
 import main.CSVLoader;
 import main.Command;
 import main.CommandInvoker;
+import movie.Movie;
 import paymentprocessing.*;
 import seatbooking.*;
 import java.util.ArrayList;

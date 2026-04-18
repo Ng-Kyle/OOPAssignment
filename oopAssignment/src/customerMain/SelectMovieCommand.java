@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import main.Command;
-import seatbooking.Movie;
+import movie.Movie;
 
 public class SelectMovieCommand implements Command<Movie> {
 
