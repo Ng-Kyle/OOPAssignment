@@ -1,6 +1,8 @@
 package concession;
 
-public abstract class ConcessionItem {
+import main.CSVStored;
+
+public abstract class ConcessionItem implements CSVStored{
 	private String name;
 	private SizeType size;
 		

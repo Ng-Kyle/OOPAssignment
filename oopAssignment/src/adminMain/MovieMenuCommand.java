@@ -23,25 +23,48 @@ public class MovieMenuCommand implements Command<Void> {
 	
 	public Void execute() { //TODO: DISPLAY MENU OPTIONS
 		while(true) {
-			int menuChoice = Integer.parseInt(scan.nextLine());
-			if(menuChoice == 0) {
-				return null;
+
+			System.out.println("\n=============================================================");
+			System.out.println("                        ADMIN DASHBOARD                      ");
+			System.out.println("=============================================================");
+			System.out.println("1. View All Movies");
+			System.out.println("2. Add New Movie");
+			System.out.println("3. Update a Movie");
+			System.out.println("4. Delete a Movie");
+			System.out.println("0. Exit");
+			System.out.println("-------------------------------------------------------------");
+			System.out.println("Select an option: ");
+			
+			try {
+				int menuChoice = Integer.parseInt(scan.nextLine());
+				if(menuChoice == 0) {
+					return null;
+				}
+				switch(menuChoice) {
+				case 1:
+					menuInvoker.executeCommand(new ViewMovieCommand(availableMovies));
+					break;
+				case 2:
+					menuInvoker.executeCommand(new AddMovieCommand(scan, availableMovies));
+					break;
+				case 3:
+					menuInvoker.executeCommand(new UpdateMovieCommand(scan, availableMovies));
+					break;
+				case 4:
+					menuInvoker.executeCommand(new DeleteMovieCommand(scan,availableMovies));
+					break;
+				default:
+					System.out.println("Invalid Input, Please try again!");
+					break;
+				}
 			}
-			switch(menuChoice) {
-			case 1:
-				menuInvoker.executeCommand(new ViewMovieCommand(availableMovies));
-			case 2:
-				menuInvoker.executeCommand(new AddMovieCommand(scan, availableMovies));
-				break;
-			case 3:
-				menuInvoker.executeCommand(new UpdateMovieCommand(scan, availableMovies));
-				break;
-			case 4:
-				menuInvoker.executeCommand(new DeleteMovieCommand(scan,availableMovies));
-				break;
-			default:
-				break;
-			}	
+			catch (Exception a) {
+				System.out.println("Invalid Input, Please add a number between 0-4");
+			int menuChoice = Integer.parseInt(scan.nextLine());
+				if(menuChoice == 0) {
+					return null;
+				}
+			}
 		}
 	}
 }
