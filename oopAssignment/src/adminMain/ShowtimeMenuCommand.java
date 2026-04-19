@@ -29,7 +29,7 @@ public class ShowtimeMenuCommand implements Command<Void> {
 	
 	public Void execute() { //TODO: DISPLAY MENU OPTIONS
 		while(true) {
-			Movie userMovie = menuInvoker.executeCommand(new SelectMovieCommand(availableMovies,scan));
+			Movie userMovie = menuInvoker.executeCommand(new SelectMovieCommand(availableMovies,scan, menuInvoker));
 			if(userMovie == null) {
 				return null;
 			}
