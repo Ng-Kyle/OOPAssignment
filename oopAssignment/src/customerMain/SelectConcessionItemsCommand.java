@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 public class SelectConcessionItemsCommand implements Command<ArrayList<ConcessionItem>> {
 	private Scanner scan;
+	
 	public SelectConcessionItemsCommand(Scanner scan) {
 		this.scan = scan;
 	}
@@ -40,6 +41,7 @@ public class SelectConcessionItemsCommand implements Command<ArrayList<Concessio
 					selectedItems.get(selectedItems.size()-1).setSize(SizeType.LARGE);
 					break;
 				default:
+					
 					break; //TODO:Add validation later
 				}
 			}
