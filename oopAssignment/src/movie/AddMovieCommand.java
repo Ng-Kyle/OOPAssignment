@@ -17,10 +17,25 @@ public class AddMovieCommand implements Command<Void> {
 	public Void execute() { //TODO: INPUT VALIDATION
 		while(true) {
 			System.out.println("\n-------------------------ADD NEW MOVIE------------------------");
-			System.out.println("Enter a Title: ");
-			String title = scan.nextLine();
-			System.out.println("Enter a Genre: ");
-			String genre = scan.nextLine();
+			
+			String title="";
+			while(true) {
+				System.out.println("Enter Title: ");
+				title = scan.nextLine().trim();
+				if(!title.isEmpty()) {
+					break;
+				}
+				System.out.println("Title can't be empty!!!");
+			}
+			String genre="";
+			while(true) {
+				System.out.println("Enter Genre: ");
+				genre = scan.nextLine().trim();
+				if(!genre.isEmpty() && !genre.equals("0")) {
+					break;
+				}
+				System.out.println("Invalid Genre! (Cannot be empty or 0)");
+			}
 			
 			AgeRating ageRating = null;
 			while(ageRating==null) {
@@ -49,8 +64,19 @@ public class AddMovieCommand implements Command<Void> {
 					System.out.println("Invalid Input. Please enter a number!");
 				}
 			}
-			System.out.println("Enter a Duration (Minutes): ");
-			double durationMinutes = Double.parseDouble(scan.nextLine());
+			
+			double durationMinutes = 0;
+	        while (durationMinutes <= 0) {
+	            System.out.println("Enter a Duration (Minutes): ");
+	            try{
+	                durationMinutes = Double.parseDouble(scan.nextLine());
+	                if (durationMinutes <= 0) {
+	                    System.out.println("Duration must be greater than 0!");
+	                }
+	            }catch (Exception e) {
+	                System.out.println("Invalid Input. Please enter a valid number for minutes!");
+	            }
+	        }
 			availableMovies.add(new Movie(title,genre,ageRating,durationMinutes));
 			CSVLoader.saveCSV(availableMovies, FilePath.MOVIES.toString());
 			System.out.println("\nMovie Added Successfully 😊 ");
