@@ -1,5 +1,4 @@
 1,1,Popcorn:MEDIUM:1:18.0,,A:1:STANDARD:20.0,38.0,false
-<<<<<<< HEAD
 2,1,Popcorn:MEDIUM:1:18.0,,A:2:STANDARD:20.0,38.0,false
 3,1,Popcorn:MEDIUM:1:18.0,,A:3:STANDARD:20.0;A:2:STANDARD:20.0,58.0,false
 4,1,Popcorn:MEDIUM:1:18.0,,A:4:STANDARD:20.0,38.0,false
@@ -12,16 +11,3 @@
 10,1,Popcorn:MEDIUM:1:18.0,,C:1:STANDARD:20.0,38.0,false
 12,1,Popcorn:MEDIUM:2:36.0,,C:2:STANDARD:20.0,56.0,false
 13,2,Popcorn:MEDIUM:1:18.0;Popcorn Combo:NONE:1:23.0,,A:1:STANDARD:20.0,61.0,false
-=======
-2,1,Popcorn:MEDIUM:1:18.0,,A:1:STANDARD:20.0,38.0,false
-3,1,Popcorn:MEDIUM:1:18.0,,A:1:STANDARD:20.0;A:2:STANDARD:20.0,58.0,false
-4,1,Popcorn:MEDIUM:1:18.0,,A:1:STANDARD:20.0,38.0,false
-5,1,Popcorn:MEDIUM:1:18.0,25%OFF,A:1:STANDARD:20.0;A:2:STANDARD:20.0;A:3:STANDARD:20.0,58.5,false
-6,1,Popcorn:MEDIUM:1:18.0,,A:1:STANDARD:20.0,38.0,false
-7,1,,,A:1:STANDARD:20.0,20.0,false
-8,1,Popcorn:MEDIUM:1:18.0,,A:1:STANDARD:20.0,38.0,false
-8,1,Popcorn:MEDIUM:1:18.0,,A:1:STANDARD:20.0,38.0,false
-9,1,Popcorn:MEDIUM:1:18.0,,A:1:STANDARD:20.0,38.0,false
-10,1,Popcorn:MEDIUM:1:18.0,,A:1:STANDARD:20.0,38.0,false
-12,1,Popcorn:MEDIUM:2:36.0,,A:1:STANDARD:20.0,56.0,false
->>>>>>> branch 'master' of git@github.com:Ng-Kyle/OOPAssignment.git

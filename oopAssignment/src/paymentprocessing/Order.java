@@ -117,7 +117,6 @@ public class Order implements CSVStored{
 				break;
 			}
 		}
-
 		ArrayList<OrderItem> csvOrderItems = new ArrayList<>();
 		if(!values[2].isEmpty()) {
 			String[] orderItems = values[2].split(";");
