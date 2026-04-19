@@ -1,4 +1,4 @@
-package concession;
+	package concession;
 
 public class ComboReductionStrategy implements StockReductionStrategy {
 

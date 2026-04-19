@@ -31,9 +31,12 @@ public class CustomerProcessCommand implements Command<Void> {
 	
 	public Void execute() {
 		Movie userMovie = menuInvoker.executeCommand(new SelectMovieCommand(availableMovies,scan,menuInvoker));
+		if(userMovie == null) {
+			return null;
+		}
 		ArrayList<Showtime> filteredShowtimes = menuInvoker.executeCommand(new FilterShowtimesCommand(userMovie,availableShowtimes));
 		Showtime userShowtime = menuInvoker.executeCommand(new SelectShowtimeCommand(filteredShowtimes,scan));
-		ArrayList<SeatBooking> userSeatBookings = menuInvoker.executeCommand(new SelectSeatsCommand(userShowtime.getHall(),scan));
+		ArrayList<SeatBooking> userSeatBookings = menuInvoker.executeCommand(new SelectSeatsCommand(userShowtime.getHall(),scan,storedOrders,userShowtime,menuInvoker));
 		ArrayList<ConcessionItem> userItems = menuInvoker.executeCommand(new SelectConcessionItemsCommand(scan)); //TODO:Make concession items optional
 		Coupon userCoupon = menuInvoker.executeCommand(new SelectCouponCommand(scan));
 		ArrayList<OrderItem> orderedItems = menuInvoker.executeCommand(new ProcessItemsCommand(userItems));

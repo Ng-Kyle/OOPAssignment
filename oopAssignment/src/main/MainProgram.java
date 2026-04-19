@@ -26,6 +26,7 @@ public class MainProgram {
 		new CouponCodeStorage();
 		
 		
+		
 		while(true) {
 			System.out.println("==============================================");
 			System.out.println("         WELCOME TO EXPLOSIVE CINEMAS         ");
@@ -33,6 +34,7 @@ public class MainProgram {
 			System.out.println("1. Customer");
 			System.out.println("2. Admin");
 			System.out.println("3. Exit");
+		
 		
 			int menuChoice = Integer.parseInt(scan.nextLine());
 			switch(menuChoice) {
@@ -47,7 +49,7 @@ public class MainProgram {
 				CSVLoader.saveCSV(availableMovies, "storedData/movies.csv");
 				CSVLoader.saveCSV(halls, "storedData/halls.csv");
 				CSVLoader.saveCSV(availableShowtimes, "storedData/showtimes.csv");
-				CSVLoader.saveCSV(storedOrders, "storedData/order.csv");
+				CSVLoader.saveCSV(storedOrders, "storedData/orders.csv");
 				return;
 			default:
 				System.out.println("Invalid input!");
