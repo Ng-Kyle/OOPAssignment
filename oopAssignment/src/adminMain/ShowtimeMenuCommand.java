@@ -29,10 +29,11 @@ public class ShowtimeMenuCommand implements Command<Void> {
 	
 	public Void execute() { //TODO: DISPLAY MENU OPTIONS
 		while(true) {
-			Movie userMovie = menuInvoker.executeCommand(new SelectMovieCommand(availableMovies,scan));
+			Movie userMovie = menuInvoker.executeCommand(new SelectMovieCommand(availableMovies,scan,menuInvoker));
 			if(userMovie == null) {
 				return null;
 			}
+			
 			ArrayList<Showtime> filteredShowtimes = menuInvoker.executeCommand(new FilterShowtimesCommand(userMovie,availableShowtimes));
 			while(true) {
 				int menuChoice = Integer.parseInt(scan.nextLine());
@@ -42,6 +43,7 @@ public class ShowtimeMenuCommand implements Command<Void> {
 				switch(menuChoice) {
 				case 1:
 					menuInvoker.executeCommand(new ViewShowtimesCommand(filteredShowtimes));
+					break;
 				case 2:
 					menuInvoker.executeCommand(new AddShowtimeCommand(scan, availableShowtimes, userMovie,halls));
 					break;

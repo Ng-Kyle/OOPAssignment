@@ -18,7 +18,7 @@ public class SelectMovieCommand implements Command<Movie> {
 		this.menuInvoker = menuInvoker;
 	}
 	public Movie execute() {
-		System.out.println("========NOW SHOWING!!!========="); 
+		System.out.println("========================================NOW SHOWING!!!========================================"); 
 		menuInvoker.executeCommand(new ViewMovieCommand(availableMovies));
 		
 		//Selection Menu
