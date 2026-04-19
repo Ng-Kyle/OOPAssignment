@@ -44,6 +44,7 @@ public class SelectConcessionItemsCommand implements Command<ArrayList<Concessio
 				userInput = Integer.parseInt(scan.nextLine());
 				switch(userInput) {
 				case 1:
+					
 					selectedItems.get(selectedItems.size()-1).setSize(SizeType.MEDIUM);
 					break;
 				case 2:
@@ -58,3 +59,5 @@ public class SelectConcessionItemsCommand implements Command<ArrayList<Concessio
 		return selectedItems;
 	}
 }
+
+
