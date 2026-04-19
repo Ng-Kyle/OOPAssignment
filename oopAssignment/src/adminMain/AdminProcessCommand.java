@@ -9,7 +9,7 @@ import movie.Movie;
 import paymentprocessing.Order;
 import seatbooking.Hall;
 import showtime.Showtime;
-
+import seatbooking.ViewSeatLayoutCommand;
 
 public class AdminProcessCommand implements Command<Void> {
 	//TODO: Validate Tickets, Manage stock levels, Reports, Set Codes
@@ -40,6 +40,8 @@ public class AdminProcessCommand implements Command<Void> {
 			case 2:
 				menuInvoker.executeCommand(new ShowtimeMenuCommand(scan,menuInvoker,availableMovies,availableShowtimes,halls));
 				break;
+			case 3:
+				menuInvoker.executeCommand(new ViewSeatLayoutCommand(scan,menuInvoker,availableMovies,halls,storedOrders,availableShowtimes));
 			}
 			break;
 		}
