@@ -55,10 +55,10 @@ public class MovieMenuCommand implements Command<Void> {
 				default:
 					System.out.println("Invalid Input, Please try again!");
 					break;
+				}
+			}catch (Exception a) {
+				System.out.println("Invalid Input, Please add a number between 0-4");	
 			}
-		}catch (Exception a) {
-			System.out.println("Invalid Input, Please add a number between 0-4");	
 		}
 	}
-}
 }
