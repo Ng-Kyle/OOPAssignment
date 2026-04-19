@@ -66,6 +66,9 @@ public class ConcessionItemStorage {
 	}
 	public static void addItem(ConcessionItem item) {
 		availableItems.add(item);
+		if(!stockQuantity.containsKey(item.getName())) {
+			stockQuantity.put(item.getName(), 0.d); 
+		}
 	}
 	public static void reduceStock(String itemName, double amount) {
 		stockQuantity.put(itemName, (stockQuantity.get(itemName)-amount));

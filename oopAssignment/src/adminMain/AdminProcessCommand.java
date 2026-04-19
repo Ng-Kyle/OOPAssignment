@@ -43,7 +43,9 @@ public class AdminProcessCommand implements Command<Void> {
 
 			case 3:
 				menuInvoker.executeCommand(new SeatLayoutMenuCommand(scan,menuInvoker,availableMovies,availableShowtimes,halls,storedOrders));
-				break;			
+				break;
+			case 4:
+				menuInvoker.executeCommand(new ConcessionItemMenuCommand(scan,menuInvoker));
 			}
 			break;
 		}
