@@ -27,7 +27,7 @@ public class SelectSeatsCommand implements Command<ArrayList<SeatBooking>> {
 	}
 	
 	public ArrayList<SeatBooking> execute() { 
-		menuInvoker.executeCommand(new ViewSeatLayoutCommand(storedOrders, chosenShowtime));
+		menuInvoker.executeCommand(new ViewSeatLayoutCommand(scan, storedOrders, chosenShowtime));
 		int menuInput = 0;
 		ArrayList<Seat> userSeats = new ArrayList<>();
 		

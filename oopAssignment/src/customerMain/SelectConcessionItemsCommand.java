@@ -27,14 +27,16 @@ public class SelectConcessionItemsCommand implements Command<ArrayList<Concessio
             System.out.println("+==============================================+");
             System.out.println("|                     MENU                     |");
             System.out.println("+==============================================+");;
-			for(int i = 0; i < showItems.size() ;i++) {
-				System.out.println((i+1)+"."+showItems.get(i).getName());
-				
-	            if(i == 2) {
-	                Double itemPrice=showPrice.get(showItems.get(i).getName()).get(SizeType.NONE);
-	                System.out.printf("   RM%.2f %n",itemPrice);
-	            }
-			}
+            for(int i = 0; i < showItems.size() ;i++) {
+            	System.out.print("| " + (i + 1) + ". " + showItems.get(i).getName());
+
+                if (showItems.get(i) instanceof Combo) {
+                    Double itemPrice = showPrice.get(showItems.get(i).getName()).get(SizeType.NONE);
+                    System.out.printf(" | RM%.2f |%n", itemPrice); 
+                } else {
+                    System.out.println(" |");
+                }
+            }
 			System.out.println("+==============================================+");
 			selectedItems.add(ConcessionItemFactory.selectConcessionItemByIndex(Integer.parseInt(scan.nextLine())-1));
 			
@@ -61,11 +63,11 @@ public class SelectConcessionItemsCommand implements Command<ArrayList<Concessio
 				default:
 					System.out.println("Invaild.Please choose between Medium or Large");
 					continue; //TODO:Add validation later
+					}
 				}
 			}
-		}
-		return selectedItems;
+			return selectedItems;
 	}
-}
+}	
 
 

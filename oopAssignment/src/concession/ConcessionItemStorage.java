@@ -3,9 +3,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import main.CSVLoader;
 import main.FileIO;
-import main.FilePath;
 
 public class ConcessionItemStorage {
 	private static ArrayList<ConcessionItem> availableItems = new ArrayList<>();
@@ -31,25 +29,20 @@ public class ConcessionItemStorage {
 			stockQuantity.put(values[0],Double.parseDouble(values[1]));
 		}
 	}
-	public static void availableItemsToCSV() {
+	public static String availableItemsToCSV() {
 		String csvLine = "";
 		for(int i = 0; i < availableItems.size(); i++) {
 			csvLine += availableItems.get(i).toCSV() + "\n";
 		}
-		FileIO.writeFile(csvLine, FilePath.CONCESSION_ITEMS.toString());
+		return csvLine;
 	}
 	
-	public static void updateKey(String oldName, String newName) {
-		double oldQuantity = stockQuantity.remove(oldName);
-		stockQuantity.put(newName, oldQuantity);
-		stockQuantityToCSV();
-	}
-	public static void stockQuantityToCSV() { 
+	public static String stockQuantityToCSV() { 
 		String csvLine =""; 
 		for(Map.Entry<String,Double> entry: stockQuantity.entrySet()) {
 			csvLine += entry.getKey()+","+entry.getValue()+"\n";
 		}
-		FileIO.writeFile(csvLine, FilePath.STOCK.toString());;
+		return csvLine;
 	}
 
 	
@@ -71,32 +64,11 @@ public class ConcessionItemStorage {
 	public static Map<String,Double> getStockQuantity(){
 		return stockQuantity;
 	}
-	public static void removeStock(String name) {
-		stockQuantity.remove(name);
-	}
 	public static void addItem(ConcessionItem item) {
 		availableItems.add(item);
-		if(!stockQuantity.containsKey(item.getName()) && item instanceof IndividualItem) {
+		if(!stockQuantity.containsKey(item.getName())) {
 			stockQuantity.put(item.getName(), 0.d); 
 		}
-		ConcessionItemStorage.stockQuantityToCSV();
-		CSVLoader.saveCSV(availableItems, FilePath.CONCESSION_ITEMS.toString());
-	}
-	
-	public static void removeItem(int itemChoice) {
-		String itemName = availableItems.get(itemChoice-1).getName();
-		if(availableItems.get(itemChoice - 1) instanceof IndividualItem) {
-			ConcessionItemStorage.removeStock(itemName);
-		}
-		ItemPriceStorage.removePrice(itemName);
-		availableItems.remove(itemChoice-1);
-		saveItem();
-	}
-	
-	public static void saveItem() {
-		ConcessionItemStorage.availableItemsToCSV();
-		ConcessionItemStorage.stockQuantityToCSV();
-		ItemPriceStorage.toCSV();
 	}
 	public static void addStock(String chosenItemName, double amount) {
 		double currentStock = stockQuantity.get(chosenItemName);

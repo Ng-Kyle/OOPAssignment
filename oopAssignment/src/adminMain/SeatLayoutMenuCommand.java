@@ -42,7 +42,7 @@ public class SeatLayoutMenuCommand implements Command<Void> {
 					break;
 				}
 				Showtime chosenShowtime = filteredShowtimes.get(showtimeChoice-1);
-				menuInvoker.executeCommand(new ViewSeatLayoutCommand(storedOrders,chosenShowtime));
+				menuInvoker.executeCommand(new ViewSeatLayoutCommand(scan,storedOrders,chosenShowtime));
 			}
 		}
 	}
