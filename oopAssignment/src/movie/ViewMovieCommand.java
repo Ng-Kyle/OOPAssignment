@@ -2,7 +2,6 @@ package movie;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
 import main.Command;
 
 public class ViewMovieCommand implements Command<Void> {
@@ -18,11 +17,15 @@ public class ViewMovieCommand implements Command<Void> {
 		
 		for (int i = 0; i < availableMovies.size(); i++) {
 			Movie m = availableMovies.get(i);
+			String rating = (m.getAgeRating() != null) 
+                    ? m.getAgeRating().toString().replace("_", "") 
+                    : "N/A";
+			String title = (m.getTitle() != null) ? m.getTitle() : "Unknown";
 			System.out.printf("%-4d | %-20s | %-10s | %-10s | %-10.2f | %-5d%n", 
                     (i + 1), 
-                    m.getTitle(), 
+                    title,
                     m.getGenre(), 
-                    m.getAgeRating(), 
+                    rating,
                     m.getDurationMinutes(), 
                     m.getMovieID());
 }

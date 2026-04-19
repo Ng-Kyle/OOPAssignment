@@ -57,7 +57,7 @@ public class MovieMenuCommand implements Command<Void> {
 					break;
 			}
 		}catch (Exception a) {
-			System.out.println("Invalid Input, Please add a number between 0-4");	
+			a.printStackTrace();	
 		}
 	}
 }
