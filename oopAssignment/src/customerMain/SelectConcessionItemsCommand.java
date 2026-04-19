@@ -24,13 +24,35 @@ public class SelectConcessionItemsCommand implements Command<ArrayList<Concessio
 				break;
 			}
 			System.out.println("Select Concession Items");
-            System.out.println("+==============================================+");
-            System.out.println("|                     MENU                     |");
-            System.out.println("+==============================================+");;
-            for (int i = 0; i < showItems.size(); i++) {
 			System.out.println("+==============================================+");
-			selectedItems.add(ConcessionItemFactory.selectConcessionItemByIndex(Integer.parseInt(scan.nextLine())-1));
-			
+			System.out.println("|                     MENU                     |");
+			System.out.println("+==============================================+");;
+			for (int i = 0; i < showItems.size(); i++) {
+				System.out.print("| " + (i + 1) + ". " + showItems.get(i).getName());
+				if (showItems.get(i) instanceof Combo) {
+					Double itemPrice = showPrice.get(showItems.get(i).getName()).get(SizeType.NONE);
+					System.out.printf(" | RM%.2f |%n", itemPrice); 
+				} else {
+					System.out.println(" |");
+				}
+			}
+			System.out.println("+==============================================+");
+			int itemChoice = -1;
+			while (itemChoice < 1 || itemChoice > showItems.size()) {
+				System.out.print("Select Item Number: ");
+				if (scan.hasNextInt()) {
+					itemChoice = scan.nextInt();
+					scan.nextLine(); // Clear the 'Enter' key from buffer
+					if (itemChoice < 1 || itemChoice > showItems.size()) {
+						System.out.println(">> Invalid number! Please stay within the menu range (1-" + showItems.size() + ").");
+					}
+				} else {
+					System.out.println(">> Invalid input! Letters are not allowed. Please enter a number.");
+					scan.nextLine(); // CRITICAL: This throws away the letters so the loop can restart
+				}
+			}
+			selectedItems.add(ConcessionItemFactory.selectConcessionItemByIndex(itemChoice - 1));
+
 			Double price_M = showPrice.get(selectedItems.get(selectedItems.size()-1).getName()).get(SizeType.MEDIUM);
 			
 			Double price_L = showPrice.get(selectedItems.get(selectedItems.size()-1).getName()).get(SizeType.LARGE);
@@ -44,6 +66,7 @@ public class SelectConcessionItemsCommand implements Command<ArrayList<Concessio
 				System.out.printf("  2.Large " + "RM%.2f%n",price_L);
 				System.out.println("+==============================================+");
 				userInput = Integer.parseInt(scan.nextLine());
+				
 				switch(userInput) {
 				case 1:
 					
@@ -58,10 +81,8 @@ public class SelectConcessionItemsCommand implements Command<ArrayList<Concessio
 					}
 				}
 			}
-		}
 		return selectedItems;
 	}
-}
-			
+}	
 
 
