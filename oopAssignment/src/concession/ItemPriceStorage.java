@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import main.FileIO;
+import main.FilePath;
 public class ItemPriceStorage {
 	private static Map<String, Map<SizeType,Double>> itemPrices = new HashMap<>();
 	
@@ -11,7 +12,9 @@ public class ItemPriceStorage {
 		ArrayList<String> csvContent = FileIO.readFile("storedData/itemPrice.csv");
 		for(int i =0; i<csvContent.size();i++) {
 			String[] values = csvContent.get(i).split(",");
-			itemPrices.put(values[0], new HashMap<>());
+			if(!itemPrices.containsKey(values[0])) {
+				itemPrices.put(values[0], new HashMap<>());
+			}
 			itemPrices.get(values[0]).put(SizeType.valueOf(values[1]), Double.parseDouble(values[2]));
 		}
 	}
@@ -19,7 +22,24 @@ public class ItemPriceStorage {
 		return itemPrices;
 	}
 	
-	public String toCSV() {
+	public static void updatePrice(String name, Map<SizeType,Double> sizePrice) {
+		itemPrices.replace(name, sizePrice);
+	}
+	public static void removePrice(String name) {
+		itemPrices.remove(name);
+	}
+	public static void addPrice(String name, Map<SizeType,Double> sizePrice) {
+		itemPrices.put(name, sizePrice);
+		toCSV();
+	}
+	
+	public static void updateKey(String oldKey, String newKey) {
+		Map<SizeType,Double> oldKeyPrice = itemPrices.remove(oldKey);
+		itemPrices.put(newKey, oldKeyPrice);
+		toCSV();
+	}
+	
+	public static void toCSV() {
 		String csvLine = "";
 		for(Map.Entry<String,Map<SizeType,Double>> itemNameEntry: itemPrices.entrySet()) {
 			String itemName = itemNameEntry.getKey();
@@ -28,7 +48,7 @@ public class ItemPriceStorage {
 				csvLine += itemName+","+itemPriceEntry.getKey()+ "," + itemPriceEntry.getValue() +"\n";
 			}
 		}
-		return csvLine;
+		FileIO.writeFile(csvLine, FilePath.ITEMPRICE.toString());
 	}
 	
 }
