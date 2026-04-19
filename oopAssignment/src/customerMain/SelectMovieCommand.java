@@ -18,17 +18,19 @@ public class SelectMovieCommand implements Command<Movie> {
 		this.menuInvoker = menuInvoker;
 	}
 	public Movie execute() {
-		System.out.println("========NOW SHOWING!!!========="); 
+		System.out.println("========================================NOW SHOWING!!!========================================"); 
 		menuInvoker.executeCommand(new ViewMovieCommand(availableMovies));
 		
 		//Selection Menu
 		int userChoice = -1;
         while (userChoice < 1 || userChoice > availableMovies.size()) {
-        	System.out.println("\nPlease select a movie");
-           
+        	System.out.println("\nPlease select a movie (0 to cancel)");
             
             if (scan.hasNextInt()) {
                 userChoice = Integer.parseInt(scan.nextLine());
+                if(userChoice == 0) {
+                	return null;
+                }
                 if (userChoice < 1 || userChoice > availableMovies.size()) {
                     System.out.println("Invalid selection. Please stay within the range.");
                 }

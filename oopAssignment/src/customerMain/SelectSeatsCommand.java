@@ -4,51 +4,35 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import main.Command;
+import main.CommandInvoker;
+import paymentprocessing.Order;
 import seatbooking.Hall;
 import seatbooking.Seat;
 import seatbooking.SeatBooking;
+import showtime.Showtime;
+import seatbooking.ViewSeatLayoutCommand;
 
 public class SelectSeatsCommand implements Command<ArrayList<SeatBooking>> {
 	private Hall hall;
 	private Scanner scan;
-	public SelectSeatsCommand(Hall hall, Scanner scan) {
+	private CommandInvoker menuInvoker;
+	private ArrayList<Order> storedOrders;
+	private Showtime chosenShowtime;
+	public SelectSeatsCommand(Hall hall, Scanner scan, ArrayList<Order> storedOrders, Showtime chosenShowtime,CommandInvoker menuInvoker) {
 		this.hall = hall;
 		this.scan = scan;
+		this.storedOrders = storedOrders;
+		this.chosenShowtime = chosenShowtime;
+		this.menuInvoker = menuInvoker;
 	}
-	//a helper to display the layout of the map
-	private void displaySeatMap() {
-		System.out.println("\n==================== SEATMAP ====================\n");
-		
-		//column header
-		System.out.print("   ");
-		for (int col = 1; col <= 10; col++) {
-			System.out.printf("%-4d", col);
-		}
-		System.out.println("\n-------------------------------------------------");
-		
-		for (char row = 'A'; row <= 'E'; row++) {
-			System.out.print(row + "|"); //this is to show row label
-			
-			for (int col = 1; col <= 10; col++) {
-				Seat seat = hall.findSeat(row, col); 
-				
-				if (seat != null) {
-					System.out.printf("%-4s","[ ]");
-				}else {
-					System.out.print("    ");
-				}
-			}
-			System.out.println(); //move to the next row
-		}
-		System.out.println("-------------------------------------------------");
-	}
-	public ArrayList<SeatBooking> execute() { //TODO:DISPLAY SEATMAP
+	
+	public ArrayList<SeatBooking> execute() { 
+		menuInvoker.executeCommand(new ViewSeatLayoutCommand(scan, storedOrders, chosenShowtime));
 		int menuInput = 0;
 		ArrayList<Seat> userSeats = new ArrayList<>();
 		
 		while(menuInput != 2) {
-			displaySeatMap();
-			System.out.println("Select your seats (e.g. A1) or input '2' if done.");
+			System.out.println("\nSelect your seats (e.g. A1) or input '2' if done.");
 			String seatInput = scan.nextLine();
 			
 			if(seatInput.equals("2")) {
@@ -75,7 +59,7 @@ public class SelectSeatsCommand implements Command<ArrayList<SeatBooking>> {
 		} catch (Exception e) {
 		    System.out.println("Please enter 1 or 2.");
 		    menuInput = 0;
-		}
+		}//TODO: This is still missing prevention of duplicate seats
 		}
 		ArrayList<SeatBooking> userSeatBookings = new ArrayList<>();
 		for(Seat seat:userSeats) {

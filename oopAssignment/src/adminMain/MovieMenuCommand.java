@@ -23,26 +23,24 @@ public class MovieMenuCommand implements Command<Void> {
 	
 	public Void execute() { //TODO: DISPLAY MENU OPTIONS
 		while(true) {
-			System.out.println("\n=============================================================");
-			System.out.println("                        ADMIN DASHBOARD                      ");
-			System.out.println("=============================================================");
-			System.out.println("1. View All Movies");
-			System.out.println("2. Add New Movie");
-			System.out.println("3. Update a Movie");
-			System.out.println("4. Delete a Movie");
-			System.out.println("0. Exit");
-			System.out.println("-------------------------------------------------------------");
-			System.out.println("Select an option: ");
-			
-			try {
+			System.out.println("\n=====================================================");
+	        System.out.println("                     ADMIN DASHBOARD                 ");
+	        System.out.println("=====================================================");
+	        System.out.println(" 1. View All Movies");
+	        System.out.println(" 2. Add New Movie");
+	        System.out.println(" 3. Update Movie Details");
+	        System.out.println(" 4. Delete Movie");
+	        System.out.println(" 0. Back to Main Menu");
+	        System.out.println("-----------------------------------------------------");
+	        System.out.print("Select an option: ");
+	        try {
 				int menuChoice = Integer.parseInt(scan.nextLine());
 				if(menuChoice == 0) {
 					return null;
-				}
+				}	
 				switch(menuChoice) {
 				case 1:
 					menuInvoker.executeCommand(new ViewMovieCommand(availableMovies));
-					break;
 				case 2:
 					menuInvoker.executeCommand(new AddMovieCommand(scan, availableMovies));
 					break;
@@ -53,12 +51,10 @@ public class MovieMenuCommand implements Command<Void> {
 					menuInvoker.executeCommand(new DeleteMovieCommand(scan,availableMovies));
 					break;
 				default:
-					System.out.println("Invalid Input, Please try again!");
 					break;
-			}
+				}	
 		}catch (Exception a) {
-			a.printStackTrace();	
+			System.out.println("Invalid input! Please enter a number between 0 and 4.");
 		}
 	}
-}
 }

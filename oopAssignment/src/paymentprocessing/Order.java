@@ -45,6 +45,9 @@ public class Order implements CSVStored{
 		this.finalPrice = finalPrice;
 	}
 	
+	public Showtime getShowtime() {
+        return showtime;
+    }
 	
 	public double calculateFinalPrice() {
 		finalPrice = 0;
@@ -83,9 +86,6 @@ public class Order implements CSVStored{
 	}
 	public ArrayList<OrderItem> getOrderedItems(){
 		return orderedConcessionItems;
-	}
-	public Showtime getShowtime() {
-		return showtime;
 	}
 	public String toString() {
 		return showtime.toString();//TODO: Nigel/Emily make a CSV format for this

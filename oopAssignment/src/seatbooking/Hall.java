@@ -55,6 +55,10 @@ public class Hall implements CSVStored{
 		this.hallID = hallID;
 	}
 	
+	public String toString() {
+		return String.format("Hall ID: " + hallID);
+	}
+	
 	public Seat findSeat(char row, int column) {
 		for(int i = 0; i<seats.length; i++) {
 			SeatLocation seatLocation = seats[i].getSeatLocation();
@@ -68,6 +72,7 @@ public class Hall implements CSVStored{
 	public String toCSV() {
 		return hallID + "," + screenSize + "," + rows + "," + columns; 
 	}
+	
 	
 	public static Hall fromCSV(String content) {
 		String[] values = content.split(",");
