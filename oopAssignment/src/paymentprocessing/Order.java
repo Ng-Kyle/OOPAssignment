@@ -84,6 +84,9 @@ public class Order implements CSVStored{
 	public ArrayList<OrderItem> getOrderedItems(){
 		return orderedConcessionItems;
 	}
+	public Showtime getShowtime() {
+		return showtime;
+	}
 	public String toString() {
 		return showtime.toString();//TODO: Nigel/Emily make a CSV format for this
 	}
