@@ -47,7 +47,7 @@ public class MainProgram {
 				CSVLoader.saveCSV(availableMovies, "storedData/movies.csv");
 				CSVLoader.saveCSV(halls, "storedData/halls.csv");
 				CSVLoader.saveCSV(availableShowtimes, "storedData/showtimes.csv");
-				CSVLoader.saveCSV(storedOrders, "storedData/order.csv");
+				CSVLoader.saveCSV(storedOrders, "storedData/orders.csv");
 				return;
 			default:
 				System.out.println("Invalid input!");
