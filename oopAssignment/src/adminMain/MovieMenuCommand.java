@@ -42,7 +42,7 @@ public class MovieMenuCommand implements Command<Void> {
 	        }
 			
 			try {
-				int menuChoice = Integer.parseInt(scan.nextLine());
+				int menuChoice = Integer.parseInt(input);
 				if(menuChoice == 0) {
 					return null;
 				}
@@ -66,10 +66,6 @@ public class MovieMenuCommand implements Command<Void> {
 			}
 			catch (Exception a) {
 				System.out.println("Invalid Input, Please add a number between 0-4");
-			int menuChoice = Integer.parseInt(scan.nextLine());
-				if(menuChoice == 0) {
-					return null;
-				}
 			}
 		}
 	}
