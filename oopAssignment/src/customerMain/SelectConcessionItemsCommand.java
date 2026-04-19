@@ -16,7 +16,7 @@ public class SelectConcessionItemsCommand implements Command<ArrayList<Concessio
 		
 		ArrayList<ConcessionItem> showItems = ConcessionItemStorage.getAllItems();
 		Map<String,Map<SizeType,Double>> showPrice = ItemPriceStorage.getItemPrices();
-		
+	
 		while(true) {
 			System.out.println("Do you want to add concession items? Y/N");
 			String menuInput = scan.nextLine().trim();
@@ -55,7 +55,6 @@ public class SelectConcessionItemsCommand implements Command<ArrayList<Concessio
 				userInput = Integer.parseInt(scan.nextLine());
 				switch(userInput) {
 				case 1:
-					
 					selectedItems.get(selectedItems.size()-1).setSize(SizeType.MEDIUM);
 					break;
 				case 2:
