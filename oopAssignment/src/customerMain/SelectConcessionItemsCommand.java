@@ -28,7 +28,6 @@ public class SelectConcessionItemsCommand implements Command<ArrayList<Concessio
             System.out.println("|                     MENU                     |");
             System.out.println("+==============================================+");;
             for (int i = 0; i < showItems.size(); i++) {
- S
 			System.out.println("+==============================================+");
 			selectedItems.add(ConcessionItemFactory.selectConcessionItemByIndex(Integer.parseInt(scan.nextLine())-1));
 			
@@ -59,9 +58,10 @@ public class SelectConcessionItemsCommand implements Command<ArrayList<Concessio
 					}
 				}
 			}
-		
-			return selectedItems;
+		}
+		return selectedItems;
 	}
-}	
+}
+			
 
 
