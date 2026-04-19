@@ -45,6 +45,9 @@ public class Order implements CSVStored{
 		this.finalPrice = finalPrice;
 	}
 	
+	public Showtime getShowtime() {
+        return showtime;
+    }
 	
 	public double calculateFinalPrice() {
 		finalPrice = 0;

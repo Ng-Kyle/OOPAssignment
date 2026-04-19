@@ -24,16 +24,18 @@ public class SelectConcessionItemsCommand implements Command<ArrayList<Concessio
 				break;
 			}
 			System.out.println("Select Concession Items");
-			System.out.println("+======================+");
+            System.out.println("+==============================================+");
+            System.out.println("|                     MENU                     |");
+            System.out.println("+==============================================+");;
 			for(int i = 0; i < showItems.size() ;i++) {
-				System.out.println("|"+(i+1)+"."+showItems.get(i).getName());
+				System.out.println((i+1)+"."+showItems.get(i).getName());
 				
 	            if(i == 2) {
 	                Double itemPrice=showPrice.get(showItems.get(i).getName()).get(SizeType.NONE);
-	                System.out.printf("| RM%.2f |%n",itemPrice);
+	                System.out.printf("   RM%.2f %n",itemPrice);
 	            }
 			}
-			System.out.println("+======================+");
+			System.out.println("+==============================================+");
 			selectedItems.add(ConcessionItemFactory.selectConcessionItemByIndex(Integer.parseInt(scan.nextLine())-1));
 			
 			Double price_M = showPrice.get(selectedItems.get(selectedItems.size()-1).getName()).get(SizeType.MEDIUM);
@@ -42,9 +44,11 @@ public class SelectConcessionItemsCommand implements Command<ArrayList<Concessio
 			
 			if(selectedItems.get(selectedItems.size()-1) instanceof IndividualItem) {
 				int userInput = 0;
-				System.out.println("Select Size");
+				System.out.println("+=====================SIZE=====================+");
 				System.out.printf("1.Medium " +  "RM%.2f%n", price_M);
+				System.out.println("|==============================================|");
 				System.out.printf("2.Large " + "RM%.2f%n",price_L);
+				System.out.println("+==============================================+");
 				userInput = Integer.parseInt(scan.nextLine());
 				switch(userInput) {
 				case 1:
