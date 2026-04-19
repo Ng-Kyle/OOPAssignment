@@ -27,7 +27,9 @@ public class SelectConcessionItemsCommand implements Command<ArrayList<Concessio
 			System.out.println("+======================+");
 			for(int i = 0; i < showItems.size() ;i++) {
 				Double itemPrice=showPrice.get(showItems.get(i).getName()).get(SizeType.MEDIUM);
-				System.out.printf("|"+(i+1)+"."+showItems.get(i).getName()+"|"+"RM%.2f"+itemPrice+"|");
+				System.out.println("|"+(i+1)+"."+showItems.get(i).getName());
+				
+				System.out.printf("|"+"RM%.2f"+ itemPrice +"|");
 			}
 			System.out.println("+======================+");
 			selectedItems.add(ConcessionItemFactory.selectConcessionItemByIndex(Integer.parseInt(scan.nextLine())-1));
