@@ -12,6 +12,4 @@ public class Ticket {
 	public Order getOrderDetails() {
 		return orderDetails;
 	}
-	
-
 }
