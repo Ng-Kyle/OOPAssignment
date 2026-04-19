@@ -44,10 +44,11 @@ public class SelectConcessionItemsCommand implements Command<ArrayList<Concessio
 			
 			if(selectedItems.get(selectedItems.size()-1) instanceof IndividualItem) {
 				int userInput = 0;
-				System.out.println("+=====================SIZE=====================+");
-				System.out.printf("1.Medium " +  "RM%.2f%n", price_M);
-				System.out.println("|==============================================|");
-				System.out.printf("2.Large " + "RM%.2f%n",price_L);
+	            System.out.println("+==============================================+");
+	            System.out.println("|                     SIZE                     |");
+	            System.out.println("+==============================================+");;
+				System.out.printf("  1.Medium " +  "RM%.2f%n", price_M);           
+				System.out.printf("  2.Large " + "RM%.2f%n",price_L);
 				System.out.println("+==============================================+");
 				userInput = Integer.parseInt(scan.nextLine());
 				switch(userInput) {
