@@ -22,16 +22,34 @@ public class PaymentProcessCommand implements Command<Ticket> {
 	public Ticket execute(){
 		double finalPrice = userOrder.calculateFinalPrice();
 		userOrder.setFinalPrice(finalPrice);
-		System.out.println(finalPrice);
-		double userPayment = Double.parseDouble(scan.nextLine());
-		if(userPayment<finalPrice) {
-			System.out.println("Funds insufficient. Order was cancelled.");
-			return null;
-		}
+		System.out.println("Total: RM" + finalPrice);
+		double userPayment;
+			
+		while (true) { 
+			System.out.print("Enter your payment: RM"); 
+			String input = scan.nextLine().trim(); 
+			
+			if (input.isEmpty()) { // Check if input is empty
+				System.out.println("No payment entered. Funds insufficient. Order was cancelled.");
+				return null;
+			}
+			try {
+				userPayment = Double.parseDouble(input); 
+				
+				if(userPayment<finalPrice) {
+					System.out.println("Funds insufficient. Order was cancelled.");
+					return null;
+				}
+				break;
+				
+			} catch (NumberFormatException nfe) { 
+				System.out.println("Invalid input. Please enter a numerical value for payment.");
+			}
+		}	
+	
 		try {
 			userOrder.reduceStock();
 			System.out.println("Order successful! Enjoy your movie.");
-			System.out.println(ConcessionItemStorage.getStockQuantity());
 			storedOrders.add(userOrder);
 			String csvOrders = "";
 			for(int i = 0; i < storedOrders.size(); i++) {
