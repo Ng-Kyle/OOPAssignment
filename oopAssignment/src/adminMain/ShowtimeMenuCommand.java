@@ -5,27 +5,26 @@ import java.util.Scanner;
 
 import main.Command;
 import main.CommandInvoker;
-import movie.AddMovieCommand;
-import movie.DeleteMovieCommand;
 import movie.Movie;
-import movie.UpdateMovieCommand;
-import movie.ViewMovieCommand;
+import seatbooking.Hall;
+import showtime.*;
 import showtime.Showtime;
 import customerMain.FilterShowtimesCommand;
 import customerMain.SelectMovieCommand;
-import showtime.ViewShowtimesCommand;
-import showtime.AddShowtimeCommand;
+
 
 public class ShowtimeMenuCommand implements Command<Void> {
 	ArrayList<Movie> availableMovies;
 	ArrayList<Showtime> availableShowtimes; 
+	ArrayList<Hall> halls;
 	Scanner scan;
 	CommandInvoker menuInvoker;
-	public ShowtimeMenuCommand(Scanner scan, CommandInvoker menuInvoker, ArrayList<Movie> availableMovies, ArrayList<Showtime> availableShowtimes){
+	public ShowtimeMenuCommand(Scanner scan, CommandInvoker menuInvoker, ArrayList<Movie> availableMovies, ArrayList<Showtime> availableShowtimes, ArrayList<Hall> halls){
 		this.availableMovies = availableMovies;
 		this.availableShowtimes = availableShowtimes;
 		this.scan = scan;
 		this.menuInvoker = menuInvoker;
+		this.halls = halls;
 	}
 	
 	public Void execute() { //TODO: DISPLAY MENU OPTIONS
@@ -44,13 +43,13 @@ public class ShowtimeMenuCommand implements Command<Void> {
 				case 1:
 					menuInvoker.executeCommand(new ViewShowtimesCommand(filteredShowtimes));
 				case 2:
-					menuInvoker.executeCommand(new AddShowtimeCommand(scan, filteredShowtimes));
+					menuInvoker.executeCommand(new AddShowtimeCommand(scan, availableShowtimes, userMovie,halls));
 					break;
 				case 3:
-					menuInvoker.executeCommand(new UpdateMovieCommand(scan, availableMovies));
+					menuInvoker.executeCommand(new UpdateShowtimeCommand(scan, availableShowtimes, filteredShowtimes, halls));
 					break;
 				case 4:
-					menuInvoker.executeCommand(new DeleteMovieCommand(scan,availableMovies));
+					menuInvoker.executeCommand(new DeleteShowtimeCommand(scan,availableShowtimes,filteredShowtimes));
 					break;
 				default:
 					break;
