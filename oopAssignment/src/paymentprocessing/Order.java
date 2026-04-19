@@ -43,8 +43,5 @@ public class Order {
 		return showtime.toString();//TODO: Nigel/Emily make a CSV format for this
 	}
 
-	public String toString() {
-		return showtime.toString();//TODO: Nigel/Emily make a CSV format for this
-	}
 	
 }

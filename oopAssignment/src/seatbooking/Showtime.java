@@ -14,11 +14,7 @@ public class Showtime {
 	public Hall getHall() {
 		return hall;
 	}
-	public Showtime(){
-		movie = null;  
-		hall = null;
-		time = null;
-	}
+
 	public Movie getMovie(){
 		return movie;
 	}
