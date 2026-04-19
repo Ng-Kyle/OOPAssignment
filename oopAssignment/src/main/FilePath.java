@@ -7,7 +7,8 @@ public enum FilePath {
     CONCESSION_ITEMS("storedData/availableItems.csv"),
     STOCK("storedData/stockQuantity.csv"),
     SEAT_PRICES("storedData/seatPrices.csv"),
-    COUPONS("storedData/coupons.csv");
+    COUPONS("storedData/coupons.csv"),
+	ITEMPRICE("storedData/itemPrice.csv");
 
     private final String path;
 

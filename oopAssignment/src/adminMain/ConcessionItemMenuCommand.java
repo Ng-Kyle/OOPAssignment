@@ -5,9 +5,9 @@ import java.util.Scanner;
 import main.Command;
 import main.CommandInvoker;
 import concession.AddItemCommand;
-import movie.DeleteMovieCommand;
-import movie.UpdateMovieCommand;
 import concession.ViewItemCommand;
+import concession.UpdateItemCommand;
+import concession.DeleteItemCommand;
 
 public class ConcessionItemMenuCommand implements Command<Void> {
 	private CommandInvoker menuInvoker;
@@ -42,10 +42,10 @@ public class ConcessionItemMenuCommand implements Command<Void> {
 					menuInvoker.executeCommand(new AddItemCommand(scan));
 					break;
 				case 3:
-					menuInvoker.executeCommand(new UpdateMovieCommand(scan, availableMovies));
+					menuInvoker.executeCommand(new UpdateItemCommand(scan));
 					break;
 				case 4:
-					menuInvoker.executeCommand(new DeleteMovieCommand(scan,availableMovies));
+					menuInvoker.executeCommand(new DeleteItemCommand(scan));
 					break;
 				default:
 					System.out.println("Invalid Input, Please try again!");
