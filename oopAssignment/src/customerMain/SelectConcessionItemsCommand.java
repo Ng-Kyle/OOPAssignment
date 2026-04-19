@@ -32,6 +32,7 @@ public class SelectConcessionItemsCommand implements Command<ArrayList<Concessio
 			if(selectedItems.get(selectedItems.size()-1) instanceof IndividualItem) {
 				int userInput = 0;
 				System.out.println("Select Size");
+				System.out.println("1.Large | 2.Medium");
 				userInput = Integer.parseInt(scan.nextLine());
 				switch(userInput) {
 				case 1:
@@ -41,8 +42,8 @@ public class SelectConcessionItemsCommand implements Command<ArrayList<Concessio
 					selectedItems.get(selectedItems.size()-1).setSize(SizeType.LARGE);
 					break;
 				default:
-					
-					break; //TODO:Add validation later
+					System.out.println("Invaild.Please choose between Medium or Large");
+					continue; //TODO:Add validation later
 				}
 			}
 		}
