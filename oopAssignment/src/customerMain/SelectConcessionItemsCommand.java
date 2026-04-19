@@ -28,12 +28,14 @@ public class SelectConcessionItemsCommand implements Command<ArrayList<Concessio
             System.out.println("|                     MENU                     |");
             System.out.println("+==============================================+");;
             for(int i = 0; i < showItems.size() ;i++) {
-                if(showItems.get(i).getName().equals("Combo")){
+            	if(showItems.get(i).getName().equals("Combo")){
                     Double itemPrice=showPrice.get(showItems.get(i).getName()).get(SizeType.NONE);
-                    System.out.printf("| RM%.2f |",itemPrice);
+                    System.out.printf("|%d. %s|| RM%.2f |%n",(i+1),showItems.get(i).getName(),itemPrice);
+
+                }else if(!showItems.get(i).getName().equals("Combo")) {
+                    System.out.println("|"+(i+1)+"."+showItems.get(i).getName()+"|\n");
                 }else {
-                    System.out.println((i+1)+"."+showItems.get(i).getName());
-                    }
+                    System.out.println("Invaild Input, Please try again");
                 }
 			System.out.println("+==============================================+");
 			selectedItems.add(ConcessionItemFactory.selectConcessionItemByIndex(Integer.parseInt(scan.nextLine())-1));
