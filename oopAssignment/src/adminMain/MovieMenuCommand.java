@@ -23,6 +23,7 @@ public class MovieMenuCommand implements Command<Void> {
 	
 	public Void execute() { //TODO: DISPLAY MENU OPTIONS
 		while(true) {
+
 			System.out.println("\n=============================================================");
 			System.out.println("                        ADMIN DASHBOARD                      ");
 			System.out.println("=============================================================");
@@ -56,8 +57,13 @@ public class MovieMenuCommand implements Command<Void> {
 					System.out.println("Invalid Input, Please try again!");
 					break;
 				}
-			}catch (Exception a) {
+			}
+			catch (Exception a) {
 				System.out.println("Invalid Input, Please add a number between 0-4");	
+			int menuChoice = Integer.parseInt(scan.nextLine());
+				if(menuChoice == 0) {
+					return null;
+				}
 			}
 		}
 	}

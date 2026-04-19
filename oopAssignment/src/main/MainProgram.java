@@ -34,6 +34,8 @@ public class MainProgram {
 			System.out.println("1. Customer");
 			System.out.println("2. Admin");
 			System.out.println("3. Exit");
+		
+		
 			int menuChoice = Integer.parseInt(scan.nextLine());
 			switch(menuChoice) {
 			case 1:

@@ -29,11 +29,4 @@ public class SeatLocation {
 	public String toString() {
 		return  row + "" + column;
 	}
-	
-	public boolean equals(Object o) {
-		if(row == ((SeatLocation) o).getRow() && column == ((SeatLocation)o).getColumn()) {
-			return true;
-		}
-		return false;
-	}
 }
