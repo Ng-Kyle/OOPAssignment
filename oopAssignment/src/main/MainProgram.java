@@ -8,7 +8,7 @@ import concession.ItemPriceStorage;
 import coupon.CouponCodeStorage;
 import paymentprocessing.Order;
 import seatbooking.Hall;
-import seatbooking.Showtime;
+import showtime.Showtime;
 import customerMain.CustomerProcessCommand;
 import movie.Movie;
 import adminMain.AdminProcessCommand;

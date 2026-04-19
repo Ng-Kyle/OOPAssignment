@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import movie.Movie;
 import paymentprocessing.Order;
 import seatbooking.Hall;
-import seatbooking.Showtime;
+import showtime.Showtime;
 
 public class CSVLoader {
 	public static ArrayList<Movie> readMovies(String filePath){
