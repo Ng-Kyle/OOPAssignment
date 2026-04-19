@@ -12,45 +12,17 @@ public class IndividualItem extends ConcessionItem {
     }
 
 
-    public IndividualItem(String name,SizeType size,StockReductionStrategy stockReductionStrategy){
-    	super(name,size);
-    }
-    public IndividualItem(String name,SizeType size,StockReductionStrategy stockReductionStrategy) {
+      public IndividualItem(String name,SizeType size,StockReductionStrategy stockReductionStrategy) {
     	super(name,size);
     	this.stockReductionStrategy = stockReductionStrategy;
     }
+
+ 
 
     public IndividualItem(String name,StockReductionStrategy stockReductionStrategy) {
     	super(name);
 
     	this.stockReductionStrategy = stockReductionStrategy;
-
-    }
-
-    public IndividualItem(String name,StockReductionStrategy stockReductionStrategy) {
-    	super(name);
-
-    	this.stockReductionStrategy = stockReductionStrategy;
-    }
-
-
-    public IndividualItem() {
-    	this.stockQuantity = 0;
-    	this.unit = null;
-    	this.size = null;
-    }
-
-    public double getStockQuantity() {
-        return this.stockQuantity;
-    }
-
-    public void setStockQuantity(double stockQuantity) {
-        this.stockQuantity = stockQuantity;
-
-    }
-
-    public IndividualItem() {
-    	this.unit = null;
     }
 
 

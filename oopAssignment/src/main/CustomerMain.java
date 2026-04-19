@@ -17,6 +17,7 @@ public class CustomerMain {
 		ArrayList<Hall> halls = new ArrayList<>();
 
 		ArrayList<Ticket> storedTickets = new ArrayList<>();
+
 		
 		CustomerInvoker menuInvoker = new CustomerInvoker();
 		Movie userMovie = menuInvoker.executeCommand(new SelectMovieCommand(availableMovies,scan));
@@ -40,6 +41,7 @@ public class CustomerMain {
 			userSeatBookings.add(new SeatBooking(seat));
 		}
 		ArrayList<ConcessionItem> userItems = new ArrayList<>();
+		
 		userItems.add(ConcessionItemFactory.selectConcessionItem(Integer.parseInt(scan.nextLine())));
 		if(userItems.get(0) instanceof IndividualItem) {
 			userItems.get(0).setSize(SizeType.MEDIUM); //TODO: CHANGE THIS TO USER INPUT
@@ -48,26 +50,6 @@ public class CustomerMain {
 
 		availableShowtimes.add(new Showtime(availableMovies.get(0),halls.get(0)));
 
-		ArrayList<Ticket> storedTickets = new ArrayList<>();
-
-		
-		CustomerInvoker menuInvoker = new CustomerInvoker();
-		Movie userMovie = menuInvoker.executeCommand(new SelectMovieCommand(availableMovies,scan));
-		ArrayList<Showtime> filteredShowtimes = menuInvoker.executeCommand(new FilterShowtimesCommand(userMovie,availableShowtimes));
-		Showtime userShowtime = menuInvoker.executeCommand(new SelectShowtimeCommand(filteredShowtimes,scan));
-		ArrayList<SeatBooking> userSeatBookings = menuInvoker.executeCommand(new SelectSeatsCommand(userShowtime.getHall(),scan));
-		ArrayList<ConcessionItem> userItems = menuInvoker.executeCommand(new SelectConcessionItemsCommand(scan));
-		Coupon userCoupon = menuInvoker.executeCommand(new SelectCouponCommand(scan));
-
-		ArrayList<Ticket> storedTickets = new ArrayList<>();
-		
-		CustomerInvoker menuInvoker = new CustomerInvoker();
-		Movie userMovie = menuInvoker.executeCommand(new SelectMovieCommand(availableMovies,scan));
-		ArrayList<Showtime> filteredShowtimes = menuInvoker.executeCommand(new FilterShowtimesCommand(userMovie,availableShowtimes));
-		Showtime userShowtime = menuInvoker.executeCommand(new SelectShowtimeCommand(filteredShowtimes,scan));
-		ArrayList<SeatBooking> userSeatBookings = menuInvoker.executeCommand(new SelectSeatsCommand(userShowtime.getHall(),scan));
-		ArrayList<ConcessionItem> userItems = menuInvoker.executeCommand(new SelectConcessionItemsCommand(scan));
-		Coupon userCoupon = menuInvoker.executeCommand(new SelectCouponCommand(scan));
 
 		Order userOrder = new Order(userShowtime, userItems, userCoupon, userSeatBookings);
 
@@ -80,14 +62,7 @@ public class CustomerMain {
 		
 		
 		
-		
-
-		storedTickets.add(menuInvoker.executeCommand(new PaymentProcessCommand(userOrder,scan)));
-		menuInvoker.executeCommand(new DisplayReceiptCommand(storedTickets.get(storedTickets.size()-1)));
-
-		storedTickets.add(menuInvoker.executeCommand(new PaymentProcessCommand(userOrder,scan)));
-		menuInvoker.executeCommand(new DisplayReceiptCommand(storedTickets.get(storedTickets.size()-1)));
-
+	
 	}
 
 	private static Movie selectMovie(ArrayList<Movie> movies) {

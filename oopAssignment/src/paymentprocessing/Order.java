@@ -38,17 +38,11 @@ public class Order {
 			concessionItem.reduceStock();
 		}
 	}
-<<<<<<< HEAD
-<<<<<<< Upstream, based on origin/master
-	
+
 	public String toString() {
 		return showtime.toString();//TODO: Nigel/Emily make a CSV format for this
 	}
-=======
->>>>>>> 41c216c testing why is it im 4 behind even when i just open up my eclipse and just pull
-=======
->>>>>>> branch 'Sub_Classes' of git@github.com:Ng-Kyle/OOPAssignment.git
-	
+
 	public String toString() {
 		return showtime.toString();//TODO: Nigel/Emily make a CSV format for this
 	}

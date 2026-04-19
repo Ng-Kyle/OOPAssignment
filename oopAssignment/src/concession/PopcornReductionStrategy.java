@@ -31,8 +31,6 @@ public class PopcornReductionStrategy implements StockReductionStrategy {
 		ConcessionItemStorage.reduceStock(item.getName(),reductionAmount);
 
 
-		Map<String,Double> stockQuantity = ConcessionItemStorage.getStockQuantity();
-		
 		if(stockQuantity.get(item.getName()) - reductionAmount < 0) {
 			throw new InsufficientStockException();
 		}
