@@ -24,7 +24,7 @@ public class UpdateMovieCommand implements Command<Void> { //TODO:INPUT VALIDATI
 			for (int i = 0; i < availableMovies.size(); i++) {
 				System.out.println((i+1) + ". " + availableMovies.get(i).getTitle());
 			}
-			System.out.println("Select Movie (1-" + availableMovies.size() + " or ) 0 to exit.");
+			System.out.println("Select Movie (1-" + availableMovies.size() + ") or 0 to exit.");
 			
 			int movieChoice;
 			try {
@@ -33,10 +33,10 @@ public class UpdateMovieCommand implements Command<Void> { //TODO:INPUT VALIDATI
 						return null;
 					}
 					if (movieChoice < 1 || movieChoice > availableMovies.size()) throw new Exception();
-			}catch (Exception a) {
-				System.out.println("Invalid Selection! Please enter a number from the list");
-				continue;
-			}
+				}catch (Exception a) {
+					System.out.println("Invalid Selection! Please enter a number from the list");
+					continue;
+				}	
 			Movie chosenMovie = availableMovies.get(movieChoice-1);
 			while(true) {
 				System.out.println("\n**Updating: " + chosenMovie.getTitle() + "**");
