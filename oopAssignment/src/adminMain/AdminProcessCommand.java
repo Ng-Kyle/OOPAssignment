@@ -55,49 +55,51 @@ public class AdminProcessCommand implements Command<Void> {
 			try {	
 				int menuChoice = Integer.parseInt(input);
 				switch(menuChoice) {
-					case 1:
-						menuInvoker.executeCommand(new MovieMenuCommand(scan,menuInvoker,availableMovies));
-						break;
-					case 2:
-						menuInvoker.executeCommand(new ShowtimeMenuCommand(scan,menuInvoker,availableMovies,availableShowtimes,halls));
-						break;
-		
-					case 3:
-						menuInvoker.executeCommand(new SeatLayoutMenuCommand(scan,menuInvoker,availableMovies,availableShowtimes,halls,storedOrders));
-						break;
-						
-					case 4:
-						menuInvoker.executeCommand(new ConcessionItemMenuCommand(scan,menuInvoker));
-						break;
-						
-					case 5:
-						menuInvoker.executeCommand(new StockQuantityMenuCommand(scan,menuInvoker));
-						break;
-						
-					case 6:
-						menuInvoker.executeCommand(new OrderMenuCommand(scan,menuInvoker,storedOrders));
-						break;
-						
-					case 7:
-						break;
-						
-					case 8:
-						break;
-						
-					case 9:
-						break;
+				case 1:
+					menuInvoker.executeCommand(new MovieMenuCommand(scan,menuInvoker,availableMovies));
+					break;
+				case 2:
+					menuInvoker.executeCommand(new ShowtimeMenuCommand(scan,menuInvoker,availableMovies,availableShowtimes,halls));
+					break;
+	
+				case 3:
+					menuInvoker.executeCommand(new SeatLayoutMenuCommand(scan,menuInvoker,availableMovies,availableShowtimes,halls,storedOrders));
+					break;
 					
-					case 10:
-						break;
-					default:
-						System.out.println("Invalid choice! Please enter the correct number.");
-						break;
-					}
-				} catch (NumberFormatException e) {
-			        // This catches cases where input is not a valid number
-			        System.out.println("Error: '" + input + "' is not a valid number. Please try again.");
-					}
-				}		
+				case 4:
+					menuInvoker.executeCommand(new ConcessionItemMenuCommand(scan,menuInvoker));
+					break;
+					
+				case 5:
+					menuInvoker.executeCommand(new StockQuantityMenuCommand(scan,menuInvoker));
+					break;
+					
+				case 6:
+					menuInvoker.executeCommand(new OrderMenuCommand(scan,menuInvoker,storedOrders));
+					break;
+					
+				case 7:
+					menuInvoker.executeCommand(new CouponMenuCommand(scan,menuInvoker));
+					break;
+					
+				case 8:
+					break;
+					
+				case 9:
+					break;
+				
+				case 10:
+					break;
+				default:
+					System.out.println("Invalid choice! Please enter the correct number.");
+					break;
+				}
+			} 
+			catch (NumberFormatException e) {
+		        // This catches cases where input is not a valid number
+		        System.out.println("Error: '" + input + "' is not a valid number. Please try again.");
 			}
-		}
+		}		
+	}
+}
 
