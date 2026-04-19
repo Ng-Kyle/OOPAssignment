@@ -41,7 +41,11 @@ public class CustomerProcessCommand implements Command<Void> {
 		Coupon userCoupon = menuInvoker.executeCommand(new SelectCouponCommand(scan));
 		ArrayList<OrderItem> orderedItems = menuInvoker.executeCommand(new ProcessItemsCommand(userItems));
 		Order userOrder = new Order(userShowtime, orderedItems, userCoupon.getCode(), userSeatBookings);
+		
 		Ticket userTicket = menuInvoker.executeCommand(new PaymentProcessCommand(userOrder,scan,storedOrders));
+		if(userTicket == null) {
+			return null;
+		}
 		menuInvoker.executeCommand(new DisplayReceiptCommand(userTicket));
 		return null;
 	}

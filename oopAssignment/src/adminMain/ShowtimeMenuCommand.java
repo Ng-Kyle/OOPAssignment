@@ -45,12 +45,10 @@ public class ShowtimeMenuCommand implements Command<Void> {
 				System.out.println("0. Back to Movie Selection");
 				System.out.println("Choice: ");
 				
-				int menuChoice;
-				try {
-						menuChoice = Integer.parseInt(scan.nextLine());
-				}catch (Exception e) {
-					System.out.println("Invalid Input. Please enter a number between 0-4!");
-					continue;
+			try {
+				int menuChoice = Integer.parseInt(scan.nextLine());
+				if(menuChoice == 0) {
+					return null;
 				}
 				if(menuChoice == 0) {
 					break;
@@ -78,10 +76,12 @@ public class ShowtimeMenuCommand implements Command<Void> {
 					}
 					;
 				default:
+					System.out.println("Invalid choice! Please enter the correct number.");
 					break;
+				} 
+			} catch (NumberFormatException e) {System.out.println("Invalid Input, Please add a number between 0-4");
+					} 
 				}
 			}
 		}
 	}
-}
-

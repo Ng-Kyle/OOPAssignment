@@ -18,29 +18,38 @@ public class SelectMovieCommand implements Command<Movie> {
 		this.menuInvoker = menuInvoker;
 	}
 	public Movie execute() {
-		System.out.println("========================================NOW SHOWING!!!========================================"); 
-		menuInvoker.executeCommand(new ViewMovieCommand(availableMovies));
-		
-		//Selection Menu
-		int userChoice = -1;
-        while (userChoice < 1 || userChoice > availableMovies.size()) {
-        	System.out.println("\nPlease select a movie (0 to cancel)");
-            
-            if (scan.hasNextInt()) {
-                userChoice = Integer.parseInt(scan.nextLine());
-                if(userChoice == 0) {
-                	return null;
-                }
-                if (userChoice < 1 || userChoice > availableMovies.size()) {
-                    System.out.println("Invalid selection. Please stay within the range.");
-                }
-            } 
-            else{
-		          System.out.println("Please enter a valid number.");
-            }
-        }
-		
-		return availableMovies.get(userChoice - 1);
+	    System.out.println("========================================NOW SHOWING!!!========================================"); 
+	    System.out.println("----------------------------------------------------------------------------------------------");
+	    
+	    // Display the list using the invoker
+	    menuInvoker.executeCommand(new ViewMovieCommand(availableMovies));
+
+	    while (true) {
+	        System.out.print("\nPlease select a movie number (1-" + availableMovies.size() + ") or 0 to cancel: ");
+	        String input = scan.nextLine().trim();
+
+	        if (input.isEmpty()) {
+	            System.out.println("Input cannot be empty.");
+	            continue;
+	        }
+
+	        try {
+	            int userChoice = Integer.parseInt(input);
+
+	            if (userChoice == 0) {
+	                System.out.println("Selection cancelled.");
+	                return null;
+	            }
+
+	            if (userChoice >= 1 && userChoice <= availableMovies.size()) {
+	                // Success: return the selected movie
+	                return availableMovies.get(userChoice - 1);
+	            } else {
+	                System.out.println("Invalid selection. Please stay within the range.");
+	            }
+	        } catch (NumberFormatException e) {
+	            System.out.println("Please enter a valid integer.");
+	        }
+	    }
 	}
 }
-	

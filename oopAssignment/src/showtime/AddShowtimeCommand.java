@@ -27,6 +27,7 @@ public class AddShowtimeCommand implements Command<Void> {
 	
 	public Void execute() {
 		while(true) {
+
 			System.out.println("\n-------------------------ADD NEW SHOWTIME------------------------");
 			System.out.println("Available Halls:");
 			for (int i = 0; i < halls.size(); i++) {
