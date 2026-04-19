@@ -99,7 +99,7 @@ public class PaymentProcessCommand implements Command<Ticket> {
 			catch(InsufficientStockException isfe){
 				System.out.println("Insufficient stock. Order was cancelled.");
 			}
->>>>>>> branch 'Sub_Classes' of git@github.com:Ng-Kyle/OOPAssignment.git
+
 		}
 		return null;
 	}
