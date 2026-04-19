@@ -25,6 +25,12 @@ public class StockQuantityMenuCommand implements Command<Void> {
 			System.out.println("-------------------------------------------------------------");
 			System.out.println("Select an option: ");
 			
+			String input = scan.nextLine().trim();
+			if (input.isEmpty()) {
+	            System.out.println("Input cannot be empty.");
+	            continue;
+	        }
+			
 			try {
 				int menuChoice = Integer.parseInt(scan.nextLine());
 				if(menuChoice == 0) {
@@ -37,11 +43,12 @@ public class StockQuantityMenuCommand implements Command<Void> {
 				case 2:
 					menuInvoker.executeCommand(new UpdateStockQuantityCommand(scan));
 					break;
-				
+				default:
+					System.out.println("Invalid choice! Please enter the correct number.");
+					break;
 				}
-			}
-			catch (Exception a) {
-				System.out.println("Invalid Input, Please add a number between 0-2");	
+			} catch (Exception a) {
+				System.out.println("Invalid Input, Please add a number between 0-2");
 			}
 		}
 	}

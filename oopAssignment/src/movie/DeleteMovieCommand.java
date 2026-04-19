@@ -10,8 +10,7 @@ import main.FilePath;
 public class DeleteMovieCommand implements Command<Void> {
 	ArrayList<Movie> availableMovies;
 	Scanner scan;
-	public DeleteMovieCommand(Scanner scan, ArrayList<Movie> availableMovies){ //TODO: ADD CONFIRMATION BEFORE DELETION
-		this.availableMovies = availableMovies;
+	public DeleteMovieCommand(Scanner scan, ArrayList<Movie> availableMovies){
 		this.scan = scan;
 	}
 	public Void execute() {

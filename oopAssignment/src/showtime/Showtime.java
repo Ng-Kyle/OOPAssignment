@@ -69,7 +69,7 @@ public class Showtime implements CSVStored{
 		Hall storedHall = null;
 		
 		for(int i = 0; i < availableMovies.size(); i++) {
-			if(Integer.parseInt(values[1]) == availableMovies.get(i).getMovieID()) { //TODO: replace this with get id instead
+			if(Integer.parseInt(values[1]) == availableMovies.get(i).getMovieID()) {
 				storedMovie = availableMovies.get(i);
 				break;
 			}			
