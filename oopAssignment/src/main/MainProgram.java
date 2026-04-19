@@ -8,7 +8,7 @@ import concession.ItemPriceStorage;
 import coupon.CouponCodeStorage;
 import paymentprocessing.Order;
 import seatbooking.Hall;
-import seatbooking.Showtime;
+import showtime.Showtime;
 import customerMain.CustomerProcessCommand;
 import movie.Movie;
 import adminMain.AdminProcessCommand;
@@ -25,6 +25,12 @@ public class MainProgram {
 		new ItemPriceStorage();
 		new CouponCodeStorage();
 		
+		System.out.println("==============================================");
+		System.out.println("         WELCOME TO EXPLOSIVE CINEMAS         ");
+		System.out.println("==============================================");
+		System.out.println("1. Customer");
+		System.out.println("2. Admin");
+		System.out.println("3. Exit");
 		
 		while(true) {
 			int menuChoice = Integer.parseInt(scan.nextLine());

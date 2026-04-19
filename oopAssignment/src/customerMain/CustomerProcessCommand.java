@@ -8,6 +8,8 @@ import main.CommandInvoker;
 import movie.Movie;
 import paymentprocessing.*;
 import seatbooking.*;
+import showtime.Showtime;
+
 import java.util.ArrayList;
 
 
@@ -28,7 +30,7 @@ public class CustomerProcessCommand implements Command<Void> {
 	
 	
 	public Void execute() {
-		Movie userMovie = menuInvoker.executeCommand(new SelectMovieCommand(availableMovies,scan));
+		Movie userMovie = menuInvoker.executeCommand(new SelectMovieCommand(availableMovies,scan,menuInvoker));
 		ArrayList<Showtime> filteredShowtimes = menuInvoker.executeCommand(new FilterShowtimesCommand(userMovie,availableShowtimes));
 		Showtime userShowtime = menuInvoker.executeCommand(new SelectShowtimeCommand(filteredShowtimes,scan));
 		ArrayList<SeatBooking> userSeatBookings = menuInvoker.executeCommand(new SelectSeatsCommand(userShowtime.getHall(),scan));

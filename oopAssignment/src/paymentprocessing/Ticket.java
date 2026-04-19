@@ -6,11 +6,10 @@ public class Ticket {
 
 	public Ticket(Order orderDetails) {
 		this.orderDetails = orderDetails;
-		QRCode.generateQR(Integer.toString(orderDetails.getOrderID()), "receipt_" + orderDetails.getOrderID() + ".png");
+		QRCode.generateQR(Integer.toString(orderDetails.getOrderID()), "storedData/receipts/receipt_" + orderDetails.getOrderID() + ".png");
 	}	
-	//to get the order details for receipt
-	public Order getOrderDetails() {
-		return this.orderDetails;
-	}
 	
+	public Order getOrderDetails() {
+		return orderDetails;
+	}
 }

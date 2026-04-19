@@ -51,7 +51,7 @@ public class Movie implements CSVStored{
 		this.durationMinutes = durationMinutes;
 	}
 	
-	public double getMovieID() {
+	public int getMovieID() {
 		return movieID;
 	}
 	public String toString() {
