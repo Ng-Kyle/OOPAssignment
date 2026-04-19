@@ -12,6 +12,9 @@ public class SelectConcessionItemsCommand implements Command<ArrayList<Concessio
 	}
 	public ArrayList<ConcessionItem> execute(){ //TODO: SHOW AVAILABLE ITEMS
 		ArrayList<ConcessionItem> selectedItems = new ArrayList<>();
+		
+		ArrayList<ConcessionItem> showItems = ConcessionItemStorage.getAllItems();
+		
 		while(true) {
 			System.out.println("Do you want to add concession items? Y/N");
 			String menuInput = scan.nextLine().trim();
@@ -19,6 +22,11 @@ public class SelectConcessionItemsCommand implements Command<ArrayList<Concessio
 				break;
 			}
 			System.out.println("Select Concession Items");
+			System.out.println("+======================+");
+			for(int i = 0; i < showItems.size() ;i++) {
+				System.out.println("|"+(i+1)+"."+showItems.get(i).getName()+"|");
+			}
+			System.out.println("+======================+");
 			selectedItems.add(ConcessionItemFactory.selectConcessionItemByIndex(Integer.parseInt(scan.nextLine())-1));
 			if(selectedItems.get(selectedItems.size()-1) instanceof IndividualItem) {
 				int userInput = 0;
