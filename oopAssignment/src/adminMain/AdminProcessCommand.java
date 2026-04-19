@@ -75,6 +75,7 @@ public class AdminProcessCommand implements Command<Void> {
 						break;
 						
 					case 6:
+						menuInvoker.executeCommand(new OrderMenuCommand(scan,menuInvoker,storedOrders));
 						break;
 						
 					case 7:
