@@ -13,10 +13,8 @@ import showtime.Showtime;
 public class ViewSeatLayoutCommand implements Command<Void> {
 	private ArrayList<Order> storedOrders;
 	private Showtime chosenShowtime;
-	private Scanner scan;
 	
-	public ViewSeatLayoutCommand(Scanner scan,  ArrayList<Order> storedOrders, Showtime chosenShowtime) {
-		this.scan = scan;
+	public ViewSeatLayoutCommand(ArrayList<Order> storedOrders, Showtime chosenShowtime) {
 		this.storedOrders = storedOrders;
 		this.chosenShowtime = chosenShowtime;
 	}
