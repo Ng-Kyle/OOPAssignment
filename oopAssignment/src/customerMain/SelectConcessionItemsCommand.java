@@ -1,7 +1,7 @@
 package customerMain;
 import concession.*;
 import main.Command;
-
+import java.util.Map;
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -15,6 +15,7 @@ public class SelectConcessionItemsCommand implements Command<ArrayList<Concessio
 		ArrayList<ConcessionItem> selectedItems = new ArrayList<>();
 		
 		ArrayList<ConcessionItem> showItems = ConcessionItemStorage.getAllItems();
+		Map<String,Map<SizeType,Double>> showPrice = ItemPriceStorage.getItemPrices();
 		
 		while(true) {
 			System.out.println("Do you want to add concession items? Y/N");
@@ -25,14 +26,21 @@ public class SelectConcessionItemsCommand implements Command<ArrayList<Concessio
 			System.out.println("Select Concession Items");
 			System.out.println("+======================+");
 			for(int i = 0; i < showItems.size() ;i++) {
-				System.out.println("|"+(i+1)+"."+showItems.get(i).getName()+"|");
+				Double itemPrice=showPrice.get(showItems.get(i).getName()).get(SizeType.MEDIUM);
+				System.out.printf("|"+(i+1)+"."+showItems.get(i).getName()+"|"+"RM%.2f"+itemPrice+"|");
 			}
 			System.out.println("+======================+");
 			selectedItems.add(ConcessionItemFactory.selectConcessionItemByIndex(Integer.parseInt(scan.nextLine())-1));
+			
+			Double price_M = showPrice.get(selectedItems.get(selectedItems.size()-1).getName()).get(SizeType.MEDIUM);
+			
+			Double price_L = showPrice.get(selectedItems.get(selectedItems.size()-1).getName()).get(SizeType.LARGE);
+			
 			if(selectedItems.get(selectedItems.size()-1) instanceof IndividualItem) {
 				int userInput = 0;
 				System.out.println("Select Size");
-				System.out.println("1.Medium | 2.Large");
+				System.out.printf("1.Medium" + "RM%.2f"+price_M);
+				System.out.printf("2.Large" + "RM%.2f"+price_L);
 				userInput = Integer.parseInt(scan.nextLine());
 				switch(userInput) {
 				case 1:
