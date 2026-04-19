@@ -33,7 +33,7 @@ public class SelectConcessionItemsCommand implements Command<ArrayList<Concessio
 			if(selectedItems.get(selectedItems.size()-1) instanceof IndividualItem) {
 				int userInput = 0;
 				System.out.println("Select Size");
-				System.out.println("1.Large | 2.Medium");
+				System.out.println("1.Medium | 2.Large");
 				userInput = Integer.parseInt(scan.nextLine());
 				switch(userInput) {
 				case 1:
