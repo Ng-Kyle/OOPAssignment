@@ -98,8 +98,14 @@ public class ConcessionItemStorage {
 		ConcessionItemStorage.stockQuantityToCSV();
 		ItemPriceStorage.toCSV();
 	}
+	public static void addStock(String chosenItemName, double amount) {
+		double currentStock = stockQuantity.get(chosenItemName);
+		stockQuantity.replace(chosenItemName, currentStock + amount);
+		stockQuantityToCSV();
+	}
 	public static void reduceStock(String itemName, double amount) {
 		stockQuantity.put(itemName, (stockQuantity.get(itemName)-amount));
+		stockQuantityToCSV();
 		
 	}
 	

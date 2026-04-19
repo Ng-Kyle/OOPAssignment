@@ -51,7 +51,8 @@ public class ConcessionItemMenuCommand implements Command<Void> {
 					System.out.println("Invalid Input, Please try again!");
 					break;
 				}
-			}catch (Exception a) {
+			}
+			catch (Exception a) {
 				System.out.println("Invalid Input, Please add a number between 0-4");	
 			}
 		}
