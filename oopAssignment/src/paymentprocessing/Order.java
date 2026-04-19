@@ -81,6 +81,12 @@ public class Order implements CSVStored{
 	public int getOrderID() {
 		return orderID;
 	}
+	public void setUsed() {
+		used = true;
+	}
+	public boolean getUsed() {
+		return used;
+	}
 	public ArrayList<SeatBooking> getSeatBooking() {
 		return seatBookings;
 	}
