@@ -38,7 +38,7 @@ public class AdminProcessCommand implements Command<Void> {
 				menuInvoker.executeCommand(new MovieMenuCommand(scan,menuInvoker,availableMovies));
 				break;
 			case 2:
-				menuInvoker.executeCommand(new ShowtimeMenuCommand(scan,menuInvoker,availableMovies,availableShowtimes));
+				menuInvoker.executeCommand(new ShowtimeMenuCommand(scan,menuInvoker,availableMovies,availableShowtimes,halls));
 				break;
 			}
 			break;

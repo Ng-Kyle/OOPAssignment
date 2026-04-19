@@ -8,15 +8,8 @@ public class Ticket {
 		this.orderDetails = orderDetails;
 		QRCode.generateQR(Integer.toString(orderDetails.getOrderID()), "storedData/receipts/receipt_" + orderDetails.getOrderID() + ".png");
 	}	
-
 	
 	public Order getOrderDetails() {
 		return orderDetails;
 	}
-	
-
-	//to get the order details for receipt
-	
-
-	
 }
