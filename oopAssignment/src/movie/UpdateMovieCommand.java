@@ -7,7 +7,7 @@ import main.CSVLoader;
 import main.Command;
 import main.FilePath;
 
-public class UpdateMovieCommand implements Command<Void> { //TODO:INPUT VALIDATION AND DISPLAY MOVIE DETAILS
+public class UpdateMovieCommand implements Command<Void> {
 	ArrayList<Movie> availableMovies;
 	Scanner scan;
 	public UpdateMovieCommand(Scanner scan, ArrayList<Movie> availableMovies){

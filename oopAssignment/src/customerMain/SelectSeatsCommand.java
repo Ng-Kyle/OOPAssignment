@@ -27,13 +27,23 @@ public class SelectSeatsCommand implements Command<ArrayList<SeatBooking>> {
 	}
 	
 	public ArrayList<SeatBooking> execute() { 
+		ArrayList<Seat> takenSeats = new ArrayList<>();
+		for(int i = 0; i < storedOrders.size(); i++) {
+			if(storedOrders.get(i).getShowtime().getShowtimeID() == chosenShowtime.getShowtimeID()) {
+				ArrayList<SeatBooking> orderSeatBookings = storedOrders.get(i).getSeatBooking();
+				for(int j = 0; j < orderSeatBookings.size(); j++) {
+					takenSeats.add(orderSeatBookings.get(j).getSeat());
+				}
+			}
+		}
+		
 		menuInvoker.executeCommand(new ViewSeatLayoutCommand(storedOrders, chosenShowtime));
 		int menuInput = 0;
 		ArrayList<Seat> userSeats = new ArrayList<>();
 		
 		while(menuInput != 2) {
 			System.out.println("\nSelect your seats (e.g. A1) or input '2' if done.");
-			String seatInput = scan.nextLine();
+			String seatInput = scan.nextLine().trim().toUpperCase();
 			
 			if(seatInput.equals("2")) {
 				break;
@@ -44,8 +54,29 @@ public class SelectSeatsCommand implements Command<ArrayList<SeatBooking>> {
 			int userColumn = Integer.parseInt(seatInput.substring(1));
 			Seat selected  = hall.findSeat(userRow, userColumn);
 			if (selected !=null) {
-				userSeats.add(selected);
-				System.out.println("Seat " + seatInput + " added!");
+				boolean alreadyTaken = false;
+				for (Seat ts : takenSeats) {
+					if (ts.getSeatLocation().toString().equals(selected.getSeatLocation().toString())) {
+						alreadyTaken = true;
+						break;
+					}
+				}
+				
+				boolean alreadyInList = false;
+				for (Seat us : userSeats) {
+					if (us.getSeatLocation().toString().equals(selected.getSeatLocation().toString())) {
+						alreadyInList = true;
+						break;
+					}
+				}
+				if(alreadyTaken) {
+					System.out.println("Error: Seat " + seatInput + " is already booked by another customer!");
+				}else if (alreadyInList) {
+					System.out.println("Error: You have already selected " + seatInput + " for this booking!");
+				}else {
+					userSeats.add(selected);
+                    System.out.println("Seat " + seatInput + " added successfully!");
+				}
 			}else {
 				System.out.println("Invalid seat location!");
 			}
@@ -59,7 +90,7 @@ public class SelectSeatsCommand implements Command<ArrayList<SeatBooking>> {
 		} catch (Exception e) {
 		    System.out.println("Please enter 1 or 2.");
 		    menuInput = 0;
-		}//TODO: This is still missing prevention of duplicate seats
+		}
 		}
 		ArrayList<SeatBooking> userSeatBookings = new ArrayList<>();
 		for(Seat seat:userSeats) {

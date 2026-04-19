@@ -29,6 +29,7 @@ public class ShowtimeMenuCommand implements Command<Void> {
 	
 	public Void execute() { //TODO: DISPLAY MENU OPTIONS
 		while(true) {
+			System.out.println("\n--------------------------SELECT A MOVIE--------------------------");
 			Movie userMovie = menuInvoker.executeCommand(new SelectMovieCommand(availableMovies,scan,menuInvoker));
 			if(userMovie == null) {
 				return null;
@@ -36,10 +37,25 @@ public class ShowtimeMenuCommand implements Command<Void> {
 			
 			ArrayList<Showtime> filteredShowtimes = menuInvoker.executeCommand(new FilterShowtimesCommand(userMovie,availableShowtimes));
 			while(true) {
-				int menuChoice = Integer.parseInt(scan.nextLine());
-				if(menuChoice == 0) {
-					return null;
+				System.out.println("----------------------------SHOWTIME-----------------------------");
+				System.out.println("Movie: " + userMovie.getTitle());
+				System.out.println("1. View Current Showtimes");
+				System.out.println("2. Add New Showtime");
+				System.out.println("3. Update Existing Showtime");
+				System.out.println("4. Delete Showtime");
+				System.out.println("0. Back to Movie Selection");
+				System.out.println("Choice: ");
+				
+				int menuChoice;
+				try {
+						menuChoice = Integer.parseInt(scan.nextLine());
+				}catch (Exception e) {
+					System.out.println("Invalid Input. Please enter a number between 0-4!");
+					continue;
 				}
+				if(menuChoice == 0) {
+					break;
+				}	
 				switch(menuChoice) {
 				case 1:
 					menuInvoker.executeCommand(new ViewShowtimesCommand(filteredShowtimes));
@@ -48,11 +64,20 @@ public class ShowtimeMenuCommand implements Command<Void> {
 					menuInvoker.executeCommand(new AddShowtimeCommand(scan, availableShowtimes, userMovie,halls));
 					break;
 				case 3:
-					menuInvoker.executeCommand(new UpdateShowtimeCommand(scan, availableShowtimes, filteredShowtimes, halls));
-					break;
+					if (filteredShowtimes.isEmpty()) {
+						System.out.println("No showtimes available for this movie.");
+					}else {
+						menuInvoker.executeCommand(new UpdateShowtimeCommand(scan, availableShowtimes, filteredShowtimes, halls));
+						break;
+					}
 				case 4:
-					menuInvoker.executeCommand(new DeleteShowtimeCommand(scan,availableShowtimes,filteredShowtimes));
-					break;
+					if (filteredShowtimes.isEmpty()) {
+						System.out.println("No showtimes available for this movie.");
+					}else {
+						menuInvoker.executeCommand(new DeleteShowtimeCommand(scan,availableShowtimes,filteredShowtimes));
+						break;
+					}
+					;
 				default:
 					break;
 				}
