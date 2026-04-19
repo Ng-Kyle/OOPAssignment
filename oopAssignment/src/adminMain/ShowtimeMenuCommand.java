@@ -29,6 +29,20 @@ public class ShowtimeMenuCommand implements Command<Void> {
 	
 	public Void execute() { //TODO: DISPLAY MENU OPTIONS
 		while(true) {
+			System.out.println("\n=============================================================");
+			System.out.println("                            SHOWTIME                         ");
+			System.out.println("=============================================================");
+			System.out.println("1.View Showtime");
+			System.out.println("2.Add Showtime");
+			System.out.println("3.Update Showtime");
+			System.out.println("4.Delete Showtime");
+			
+			String input = scan.nextLine().trim();
+			if (input.isEmpty()) {
+	            System.out.println("Input cannot be empty.");
+	            continue;
+	        }
+			
 			Movie userMovie = menuInvoker.executeCommand(new SelectMovieCommand(availableMovies,scan,menuInvoker));
 			if(userMovie == null) {
 				return null;
@@ -36,6 +50,8 @@ public class ShowtimeMenuCommand implements Command<Void> {
 			
 			ArrayList<Showtime> filteredShowtimes = menuInvoker.executeCommand(new FilterShowtimesCommand(userMovie,availableShowtimes));
 			while(true) {
+				
+			try {
 				int menuChoice = Integer.parseInt(scan.nextLine());
 				if(menuChoice == 0) {
 					return null;
@@ -54,10 +70,12 @@ public class ShowtimeMenuCommand implements Command<Void> {
 					menuInvoker.executeCommand(new DeleteShowtimeCommand(scan,availableShowtimes,filteredShowtimes));
 					break;
 				default:
+					System.out.println("Invalid choice! Please enter the correct number.");
 					break;
+				} 
+			} catch (NumberFormatException e) {System.out.println("Invalid Input, Please add a number between 0-4");
+					} 
 				}
 			}
 		}
 	}
-}
-

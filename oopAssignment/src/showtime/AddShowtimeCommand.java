@@ -28,6 +28,17 @@ public class AddShowtimeCommand implements Command<Void> {
 	public Void execute() {
 		while(true) {
 			//TODO: Show available halls here
+			System.out.printf("----------------------Available Halls-----------------------");
+			System.out.println("-----------------------------------------------------------");
+			
+			for (int i = 0; i < availableShowtimes.size(); i++) {
+				Showtime h = availableShowtimes.get(i);
+				System.out.printf("%-4d | %-40s |", 
+	                    (i + 1), 
+	                    h.getHall());
+	}
+			
+			
 			int userChoice = Integer.parseInt(scan.nextLine());
 			Hall userHall = halls.get(userChoice - 1);
 			System.out.println("YYYY-MM-DD");

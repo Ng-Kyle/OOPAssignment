@@ -34,26 +34,37 @@ public class MainProgram {
 			System.out.println("1. Customer");
 			System.out.println("2. Admin");
 			System.out.println("3. Exit");
-		
-		
-			int menuChoice = Integer.parseInt(scan.nextLine());
-			switch(menuChoice) {
-			case 1:
-				menuInvoker.executeCommand(new CustomerProcessCommand(scan,menuInvoker,availableMovies,availableShowtimes,storedOrders));
-				break;
-			case 2:
-				menuInvoker.executeCommand(new AdminProcessCommand(scan,menuInvoker,availableMovies,availableShowtimes,storedOrders,halls));
-				break;
-			case 3:
-				System.out.println("Thanks for using the system!");
-				CSVLoader.saveCSV(availableMovies, "storedData/movies.csv");
-				CSVLoader.saveCSV(halls, "storedData/halls.csv");
-				CSVLoader.saveCSV(availableShowtimes, "storedData/showtimes.csv");
-				CSVLoader.saveCSV(storedOrders, "storedData/orders.csv");
-				return;
-			default:
-				System.out.println("Invalid input!");
+				
+			String input = scan.nextLine().trim();
+			if (input.isEmpty()) {
+	            System.out.println("Input cannot be empty.");
+	            continue;
+	        }
+				
+			try {
+		        int menuChoice = Integer.parseInt(input);
+		        
+		        switch(menuChoice) {
+		            case 1:
+		                menuInvoker.executeCommand(new CustomerProcessCommand(scan, menuInvoker, availableMovies, availableShowtimes, storedOrders));
+		                break;
+		            case 2:
+		                menuInvoker.executeCommand(new AdminProcessCommand(scan, menuInvoker, availableMovies, availableShowtimes, storedOrders, halls));
+		                break;
+		            case 3:
+		                System.out.println("Thanks for using the system!");
+		                CSVLoader.saveCSV(availableMovies, "storedData/movies.csv");
+		                CSVLoader.saveCSV(halls, "storedData/halls.csv");
+		                CSVLoader.saveCSV(availableShowtimes, "storedData/showtimes.csv");
+		                CSVLoader.saveCSV(storedOrders, "storedData/orders.csv");
+		                return; // Exits the main method and stops the program
+		            default:
+		                System.out.println("Invalid choice! Please enter 1, 2, or 3.");
+		        }
+		    } catch (NumberFormatException e) {
+		        // This catches cases where input is not a valid number
+		        System.out.println("Error: '" + input + "' is not a valid number. Please try again.");
+		    	}
 			}
 		}
 	}
-}
