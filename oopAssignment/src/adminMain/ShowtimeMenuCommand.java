@@ -57,6 +57,10 @@ public class ShowtimeMenuCommand implements Command<Void> {
 					}	
 					switch(menuChoice) {
 					case 1:
+						if (filteredShowtimes.isEmpty()) {
+							System.out.println("No showtimes available for this movie.");
+							break;
+						}
 						menuInvoker.executeCommand(new ViewShowtimesCommand(filteredShowtimes));
 						break;
 					case 2:

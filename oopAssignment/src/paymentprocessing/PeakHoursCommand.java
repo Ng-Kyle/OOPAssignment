@@ -43,10 +43,18 @@ public class PeakHoursCommand implements Command<Void> {
 	            res.addAll(bucket.get(i));
 	        }
 	    }
-	    System.out.println("Top 10 Peak Hours based on Order Occurences");
-	    for (int i = 0; i < Math.min(10, res.size()); i++) {
-	        System.out.println(res.get(i));
+		System.out.println("\n=============================================================");
+		System.out.println("                       PEAK HOURS REPORT                       ");
+		System.out.println("=============================================================");
+		System.out.printf("%-5s|%-31s | %s\n","No.", "Time", "Number of Occurences");
+	    System.out.println("-------------------------------------------------------------");
+	    for(int i = 0; i < Math.min(10, res.size()); i++) {
+	        LocalTime timeVal = res.get(i);
+	        int count = storedTimes.get(timeVal);
+	        System.out.printf("%-4d | %-30s | %d\n", (i + 1), timeVal, count);
 	    }
+	    System.out.println("-------------------------------------------------------------");
+	    System.out.println("=============================================================");
 	    return null;
 	}
 }

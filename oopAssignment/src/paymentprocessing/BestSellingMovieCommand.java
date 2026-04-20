@@ -27,13 +27,15 @@ public class BestSellingMovieCommand implements Command<Void> {
 		System.out.println("\n=============================================================");
 		System.out.println("                 BEST SELLING MOVIES REPORT                  ");
 		System.out.println("=============================================================");
-		System.out.printf("%-40s | %s\n", "Movie Title", "Tickets Sold");
+		System.out.printf("%-5s | %-37s | %s\n", "No.", "Movie Title", "Tickets Sold");
 		System.out.println("-------------------------------------------------------------");
 		
+		int[] count = {1}; 
 		reportData.entrySet().stream()
 			.sorted(java.util.Map.Entry.<String, Integer>comparingByValue().reversed())
-			.forEach(entry -> System.out.printf("%-40s | %d\n", entry.getKey(), entry.getValue()));
-			
+			.forEach(entry -> {
+				System.out.printf("%-5s | %-37s | %d\n", count[0]++, entry.getKey(), entry.getValue());
+			});
 		System.out.println("=============================================================");
 
 		return null;

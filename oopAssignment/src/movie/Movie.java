@@ -71,7 +71,7 @@ public class Movie implements CSVStored{
 		case "P13":
 			ageRating = AgeRating.P13;
 			break;
-		case "18":
+		case "_18":
 			ageRating = AgeRating._18;
 			break;
 		}

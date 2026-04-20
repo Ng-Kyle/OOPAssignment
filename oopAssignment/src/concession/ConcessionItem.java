@@ -5,6 +5,7 @@ import main.CSVStored;
 public abstract class ConcessionItem implements CSVStored{
 	private String name;
 	private SizeType size;
+	private int quantity;
 		
 	public ConcessionItem(String name) {
         this.name = name;
@@ -31,6 +32,14 @@ public abstract class ConcessionItem implements CSVStored{
     }
     public void setSize(SizeType size) {
     	this.size = size;
+    }
+    
+    public int getQuantity() {
+    	return quantity;
+    };
+    
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
     
     public abstract void reduceStock(int quantity);
