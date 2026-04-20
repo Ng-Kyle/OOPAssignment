@@ -13,3 +13,5 @@
 13,2,,,A:1:STANDARD:20.0,20.0,false
 14,4,,,A:1:STANDARD:20.0,20.0,false
 15,4,,,A:2:STANDARD:20.0,20.0,false
+16,5,Popcorn:LARGE:1:20.0;Coke:MEDIUM:1:7.0,,A:1:STANDARD:20.0,47.0,false
+18,7,Popcorn Combo:NONE:1:23.0,,E:3:STANDARD:20.0,43.0,false
