@@ -37,10 +37,12 @@ public class AddCouponCommand implements Command<Void> {
 				case 1:
 					discountStrategy = new PercentageDiscountStrategy();
 					unit = "Percentage (e.g. 25%)";
+					System.out.println(unit);
 					break;
 				case 2:
 					discountStrategy = new FlatDiscountStrategy();
 					unit = "Flat (e.g. 5.50 for RM5.50";
+					System.out.println(unit);
 					break;
 				default:
 					System.out.println("Invalid Selection. Defaulting back to Percentage (%).");
