@@ -55,6 +55,12 @@ public class Hall implements CSVStored{
 		this.hallID = hallID;
 	}
 	
+	public int getRows() {
+		return rows;
+	}
+	public int getColumns() {
+		return columns;
+	}
 	public String toString() {
 		return String.format("Hall ID: " + hallID);
 	}
