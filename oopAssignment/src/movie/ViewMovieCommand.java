@@ -28,7 +28,7 @@ public class ViewMovieCommand implements Command<Void> {
                     rating,
                     m.getDurationMinutes(), 
                     m.getMovieID());
-}
+		}
         
 		return null;
 	}
