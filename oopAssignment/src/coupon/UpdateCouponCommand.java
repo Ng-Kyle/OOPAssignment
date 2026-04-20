@@ -15,46 +15,105 @@ public class UpdateCouponCommand implements Command<Void> {
 	public Void execute() {
 		ArrayList<RealCoupon> availableCoupons = CouponCodeStorage.getAllCoupons();
 		while(true) {
-			int userChoice = Integer.parseInt(scan.nextLine());
-			if(userChoice == 0) {
-				break;
+			System.out.println("\n-------------------------UPDATE COUPON------------------------");
+			if (availableCoupons.isEmpty()) {
+				System.out.println("No coupons are available.");
+				return null;
 			}
-			RealCoupon chosenCoupon = availableCoupons.get(userChoice-1);
+			for (int i = 0; i < availableCoupons.size(); i++) {
+                RealCoupon c = availableCoupons.get(i);
+                System.out.println((i + 1) + ". Code: " + c.getCode() + " | Value: " + c.getDiscountValue());
+            }
+			int couponChoice;
+			try {
+				couponChoice = Integer.parseInt(scan.nextLine());
+					if(couponChoice == 0) {
+						return null;
+					}
+					if (couponChoice < 1 || couponChoice > availableCoupons.size()) throw new Exception();
+				}catch (Exception a) {
+					System.out.println("Invalid Selection! Please enter a number from the list");
+					continue;
+				}
+			
+			RealCoupon chosenCoupon = availableCoupons.get(couponChoice-1);
 			while(true) {
-				int updateChoice = Integer.parseInt(scan.nextLine());
-				if(updateChoice == 0) {
+				System.out.println("\n**Updating: " + chosenCoupon.getCode() + "**");
+                System.out.println("1. Change Code: " + chosenCoupon.getCode());
+                System.out.println("2. Change Value: " + chosenCoupon.getDiscountValue());
+                System.out.println("3. Change Type (Strategy)");
+                System.out.println("4. Save and Return");
+                System.out.print("Choice: ");
+                
+                int updateChoice; 
+				try {
+					updateChoice= Integer.parseInt(scan.nextLine());
+				}catch (Exception e) {
+					System.out.println("Invalid Input! Please enter a number.");
+					continue;
+				}
+				if (updateChoice == 4) {
+					CouponCodeStorage.toCSV();
+					System.out.println("Changed Save Successfully 😊");
 					break;
 				}
 				switch(updateChoice) {
 				case 1:
-					String code = scan.nextLine();
+					System.out.println("Enter a new code: ");
+					String code = scan.nextLine().trim().toUpperCase();
 					chosenCoupon.setCode(code);;
-					CouponCodeStorage.toCSV();
+					System.out.println("Code Updated!");
 					break;
 				case 2:
-					CouponDiscountStrategy discountStrategy = new NoDiscountStrategy();
-					int discountChoice = Integer.parseInt(scan.nextLine());
-					switch(discountChoice) { //TODO: Ensure that they have to select a proper discount strategy or cancel
-					case 1:
-						discountStrategy = new PercentageDiscountStrategy();
-						break;
-					case 2:
-						discountStrategy = new FlatDiscountStrategy();
-						break;
-					default:
+					try {
+						System.out.print("Enter New Value");
+						double newVal = Double.parseDouble(scan.nextLine());
+                        chosenCoupon.setDiscountValue(newVal);
+                        System.out.println("Value updated!");
+					}catch (Exception e) {
+						System.out.println("Invalid numeric Value");
 					}
-					double discountValue = Double.parseDouble(scan.nextLine());
-					chosenCoupon.setDiscountValue(discountValue);
-					chosenCoupon.setStrategy(discountStrategy);
-					CouponCodeStorage.toCSV();
+					break;
+				case 3:
+					System.out.println("Select Discount Type:");
+			        System.out.println("1. Percentage (%)");
+			        System.out.println("2. Flat Rate (RM)");
+			        System.out.print("Choice: ");
+			        try {
+			        	int userChoice = Integer.parseInt(scan.nextLine());
+			        	CouponDiscountStrategy discountStrategy;
+			        	String unit;
+			        	
+			        	switch(userChoice) {//TODO: Ensure that they have to select a proper discount strategy or cancel
+						case 1:
+							discountStrategy = new PercentageDiscountStrategy();
+							unit = "Percentage (e.g. 25%)";
+							System.out.println("Strategy changed to Percentage.");
+							break;
+						case 2:
+							discountStrategy = new FlatDiscountStrategy();
+							unit = "Flat (e.g. 5.50 for RM5.50";
+							System.out.println("Strategy changed to Flat.");
+							break;
+						default:
+							System.out.println("Invalid Selection. Defaulting back to Percentage (%).");
+							discountStrategy = new PercentageDiscountStrategy();
+							continue;
+						}
+			        	chosenCoupon.setStrategy(discountStrategy);
+			        	System.out.println("Enter Discount Value: ");
+						double discountValue = Double.parseDouble(scan.nextLine());
+						chosenCoupon.setDiscountValue(discountValue);
+						System.out.println("Coupon updated successfully!");
+			        }catch (NumberFormatException e) {
+			        	System.out.println("Input Error: Please enter valid numbers.");
+			        }
+			        break;
+			      default:
+			    	  System.out.println("Invalid Choice");
 				}
 			}
-			String menuInput = scan.nextLine().trim();
-			if(menuInput.isEmpty() ||Character.toUpperCase(menuInput.charAt(0)) != 'Y') {
-				break;
-			}
+			return null;
 		}
-		return null;
 	}
-
 }
