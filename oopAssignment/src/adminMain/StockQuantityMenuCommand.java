@@ -41,7 +41,7 @@ public class StockQuantityMenuCommand implements Command<Void> {
 					menuInvoker.executeCommand(new ViewStockQuantityCommand());
 					break;
 				case 2:
-					menuInvoker.executeCommand(new UpdateStockQuantityCommand(scan));
+					menuInvoker.executeCommand(new UpdateStockQuantityCommand(scan,menuInvoker));
 					break;
 				default:
 					System.out.println("Invalid choice! Please enter the correct number.");
