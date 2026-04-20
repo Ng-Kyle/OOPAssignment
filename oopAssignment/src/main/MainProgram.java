@@ -53,10 +53,9 @@ public class MainProgram {
 		                break;
 		            case 3:
 		                System.out.println("Thanks for using the system!");
-		                CSVLoader.saveCSV(availableMovies, "storedData/movies.csv");
-		                CSVLoader.saveCSV(halls, "storedData/halls.csv");
-		                CSVLoader.saveCSV(availableShowtimes, "storedData/showtimes.csv");
-		                CSVLoader.saveCSV(storedOrders, "storedData/orders.csv");
+		                CSVLoader.saveCSV(availableMovies, FilePath.MOVIES.toString());
+		                CSVLoader.saveCSV(availableShowtimes, FilePath.SHOWTIMES.toString());
+		                CSVLoader.saveCSV(storedOrders, FilePath.ORDERS.toString());
 		                return; // Exits the main method and stops the program
 		            default:
 		                System.out.println("Invalid choice! Please enter 1, 2, or 3.");

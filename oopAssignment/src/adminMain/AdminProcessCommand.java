@@ -34,25 +34,29 @@ public class AdminProcessCommand implements Command<Void> {
 			System.out.println("==============================================");
 			System.out.println("               WELCOME TO ADMIN               ");
 			System.out.println("==============================================");
-			System.out.println("1. ");
-			System.out.println("2. ");
-			System.out.println("3. ");
-			System.out.println("4. ");
-			System.out.println("5. ");
-			System.out.println("6. ");
-			System.out.println("7. ");
-			System.out.println("8. ");
-			System.out.println("9. ");
-			System.out.println("10.Exit");
+			System.out.println("1.Movies Menu");
+			System.out.println("2.Showtime Menu");
+			System.out.println("3.Seat Layout Menu");
+			System.out.println("4.Concession Items Menu");
+			System.out.println("5.Stock Quantity Menu");
+			System.out.println("6.Order Menu");
+			System.out.println("7.Coupon Menu");
+			System.out.println("8.Reports Menu");
+			System.out.println("0.Exit");
 			
 			String input = scan.nextLine().trim();
+			
 			if (input.isEmpty()) {
 	            System.out.println("Input cannot be empty.");
 	            continue;
 	        }
 			
 			try {	
+				
 				int menuChoice = Integer.parseInt(input);
+				if(menuChoice == 0) {
+					return null;
+				}		
 				switch(menuChoice) {
 				case 1:
 					menuInvoker.executeCommand(new MovieMenuCommand(scan,menuInvoker,availableMovies));
@@ -84,7 +88,8 @@ public class AdminProcessCommand implements Command<Void> {
 				case 8:
 					menuInvoker.executeCommand(new ReportGenerationMenu(scan,menuInvoker,storedOrders));
 					break;
-					
+				case 0:
+					return null;
 				default:
 					System.out.println("Invalid choice! Please enter the correct number.");
 					break;

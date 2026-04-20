@@ -9,8 +9,6 @@ import java.util.Scanner;
 import main.CSVLoader;
 import main.Command;
 import main.FilePath;
-import movie.AgeRating;
-import movie.Movie;
 import seatbooking.Hall;
 
 public class UpdateShowtimeCommand implements Command<Void> {
@@ -36,7 +34,7 @@ public class UpdateShowtimeCommand implements Command<Void> {
 				Showtime s = filteredShowtimes.get(i);
 	            System.out.println((i + 1) + ". Hall: " + s.getHall().getHallID() + " | Time: " + s.getTime());
 			}
-			System.out.println("Select Showtime to delete(1-" + filteredShowtimes.size() + ") or 0 to cancel.");
+			System.out.println("Select Showtime to update(1-" + filteredShowtimes.size() + ") or 0 to cancel.");
 			int showtimeChoice;
 			try {
 				showtimeChoice = Integer.parseInt(scan.nextLine());
@@ -92,9 +90,16 @@ public class UpdateShowtimeCommand implements Command<Void> {
                         LocalDate userDate = LocalDate.parse(scan.nextLine());
                         System.out.print("Enter Time (HH:MM): ");
                         LocalTime userTime = LocalTime.parse(scan.nextLine());
+                        if(LocalDateTime.of(userDate, userTime).isBefore(LocalDateTime.now())) {
+                        	throw new IllegalArgumentException();
+                        }
                         chosenShowtime.setTime(LocalDateTime.of(userDate, userTime));
                         System.out.println("Time updated!");
-                    } catch (Exception e) {
+                    }
+					catch (IllegalArgumentException iae) {
+						System.out.println("Cannot set the showtime's date or time in the past!");
+					}
+					catch (Exception e) {
                         System.out.println("Invalid Format! Use YYYY-MM-DD and HH:MM.");
                     }
                     break;

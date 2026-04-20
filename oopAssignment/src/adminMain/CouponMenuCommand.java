@@ -49,7 +49,7 @@ public class CouponMenuCommand implements Command<Void> {
 					break;
 				}
 			}
-			catch (Exception a) {
+			catch (NumberFormatException a) {
 				System.out.println("Invalid Input, Please add a number between 0-4");	
 			}
 		}

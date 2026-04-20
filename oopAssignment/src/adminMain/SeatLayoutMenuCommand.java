@@ -12,6 +12,7 @@ import paymentprocessing.Order;
 import seatbooking.Hall;
 import showtime.Showtime;
 import seatbooking.ViewSeatLayoutCommand;
+import showtime.ViewShowtimesCommand;
 
 public class SeatLayoutMenuCommand implements Command<Void> {
 	ArrayList<Movie> availableMovies;
@@ -44,6 +45,8 @@ public class SeatLayoutMenuCommand implements Command<Void> {
 	        }
 			
 	        while (true) {
+	        	System.out.println();
+	        	menuInvoker.executeCommand(new ViewShowtimesCommand(filteredShowtimes));
 	            System.out.print("\nSelect a showtime number to view layout (0 to go back): ");
 	            String input = scan.nextLine().trim();
 
