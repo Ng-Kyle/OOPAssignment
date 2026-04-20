@@ -20,8 +20,7 @@ public class SelectMovieCommand implements Command<Movie> {
 	public Movie execute() {
 	    System.out.println("========================================NOW SHOWING!!!========================================"); 
 	    System.out.println("----------------------------------------------------------------------------------------------");
-	    
-	    // Display the list using the invoker
+
 	    menuInvoker.executeCommand(new ViewMovieCommand(availableMovies));
 
 	    while (true) {
