@@ -27,7 +27,7 @@ public class UpdateShowtimeCommand implements Command<Void> {
 		while(true) {
 			System.out.println("\n-------------------------UPDATE SHOWTIME------------------------");
 			if (filteredShowtimes.isEmpty()) {
-				System.out.println("No movies availanle");
+				System.out.println("No SHOWTIME availanle");
 				return null;
 			}
 			for (int i = 0; i < filteredShowtimes.size(); i++) {
@@ -90,9 +90,16 @@ public class UpdateShowtimeCommand implements Command<Void> {
                         LocalDate userDate = LocalDate.parse(scan.nextLine());
                         System.out.print("Enter Time (HH:MM): ");
                         LocalTime userTime = LocalTime.parse(scan.nextLine());
+                        if(LocalDateTime.of(userDate, userTime).isBefore(LocalDateTime.now())) {
+                        	throw new IllegalArgumentException();
+                        }
                         chosenShowtime.setTime(LocalDateTime.of(userDate, userTime));
                         System.out.println("Time updated!");
-                    } catch (Exception e) {
+                    }
+					catch (IllegalArgumentException iae) {
+						System.out.println("Cannot set the showtime's date or time in the past!");
+					}
+					catch (Exception e) {
                         System.out.println("Invalid Format! Use YYYY-MM-DD and HH:MM.");
                     }
                     break;

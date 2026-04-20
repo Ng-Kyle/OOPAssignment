@@ -34,9 +34,13 @@ public class CustomerProcessCommand implements Command<Void> {
 			return null;
 		}
 		ArrayList<Showtime> filteredShowtimes = menuInvoker.executeCommand(new FilterShowtimesCommand(userMovie,availableShowtimes));
+		if (filteredShowtimes.isEmpty()) {
+            System.out.println("No showtimes available for this movie.");
+            return null;
+        }
 		Showtime userShowtime = menuInvoker.executeCommand(new SelectShowtimeCommand(filteredShowtimes,scan));
 		ArrayList<SeatBooking> userSeatBookings = menuInvoker.executeCommand(new SelectSeatsCommand(userShowtime.getHall(),scan,storedOrders,userShowtime,menuInvoker));
-		ArrayList<ConcessionItem> userItems = menuInvoker.executeCommand(new SelectConcessionItemsCommand(scan,menuInvoker)); //TODO:Make concession items optional
+		ArrayList<ConcessionItem> userItems = menuInvoker.executeCommand(new SelectConcessionItemsCommand(scan,menuInvoker));
 		Coupon userCoupon = menuInvoker.executeCommand(new SelectCouponCommand(scan));
 		ArrayList<OrderItem> orderedItems = menuInvoker.executeCommand(new ProcessItemsCommand(userItems));
 		Order userOrder = new Order(userShowtime, orderedItems, userCoupon.getCode(), userSeatBookings);

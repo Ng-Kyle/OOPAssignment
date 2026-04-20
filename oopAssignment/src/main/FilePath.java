@@ -8,7 +8,8 @@ public enum FilePath {
     STOCK("storedData/stockQuantity.csv"),
     SEAT_PRICES("storedData/seatPrices.csv"),
     COUPONS("storedData/coupons.csv"),
-	ITEMPRICE("storedData/itemPrice.csv");
+	ITEMPRICE("storedData/itemPrice.csv"),
+	HALLS("storedData/halls.csv");
 
     private final String path;
 

@@ -1,12 +1,9 @@
 package seatbooking;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 
 import main.Command;
-import main.CommandInvoker;
-import movie.Movie;
 import paymentprocessing.Order;
 import showtime.Showtime;
 
