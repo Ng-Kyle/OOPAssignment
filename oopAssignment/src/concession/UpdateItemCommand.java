@@ -39,9 +39,9 @@ public class UpdateItemCommand implements Command<Void> {
 				continue;
 			}
 			ConcessionItem chosenItem = storedItems.get(userInput - 1);
-			String originalName = chosenItem.getName();
+			
 			while(true) {
-;
+				String originalName = chosenItem.getName();
 				System.out.println("\n** Updating: " + chosenItem.getName() + " **");
 				System.out.println("1. Change Name");
 				
@@ -69,6 +69,9 @@ public class UpdateItemCommand implements Command<Void> {
 							if(!originalName.equals(chosenItem.getName())) {
 								ConcessionItemStorage.updateKey(originalName, chosenItem.getName());
 								ItemPriceStorage.updateKey(originalName, chosenItem.getName());
+							}
+							for (ConcessionItem item : storedItems) {
+							    updateComboItems(item,originalName,newName);
 							}
 							ConcessionItemStorage.saveItem();
 							System.out.println("Saved");
@@ -120,9 +123,24 @@ public class UpdateItemCommand implements Command<Void> {
 					}	
 				}catch (Exception e) {
 					System.out.println("Invalid Selection! Please check your values.");
+				}
 			}
 		}
-	}
 		return null;
-}}
+	}
+	private void updateComboItems(ConcessionItem item, String oldName, String newName) {
+	    if (item instanceof Combo) {
+	        Combo combo = (Combo) item;
+	        ConcessionItem[] comboItems = combo.getComboItems();
+
+	        for (ConcessionItem ci : comboItems) {
+	            if (ci.getName().equals(oldName)) {
+	                ci.setName(newName);
+	            }
+	            updateComboItems(ci, oldName, newName);
+	        }
+	    }
+	}
+}
+
 

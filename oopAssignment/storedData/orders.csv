@@ -14,6 +14,5 @@
 14,4,,,A:1:STANDARD:20.0,20.0,false
 15,4,,,A:2:STANDARD:20.0,20.0,false
 16,5,Coke:LARGE:1:8.0,,A:1:STANDARD:20.0,28.0,false
-17,11,Popcorn Combo:NONE:1:23.0,,A:1:STANDARD:20.0,43.0,false
-19,10,,,A:1:STANDARD:20.0,20.0,false
-20,10,butter popcorn:LARGE:1:19.0,,D:1:VIP:30.0,49.0,false
+17,4,Popcorn:MEDIUM:1:17.0,,E:5:STANDARD:20.0,37.0,false
+18,1,Popcorn:MEDIUM:1:17.0,,A:5:STANDARD:19.0,36.0,false
