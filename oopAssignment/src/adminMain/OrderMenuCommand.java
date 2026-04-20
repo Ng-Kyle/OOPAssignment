@@ -50,6 +50,7 @@ public class OrderMenuCommand implements Command<Void> {
 				}
 			}
 			catch (Exception a) {
+				System.out.println("Error:Something wrong in your process");
 				a.printStackTrace();
 			}
 		}

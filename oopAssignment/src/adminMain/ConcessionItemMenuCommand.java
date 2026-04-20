@@ -44,7 +44,7 @@ public class ConcessionItemMenuCommand implements Command<Void> {
 					menuInvoker.executeCommand(new ViewItemCommand());
 					break;
 				case 2:
-					menuInvoker.executeCommand(new AddItemCommand(scan));
+					menuInvoker.executeCommand(new AddItemCommand(scan,menuInvoker));
 					break;
 				case 3:
 					menuInvoker.executeCommand(new UpdateItemCommand(scan,menuInvoker));

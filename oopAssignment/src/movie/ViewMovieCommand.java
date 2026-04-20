@@ -1,7 +1,6 @@
 package movie;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 import main.Command;
 
 public class ViewMovieCommand implements Command<Void> {

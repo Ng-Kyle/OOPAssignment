@@ -4,14 +4,28 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import main.Command;
+import main.CommandInvoker;
 
 public class UpdateStockQuantityCommand implements Command<Void> {
 	private Scanner scan;
-	public UpdateStockQuantityCommand(Scanner scan) {
+	private CommandInvoker menuInvoker;
+	public UpdateStockQuantityCommand(Scanner scan, CommandInvoker menuInvoker) {
 		this.scan = scan;
+		this.menuInvoker = menuInvoker;
 	}
 	public Void execute() {
 		while(true) {
+<<<<<<< HEAD
+			String input = scan.nextLine().trim();
+			if (input.isEmpty()) {
+	            System.out.println("Input cannot be empty.");
+	            continue;
+	        }
+			
+			
+=======
+			menuInvoker.executeCommand(new ViewItemCommand());
+>>>>>>> branch 'master' of git@github.com:Ng-Kyle/OOPAssignment.git
 			int itemChoice = Integer.parseInt(scan.nextLine()) - 1;
 			ArrayList<ConcessionItem> storedItems = ConcessionItemStorage.getAllItems();
 			if(storedItems.get(itemChoice) instanceof Combo) {
