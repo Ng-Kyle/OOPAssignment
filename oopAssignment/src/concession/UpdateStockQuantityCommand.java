@@ -15,9 +15,6 @@ public class UpdateStockQuantityCommand implements Command<Void> {
 	}
 	public Void execute() {
 		while(true) {
-
-
-
 			menuInvoker.executeCommand(new ViewStockQuantityCommand());
 			menuInvoker.executeCommand(new ViewItemCommand());
 
