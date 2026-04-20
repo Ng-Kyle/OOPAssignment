@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import main.FileIO;
+import main.FilePath;
 
 public class SeatBooking {
 	private Seat seat;
@@ -44,14 +45,16 @@ public class SeatBooking {
 		this.seat = seat; 
 	}
 	
+	public static Map<SeatType, Double> getSeatPrices(){
+		return seatPrices;
+	}
 	
-	
-	public String seatPricesToCSV() {
+	public static void seatPricesToCSV() {
 		String csvLine = "";
 		for(Map.Entry<SeatType,Double> entry: seatPrices.entrySet()) {
 			csvLine += entry.getKey()+","+entry.getValue()+"\n";
 		}
-		return csvLine;
+		FileIO.writeFile(csvLine, FilePath.SEAT_PRICES.toString());
 	}
 	
 	public String toCSV() {

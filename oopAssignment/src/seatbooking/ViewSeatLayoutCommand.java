@@ -1,7 +1,7 @@
 package seatbooking;
 
 import java.util.ArrayList;
-
+import java.util.Map;
 
 import main.Command;
 import paymentprocessing.Order;
@@ -44,7 +44,15 @@ public class ViewSeatLayoutCommand implements Command<Void> {
 			else {
 				System.out.print("X    ");
 			}					
+			
 		}
+		int vipRowStart = chosenShowtime.getHall().getRows()/3;
+		int vipRowEnd =  2 * chosenShowtime.getHall().getRows()/3;
+		char vipRowCodeStart = (char) ('A' + vipRowStart);
+		char vipRowCodeEnd = (char) ('A' + vipRowEnd);
+		System.out.println("\nRows " + vipRowCodeStart + " - " + vipRowCodeEnd + " are VIP Seats");
+		Map<SeatType,Double> seatPrices = SeatBooking.getSeatPrices();
+		System.out.printf("Standard Seat: RM %.2f VIP Seat: RM %.2f", seatPrices.get(SeatType.STANDARD),seatPrices.get(SeatType.VIP));
 		return null;
 	}
 }

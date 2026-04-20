@@ -39,6 +39,9 @@ public class CustomerProcessCommand implements Command<Void> {
             return null;
         }
 		Showtime userShowtime = menuInvoker.executeCommand(new SelectShowtimeCommand(filteredShowtimes,scan));
+		if (userShowtime == null) {
+            return null;
+        }
 		ArrayList<SeatBooking> userSeatBookings = menuInvoker.executeCommand(new SelectSeatsCommand(userShowtime.getHall(),scan,storedOrders,userShowtime,menuInvoker));
 		ArrayList<ConcessionItem> userItems = menuInvoker.executeCommand(new SelectConcessionItemsCommand(scan,menuInvoker));
 		Coupon userCoupon = menuInvoker.executeCommand(new SelectCouponCommand(scan));

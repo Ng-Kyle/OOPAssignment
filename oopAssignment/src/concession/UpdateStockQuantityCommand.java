@@ -19,6 +19,7 @@ public class UpdateStockQuantityCommand implements Command<Void> {
 	
 	public Void execute() {
 		while(true) {
+
 			try {
 				System.out.println("-----------UPDATE STOCK QUANTITY-------------");
 				menuInvoker.executeCommand(new ViewStockQuantityCommand());
@@ -31,7 +32,7 @@ public class UpdateStockQuantityCommand implements Command<Void> {
 				if(itemChoice == 0) {
 					break;
 				}
-				
+
 			ArrayList<ConcessionItem> storedItems = ConcessionItemStorage.getAllItems();
 			
 						

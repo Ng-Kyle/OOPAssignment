@@ -21,14 +21,14 @@ public class MainProgram {
 		ArrayList<Hall> halls = CSVLoader.readHalls(FilePath.HALLS.toString());
 		ArrayList<Showtime> availableShowtimes = CSVLoader.readShowtimes(FilePath.SHOWTIMES.toString(),availableMovies,halls);
 		ArrayList<Order> storedOrders = CSVLoader.readOrders(FilePath.ORDERS.toString(),availableShowtimes);
-		new ConcessionItemStorage();
+
 		new ItemPriceStorage();
 		new CouponCodeStorage();
 		
 		
 		
 		while(true) {
-			System.out.println("  	     ____   ____    ____ ");
+			System.out.println("  	      ____   ____    ____ ");
 			System.out.println(" 	     |  _ \\ |  _ \\  / ___|");
 			System.out.println(" 	     | |_) || |_) || |    ");
 			System.out.println(" 	     |  _ < |  _ < | |    ");

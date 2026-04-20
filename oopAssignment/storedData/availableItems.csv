@@ -1,4 +1,7 @@
-Popcorn,INDIVIDUAL,ML,PopcornReductionStrategy
+Caramel Popcorn,INDIVIDUAL,ML,PopcornReductionStrategy
 Coke,INDIVIDUAL,ML,DrinkReductionStrategy
-Popcorn Combo,COMBO,Popcorn:MEDIUM;Coke:LARGE,ComboReductionStrategy
 Water,INDIVIDUAL,ML,PopcornReductionStrategy
+Popcorn Combo,COMBO,Caramel Popcorn:MEDIUM;Coke:LARGE,ComboReductionStrategy
+butter popcorn,INDIVIDUAL,UNIT,PopcornReductionStrategy
+Orange Juice,INDIVIDUAL,ML,DrinkReductionStrategy
+Sprite,INDIVIDUAL,ML,DrinkReductionStrategy
