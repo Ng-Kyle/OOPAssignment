@@ -59,7 +59,7 @@ public class SeatLayoutMenuCommand implements Command<Void> {
 	                    break; // Breaks internal loop, returns to Movie Selection
 	                }
 
-	                // VALIDATION: Check if the number is within the list range
+	                // Check if the number is within the list range
 	                if (showtimeChoice < 1 || showtimeChoice > filteredShowtimes.size()) {
 	                    System.out.println("Invalid selection. Please choose 1-" + filteredShowtimes.size());
 	                    continue;
