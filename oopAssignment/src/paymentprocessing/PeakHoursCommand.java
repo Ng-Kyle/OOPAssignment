@@ -43,7 +43,7 @@ public class PeakHoursCommand implements Command<Void> {
 	            res.addAll(bucket.get(i));
 	        }
 	    }
-
+	    System.out.println("Top 10 Peak Hours based on Order Occurences");
 	    for (int i = 0; i < Math.min(10, res.size()); i++) {
 	        System.out.println(res.get(i));
 	    }
