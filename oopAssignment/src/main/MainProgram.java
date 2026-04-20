@@ -17,10 +17,10 @@ public class MainProgram {
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		CommandInvoker menuInvoker = new CommandInvoker();
-		ArrayList<Movie> availableMovies = CSVLoader.readMovies("storedData/movies.csv");
-		ArrayList<Hall> halls = CSVLoader.readHalls("storedData/halls.csv");
-		ArrayList<Showtime> availableShowtimes = CSVLoader.readShowtimes("storedData/showtimes.csv",availableMovies,halls);
-		ArrayList<Order> storedOrders = CSVLoader.readOrders("storedData/orders.csv",availableShowtimes);
+		ArrayList<Movie> availableMovies = CSVLoader.readMovies(FilePath.MOVIES.toString());
+		ArrayList<Hall> halls = CSVLoader.readHalls(FilePath.HALLS.toString());
+		ArrayList<Showtime> availableShowtimes = CSVLoader.readShowtimes(FilePath.SHOWTIMES.toString(),availableMovies,halls);
+		ArrayList<Order> storedOrders = CSVLoader.readOrders(FilePath.ORDERS.toString(),availableShowtimes);
 		new ConcessionItemStorage();
 		new ItemPriceStorage();
 		new CouponCodeStorage();
@@ -53,10 +53,9 @@ public class MainProgram {
 		                break;
 		            case 3:
 		                System.out.println("Thanks for using the system!");
-		                CSVLoader.saveCSV(availableMovies, "storedData/movies.csv");
-		                CSVLoader.saveCSV(halls, "storedData/halls.csv");
-		                CSVLoader.saveCSV(availableShowtimes, "storedData/showtimes.csv");
-		                CSVLoader.saveCSV(storedOrders, "storedData/orders.csv");
+		                CSVLoader.saveCSV(availableMovies, FilePath.MOVIES.toString());
+		                CSVLoader.saveCSV(availableShowtimes, FilePath.SHOWTIMES.toString());
+		                CSVLoader.saveCSV(storedOrders, FilePath.ORDERS.toString());
 		                return; // Exits the main method and stops the program
 		            default:
 		                System.out.println("Invalid choice! Please enter 1, 2, or 3.");

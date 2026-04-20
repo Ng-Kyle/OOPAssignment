@@ -12,6 +12,7 @@ import paymentprocessing.Order;
 import seatbooking.Hall;
 import showtime.Showtime;
 import seatbooking.ViewSeatLayoutCommand;
+import showtime.ViewShowtimesCommand;
 
 public class SeatLayoutMenuCommand implements Command<Void> {
 	ArrayList<Movie> availableMovies;
@@ -44,6 +45,8 @@ public class SeatLayoutMenuCommand implements Command<Void> {
 	        }
 			
 	        while (true) {
+	        	System.out.println();
+	        	menuInvoker.executeCommand(new ViewShowtimesCommand(filteredShowtimes));
 	            System.out.print("\nSelect a showtime number to view layout (0 to go back): ");
 	            String input = scan.nextLine().trim();
 
@@ -59,7 +62,7 @@ public class SeatLayoutMenuCommand implements Command<Void> {
 	                    break; // Breaks internal loop, returns to Movie Selection
 	                }
 
-	                // VALIDATION: Check if the number is within the list range
+	                // Check if the number is within the list range
 	                if (showtimeChoice < 1 || showtimeChoice > filteredShowtimes.size()) {
 	                    System.out.println("Invalid selection. Please choose 1-" + filteredShowtimes.size());
 	                    continue;

@@ -40,7 +40,8 @@ public abstract class Coupon {
 	}
 	
 	public String toString(){
-		return String.format("Code: \n Discount Value: %.2f \n Strategy:%.2f",code,discountValue,strategy);
+		return String.format("Code: %s \nDiscount Value: %.2f \nStrategy:%s",
+				this.code,this.discountValue,this.strategy.getClass().getSimpleName());
 	}
 
 }
