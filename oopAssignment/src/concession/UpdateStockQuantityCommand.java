@@ -4,14 +4,18 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import main.Command;
+import main.CommandInvoker;
 
 public class UpdateStockQuantityCommand implements Command<Void> {
 	private Scanner scan;
-	public UpdateStockQuantityCommand(Scanner scan) {
+	private CommandInvoker menuInvoker;
+	public UpdateStockQuantityCommand(Scanner scan, CommandInvoker menuInvoker) {
 		this.scan = scan;
+		this.menuInvoker = menuInvoker;
 	}
 	public Void execute() {
 		while(true) {
+			menuInvoker.executeCommand(new ViewItemCommand());
 			int itemChoice = Integer.parseInt(scan.nextLine()) - 1;
 			ArrayList<ConcessionItem> storedItems = ConcessionItemStorage.getAllItems();
 			if(storedItems.get(itemChoice) instanceof Combo) {
