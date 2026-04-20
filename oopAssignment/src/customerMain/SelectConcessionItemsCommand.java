@@ -3,7 +3,6 @@ import concession.*;
 import main.Command;
 import main.CommandInvoker;
 
-import java.util.Map;
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -23,28 +22,46 @@ public class SelectConcessionItemsCommand implements Command<ArrayList<Concessio
 			if(menuInput.isEmpty() ||Character.toUpperCase(menuInput.charAt(0)) != 'Y') {
 				break;
 			}
-			menuInvoker.executeCommand(new ViewItemCommand());
-			System.out.println("Select Concession Items");
-			selectedItems.add(ConcessionItemFactory.selectConcessionItemByIndex(Integer.parseInt(scan.nextLine())-1));
-			if(selectedItems.get(selectedItems.size()-1) instanceof IndividualItem) {
-				int userInput = 0;
-				System.out.println("Choose between (1) Medium or (2) Large");
-				userInput = Integer.parseInt(scan.nextLine());
-				switch(userInput) {
-				case 1:
-					selectedItems.get(selectedItems.size()-1).setSize(SizeType.MEDIUM);
+			while(true) {
+				menuInvoker.executeCommand(new ViewItemCommand());
+				System.out.println("Select Concession Items");	
+				try {
+					selectedItems.add(ConcessionItemFactory.selectConcessionItemByIndex(Integer.parseInt(scan.nextLine())-1));
 					break;
-				case 2:
-					selectedItems.get(selectedItems.size()-1).setSize(SizeType.LARGE);
-					break;
-				default:
-					System.out.println("Invaild.Please choose between Medium or Large");
-					continue; //TODO:Add validation later
-					}
+				}
+				catch(Exception e) {
+					System.out.println("Invalid input, try again");
+					continue;
 				}
 			}
-			return selectedItems;
+			if(selectedItems.get(selectedItems.size()-1) instanceof IndividualItem) {
+				while(true) {
+					int userInput = 0;
+					try {
+						System.out.println("Choose between (1) Medium or (2) Large");
+						userInput = Integer.parseInt(scan.nextLine());
+						switch(userInput) {
+						case 1:
+							selectedItems.get(selectedItems.size()-1).setSize(SizeType.MEDIUM);
+							break;
+						case 2:
+							selectedItems.get(selectedItems.size()-1).setSize(SizeType.LARGE);
+							break;
+						default:
+							System.out.println("Invaild.Please choose between 1 or 2");
+							continue;
+						}
+					}catch(NumberFormatException e) {
+						System.out.println("Invaild value.Please enter 1 or 2 in the menu");
+						continue;
+					}catch(Exception e) {
+						System.out.println("Invalid, try again.");
+						continue;
+					}
+					break;
+				}
+			}
+		}
+		return selectedItems;
 	}
-}	
-
-
+}
