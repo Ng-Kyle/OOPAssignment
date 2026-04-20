@@ -41,7 +41,7 @@ public class AdminProcessCommand implements Command<Void> {
 			System.out.println("5.Stock Quantity Menu");
 			System.out.println("6.Order Menu");
 			System.out.println("7.Coupon Menu");
-			System.out.println("8. ");
+			System.out.println("8.Reports Menu");
 			System.out.println("0.Exit");
 			
 			String input = scan.nextLine().trim();
