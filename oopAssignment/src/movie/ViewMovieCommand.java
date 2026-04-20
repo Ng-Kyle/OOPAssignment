@@ -12,7 +12,7 @@ public class ViewMovieCommand implements Command<Void> {
 
 	}
 	public Void execute() {//TODO: DISPLAY ALL MOVIES STORED IN AVAILABLE MOVIES
-		System.out.printf("%-4s | %-20s | %-10s | %-10s | %-10s | %-5s%n","NUM", "TITLE", "GENRE", "AGE RATING", "DUR(min)", "ID");
+		System.out.printf("%-4s | %-40s | %-10s | %-10s | %-10s | %-5s%n","NUM", "TITLE", "GENRE", "AGE RATING", "DUR(min)", "ID");
 		System.out.println("----------------------------------------------------------------------------------------------");
 		
 		for (int i = 0; i < availableMovies.size(); i++) {
@@ -21,7 +21,7 @@ public class ViewMovieCommand implements Command<Void> {
                     ? m.getAgeRating().toString().replace("_", "") 
                     : "N/A";
 			String title = (m.getTitle() != null) ? m.getTitle() : "Unknown";
-			System.out.printf("%-4d | %-20s | %-10s | %-10s | %-10.2f | %-5d%n", 
+			System.out.printf("%-4d | %-40s | %-10s | %-10s | %-10.2f | %-5d%n", 
                     (i + 1), 
                     title,
                     m.getGenre(), 
@@ -32,4 +32,5 @@ public class ViewMovieCommand implements Command<Void> {
         
 		return null;
 	}
+	
 }

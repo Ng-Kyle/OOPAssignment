@@ -81,6 +81,12 @@ public class Order implements CSVStored{
 	public int getOrderID() {
 		return orderID;
 	}
+	public void setUsed() {
+		used = true;
+	}
+	public boolean getUsed() {
+		return used;
+	}
 	public ArrayList<SeatBooking> getSeatBooking() {
 		return seatBookings;
 	}
@@ -117,7 +123,6 @@ public class Order implements CSVStored{
 				break;
 			}
 		}
-
 		ArrayList<OrderItem> csvOrderItems = new ArrayList<>();
 		if(!values[2].isEmpty()) {
 			String[] orderItems = values[2].split(";");

@@ -32,23 +32,74 @@ public class AdminProcessCommand implements Command<Void> {
 	
 	public Void execute() {
 		while(true) {
-			int menuChoice = Integer.parseInt(scan.nextLine());
-			switch(menuChoice) {
-			case 1:
-				menuInvoker.executeCommand(new MovieMenuCommand(scan,menuInvoker,availableMovies));
-				break;
-			case 2:
-				menuInvoker.executeCommand(new ShowtimeMenuCommand(scan,menuInvoker,availableMovies,availableShowtimes,halls));
-				break;
-
-			case 3:
-				menuInvoker.executeCommand(new SeatLayoutMenuCommand(scan,menuInvoker,availableMovies,availableShowtimes,halls,storedOrders));
-				break;
-			case 4:
-				menuInvoker.executeCommand(new ConcessionItemMenuCommand(scan,menuInvoker));
+			System.out.println("==============================================");
+			System.out.println("               WELCOME TO ADMIN               ");
+			System.out.println("==============================================");
+			System.out.println("1. ");
+			System.out.println("2. ");
+			System.out.println("3. ");
+			System.out.println("4. ");
+			System.out.println("5. ");
+			System.out.println("6. ");
+			System.out.println("7. ");
+			System.out.println("8. ");
+			System.out.println("9. ");
+			System.out.println("10.Exit");
+			
+			String input = scan.nextLine().trim();
+			if (input.isEmpty()) {
+	            System.out.println("Input cannot be empty.");
+	            continue;
+	        }
+			
+			try {	
+				int menuChoice = Integer.parseInt(input);
+				switch(menuChoice) {
+				case 1:
+					menuInvoker.executeCommand(new MovieMenuCommand(scan,menuInvoker,availableMovies));
+					break;
+				case 2:
+					menuInvoker.executeCommand(new ShowtimeMenuCommand(scan,menuInvoker,availableMovies,availableShowtimes,halls));
+					break;
+	
+				case 3:
+					menuInvoker.executeCommand(new SeatLayoutMenuCommand(scan,menuInvoker,availableMovies,availableShowtimes,halls,storedOrders));
+					break;
+					
+				case 4:
+					menuInvoker.executeCommand(new ConcessionItemMenuCommand(scan,menuInvoker));
+					break;
+					
+				case 5:
+					menuInvoker.executeCommand(new StockQuantityMenuCommand(scan,menuInvoker));
+					break;
+					
+				case 6:
+					menuInvoker.executeCommand(new OrderMenuCommand(scan,menuInvoker,storedOrders));
+					break;
+					
+				case 7:
+					menuInvoker.executeCommand(new CouponMenuCommand(scan,menuInvoker));
+					break;
+					
+				case 8:
+					break;
+					
+				case 9:
+					break;
+				
+				case 10:
+					break;
+				default:
+					System.out.println("Invalid choice! Please enter the correct number.");
+					break;
+				}
+			} 
+			catch (NumberFormatException e) {
+		        // This catches cases where input is not a valid number
+		        System.out.println("Error: '" + input + "' is not a valid number. Please try again.");
 			}
-			break;
-		}
-		return null;
+		}		
 	}
 }
+

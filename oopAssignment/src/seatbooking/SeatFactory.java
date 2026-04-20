@@ -19,7 +19,7 @@ public class SeatFactory {
 		for(int i = 0; i<row; i++) {
 			for (int j = 0; j <column; j++) {
 				char rowCode = (char) ('A' + i);
-				SeatLocation location = new SeatLocation(rowCode,j);
+				SeatLocation location = new SeatLocation(rowCode,j + 1);
 				SeatType type;
 				if(i < vipRowStart || i > vipRowEnd) {
 					type = SeatType.STANDARD;

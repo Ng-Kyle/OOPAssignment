@@ -32,7 +32,7 @@ public abstract class Coupon {
 	public void setCode(String code){
 		this.code = code;
 	}
-	public void setstrategy(CouponDiscountStrategy strategy){
+	public void setStrategy(CouponDiscountStrategy strategy){
 		this.strategy = strategy;
 	}
 	public void setDiscountValue(double discountValue){

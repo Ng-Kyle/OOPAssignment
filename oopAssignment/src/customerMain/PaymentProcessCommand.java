@@ -29,7 +29,7 @@ public class PaymentProcessCommand implements Command<Ticket> {
 			System.out.print("Enter your payment: RM"); 
 			String input = scan.nextLine().trim(); 
 			
-			if (input.isEmpty()) { // Check if input is empty
+			if (input.isEmpty() || input == null) { // Check if input is empty
 				System.out.println("No payment entered. Funds insufficient. Order was cancelled.");
 				return null;
 			}

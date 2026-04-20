@@ -7,7 +7,7 @@ import main.CSVLoader;
 import main.Command;
 import main.FilePath;
 
-public class UpdateMovieCommand implements Command<Void> { //TODO:INPUT VALIDATION AND DISPLAY MOVIE DETAILS
+public class UpdateMovieCommand implements Command<Void> {
 	ArrayList<Movie> availableMovies;
 	Scanner scan;
 	public UpdateMovieCommand(Scanner scan, ArrayList<Movie> availableMovies){
@@ -70,6 +70,7 @@ public class UpdateMovieCommand implements Command<Void> { //TODO:INPUT VALIDATI
 						}
 						System.out.println("Title can't be empty!!!");
 					}
+					break;
 				case 2:
 					while(true) {
 						System.out.println("Enter new Genre: ");
@@ -80,6 +81,7 @@ public class UpdateMovieCommand implements Command<Void> { //TODO:INPUT VALIDATI
 						}
 						System.out.println("Invalid Genre! (Cannot be empty or 0)");
 					}
+					break;
 				case 3:
 					AgeRating ageRating = null;
 					while(ageRating==null) {
