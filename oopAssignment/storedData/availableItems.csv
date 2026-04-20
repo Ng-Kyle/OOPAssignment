@@ -1,4 +1,3 @@
-Popcorn,INDIVIDUAL,ML,PopcornReductionStrategy
+Caramel Popcorn,INDIVIDUAL,ML,PopcornReductionStrategy
 Coke,INDIVIDUAL,ML,DrinkReductionStrategy
-Water,INDIVIDUAL,ML,PopcornReductionStrategy
-Popcorn Combo,COMBO,Popcorn:MEDIUM;Coke:LARGE,ComboReductionStrategy
+Popcorn Combo,COMBO,Caramel Popcorn:MEDIUM;Coke:LARGE,ComboReductionStrategy
