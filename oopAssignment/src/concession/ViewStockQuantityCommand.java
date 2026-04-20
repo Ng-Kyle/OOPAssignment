@@ -1,10 +1,11 @@
 package concession;
 
 import java.util.ArrayList;
-
+import java.util.Scanner;
 import coupon.CouponCodeStorage;
 import coupon.RealCoupon;
 import main.Command;
+
 
 public class ViewStockQuantityCommand implements Command<Void> {
 	public Void execute() {
@@ -14,10 +15,10 @@ public class ViewStockQuantityCommand implements Command<Void> {
 		System.out.println("\n=============================================================");
         System.out.println("                         STOCK QUANTITY                      ");
         System.out.println("=============================================================");
-
         System.out.printf("| %-25s | %-15s | %-10s |%n", "Item Name", "Type", "Quantity");
         System.out.println("-------------------------------------------------------------");
 
+		
         if (items == null || items.isEmpty()) {
             System.out.println("No items found in the inventory.");
         } else {
