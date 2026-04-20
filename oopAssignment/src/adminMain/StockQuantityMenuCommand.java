@@ -24,8 +24,8 @@ public class StockQuantityMenuCommand implements Command<Void> {
 			System.out.println("0. Exit");
 			System.out.println("-------------------------------------------------------------");
 			System.out.println("Select an option: ");
-			String input = scan.nextLine().trim();
 			
+			String input = scan.nextLine().trim();
 			if (input.isEmpty()) {
 	            System.out.println("Input cannot be empty.");
 	            continue;
