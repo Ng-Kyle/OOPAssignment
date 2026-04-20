@@ -11,6 +11,7 @@ public class ViewStockQuantityCommand implements Command<Void> {
 		
 		ArrayList<ConcessionItem> items = ConcessionItemStorage.getAllItems();
 		Map<String,Double> stockQuantity = ConcessionItemStorage.getStockQuantity();
+
 		System.out.println("\n=============================================================");
         System.out.println("                         STOCK QUANTITY                      ");
         System.out.println("=============================================================");

@@ -21,6 +21,7 @@ public class UpdateStockQuantityCommand implements Command<Void> {
 			if(itemChoice == 0) {
 				break;
 			}
+
 			ArrayList<ConcessionItem> storedItems = ConcessionItemStorage.getAllItems();
 			if(storedItems.get(itemChoice-1) instanceof Combo) {
 				System.out.println("You can't modify the stock of combos!");
