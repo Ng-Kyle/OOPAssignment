@@ -9,7 +9,6 @@ import movie.Movie;
 import paymentprocessing.Order;
 import seatbooking.Hall;
 import showtime.Showtime;
-import seatbooking.ViewSeatLayoutCommand;
 
 public class AdminProcessCommand implements Command<Void> {
 	//TODO: Validate Tickets, Manage stock levels, Reports, Set Codes
@@ -83,13 +82,9 @@ public class AdminProcessCommand implements Command<Void> {
 					break;
 					
 				case 8:
+					menuInvoker.executeCommand(new ReportGenerationMenu(scan,menuInvoker,storedOrders));
 					break;
 					
-				case 9:
-					break;
-				
-				case 10:
-					break;
 				default:
 					System.out.println("Invalid choice! Please enter the correct number.");
 					break;

@@ -35,12 +35,6 @@ public class MovieMenuCommand implements Command<Void> {
 			System.out.println("-------------------------------------------------------------");
 			System.out.println("Select an option: ");
 			
-			String input = scan.nextLine().trim();
-			if (input.isEmpty()) {
-	            System.out.println("Input cannot be empty.");
-	            continue;
-	        }
-			
 			try {
 				int menuChoice = Integer.parseInt(scan.nextLine());
 				if(menuChoice == 0) {
