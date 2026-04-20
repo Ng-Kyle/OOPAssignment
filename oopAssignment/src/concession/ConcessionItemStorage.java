@@ -84,13 +84,29 @@ public class ConcessionItemStorage {
 	}
 	
 	public static void removeItem(int itemChoice) {
-		String itemName = availableItems.get(itemChoice-1).getName();
-		if(availableItems.get(itemChoice - 1) instanceof IndividualItem) {
-			ConcessionItemStorage.removeStock(itemName);
-		}
-		ItemPriceStorage.removePrice(itemName);
-		availableItems.remove(itemChoice-1);
-		saveItem();
+	    ConcessionItem itemToDelete = availableItems.remove(itemChoice - 1);
+	    String itemName = itemToDelete.getName();
+
+	    ArrayList<String> removedCombos = new ArrayList<>();
+
+	    for (ConcessionItem item : new ArrayList<>(availableItems)) {
+	        if (item instanceof Combo && comboContainsItem(item, itemName)) {
+	            removedCombos.add(item.getName());
+	            availableItems.remove(item);
+	        }
+	    }
+
+	    if (itemToDelete instanceof IndividualItem) {
+	        ConcessionItemStorage.removeStock(itemName);
+	    }
+
+	    ItemPriceStorage.removePrice(itemName);
+
+	    for (String comboName : removedCombos) {
+	        ItemPriceStorage.removePrice(comboName);
+	    }
+
+	    saveItem();
 	}
 	
 	public static void saveItem() {
@@ -106,6 +122,21 @@ public class ConcessionItemStorage {
 	public static void reduceStock(String itemName, double amount) {
 		stockQuantity.put(itemName, (stockQuantity.get(itemName)-amount));
 		stockQuantityToCSV();
-		
+	}
+	private static boolean comboContainsItem(ConcessionItem item, String targetName) {
+	    if (item instanceof Combo) {
+	        Combo combo = (Combo) item;
+	        ConcessionItem[] comboItems = combo.getComboItems();
+
+	        for (ConcessionItem ci : comboItems) {
+	            if (ci.getName().equals(targetName)) {
+	                return true;
+	            }
+	            if (comboContainsItem(ci, targetName)) {
+	                return true;
+	            }
+	        }
+	    }
+	    return false;
 	}
 }
