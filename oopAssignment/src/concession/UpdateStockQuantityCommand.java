@@ -14,17 +14,22 @@ public class UpdateStockQuantityCommand implements Command<Void> {
 		this.menuInvoker = menuInvoker;
 	}
 	public Void execute() {
-		while(true) {
+		while(true){
+
 
 			String input = scan.nextLine().trim();
 			if (input.isEmpty()) {
 	            System.out.println("Input cannot be empty.");
 	            continue;
 	        }
+
 			
 			
 
+
 			menuInvoker.executeCommand(new ViewItemCommand());
+
+
 
 			int itemChoice = Integer.parseInt(scan.nextLine()) - 1;
 			ArrayList<ConcessionItem> storedItems = ConcessionItemStorage.getAllItems();
