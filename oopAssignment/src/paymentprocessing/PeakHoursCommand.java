@@ -43,9 +43,12 @@ public class PeakHoursCommand implements Command<Void> {
 	            res.addAll(bucket.get(i));
 	        }
 	    }
-	    System.out.println("Top 10 Peak Hours based on Order Occurences");
+		System.out.println("\n=============================================================");
+		System.out.println("                       PEAK HOURS REPORT                       ");
+		System.out.println("=============================================================");
 	    for (int i = 0; i < Math.min(10, res.size()); i++) {
 	        System.out.println(res.get(i));
+	    System.out.println("-------------------------------------------------------------");
 	    }
 	    return null;
 	}
