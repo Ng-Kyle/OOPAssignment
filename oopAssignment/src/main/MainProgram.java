@@ -17,10 +17,10 @@ public class MainProgram {
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		CommandInvoker menuInvoker = new CommandInvoker();
-		ArrayList<Movie> availableMovies = CSVLoader.readMovies("storedData/movies.csv");
-		ArrayList<Hall> halls = CSVLoader.readHalls("storedData/halls.csv");
-		ArrayList<Showtime> availableShowtimes = CSVLoader.readShowtimes("storedData/showtimes.csv",availableMovies,halls);
-		ArrayList<Order> storedOrders = CSVLoader.readOrders("storedData/orders.csv",availableShowtimes);
+		ArrayList<Movie> availableMovies = CSVLoader.readMovies(FilePath.MOVIES.toString());
+		ArrayList<Hall> halls = CSVLoader.readHalls(FilePath.HALLS.toString());
+		ArrayList<Showtime> availableShowtimes = CSVLoader.readShowtimes(FilePath.SHOWTIMES.toString(),availableMovies,halls);
+		ArrayList<Order> storedOrders = CSVLoader.readOrders(FilePath.ORDERS.toString(),availableShowtimes);
 		new ConcessionItemStorage();
 		new ItemPriceStorage();
 		new CouponCodeStorage();
