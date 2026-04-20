@@ -36,7 +36,7 @@ public class MovieMenuCommand implements Command<Void> {
 			System.out.println("Select an option: ");
 			
 			try {
-				int menuChoice = Integer.parseInt(input);
+				int menuChoice = Integer.parseInt(scan.nextLine());
 				if(menuChoice == 0) {
 					return null;
 				}
