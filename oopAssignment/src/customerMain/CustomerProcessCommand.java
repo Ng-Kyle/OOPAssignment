@@ -2,7 +2,6 @@ package customerMain;
 import java.util.Scanner;
 import concession.*;
 import coupon.*;
-import main.CSVLoader;
 import main.Command;
 import main.CommandInvoker;
 import movie.Movie;
@@ -37,7 +36,7 @@ public class CustomerProcessCommand implements Command<Void> {
 		ArrayList<Showtime> filteredShowtimes = menuInvoker.executeCommand(new FilterShowtimesCommand(userMovie,availableShowtimes));
 		Showtime userShowtime = menuInvoker.executeCommand(new SelectShowtimeCommand(filteredShowtimes,scan));
 		ArrayList<SeatBooking> userSeatBookings = menuInvoker.executeCommand(new SelectSeatsCommand(userShowtime.getHall(),scan,storedOrders,userShowtime,menuInvoker));
-		ArrayList<ConcessionItem> userItems = menuInvoker.executeCommand(new SelectConcessionItemsCommand(scan)); //TODO:Make concession items optional
+		ArrayList<ConcessionItem> userItems = menuInvoker.executeCommand(new SelectConcessionItemsCommand(scan,menuInvoker)); //TODO:Make concession items optional
 		Coupon userCoupon = menuInvoker.executeCommand(new SelectCouponCommand(scan));
 		ArrayList<OrderItem> orderedItems = menuInvoker.executeCommand(new ProcessItemsCommand(userItems));
 		Order userOrder = new Order(userShowtime, orderedItems, userCoupon.getCode(), userSeatBookings);

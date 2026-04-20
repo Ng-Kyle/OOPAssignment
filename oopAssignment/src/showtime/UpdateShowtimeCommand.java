@@ -9,8 +9,6 @@ import java.util.Scanner;
 import main.CSVLoader;
 import main.Command;
 import main.FilePath;
-import movie.AgeRating;
-import movie.Movie;
 import seatbooking.Hall;
 
 public class UpdateShowtimeCommand implements Command<Void> {
@@ -27,7 +25,7 @@ public class UpdateShowtimeCommand implements Command<Void> {
 	}
 	public Void execute() {
 		while(true) {
-			System.out.println("\n-------------------------UPDATE MOVIE------------------------");
+			System.out.println("\n-------------------------UPDATE SHOWTIME------------------------");
 			if (filteredShowtimes.isEmpty()) {
 				System.out.println("No movies availanle");
 				return null;
@@ -36,7 +34,7 @@ public class UpdateShowtimeCommand implements Command<Void> {
 				Showtime s = filteredShowtimes.get(i);
 	            System.out.println((i + 1) + ". Hall: " + s.getHall().getHallID() + " | Time: " + s.getTime());
 			}
-			System.out.println("Select Showtime to delete(1-" + filteredShowtimes.size() + ") or 0 to cancel.");
+			System.out.println("Select Showtime to update(1-" + filteredShowtimes.size() + ") or 0 to cancel.");
 			int showtimeChoice;
 			try {
 				showtimeChoice = Integer.parseInt(scan.nextLine());
