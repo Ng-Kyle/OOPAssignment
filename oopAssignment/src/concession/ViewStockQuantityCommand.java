@@ -17,6 +17,7 @@ public class ViewStockQuantityCommand implements Command<Void> {
         System.out.println("=============================================================");
         System.out.printf("| %-25s | %-15s | %-10s |%n", "Item Name", "Type", "Quantity");
         System.out.println("-------------------------------------------------------------");
+        
 
 		
         if (items == null || items.isEmpty()) {
