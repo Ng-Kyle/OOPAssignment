@@ -25,6 +25,8 @@ public class UpdateCouponCommand implements Command<Void> {
 				if(updateChoice == 0) {
 					break;
 				}
+				
+				
 				switch(updateChoice) {
 				case 1:
 					String code = scan.nextLine();

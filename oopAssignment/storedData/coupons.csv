@@ -1,3 +1,4 @@
-25%OFF,0.25,PercentageDiscountStrategy
+2,2.0,PercentageDiscountStrategy
 RM5OFF,5.0,FlatDiscountStrategy
 OFFRM90,90.0,FlatDiscountStrategy
+1,0.0,FlatDiscountStrategy
