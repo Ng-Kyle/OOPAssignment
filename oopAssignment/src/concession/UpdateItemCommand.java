@@ -6,18 +6,23 @@ import java.util.Map;
 import java.util.Scanner;
 
 import main.Command;
+import main.CommandInvoker;
+import customerMain.SelectConcessionItemsCommand;
 
 
 public class UpdateItemCommand implements Command<Void> {
 	private Scanner scan;
+	private CommandInvoker menuInvoker;
 	
-	public UpdateItemCommand(Scanner scan) {
+	public UpdateItemCommand(Scanner scan, CommandInvoker menuInvoker) {
 		this.scan = scan;
+		this.menuInvoker = menuInvoker;
 	}
 	
 	public Void execute() {
 		ArrayList<ConcessionItem> storedItems = ConcessionItemStorage.getAllItems();
 		while(true) {
+			menuInvoker.executeCommand(new ViewItemCommand());
 			System.out.println("Select a concession item.");
 			int userInput = Integer.parseInt(scan.nextLine());
 			if(userInput == 0) {
@@ -68,30 +73,8 @@ public class UpdateItemCommand implements Command<Void> {
 						break;
 					case 2:
 						ArrayList<ConcessionItem> selectedItems = new ArrayList<>();
-						while(true) {
-							//TODO: REPLACE THIS WITH VIEWITEMCOMMAND MOVE THIS ENTIRE THING INTO ITS OWN COMMAND
-							selectedItems.add(ConcessionItemFactory.selectConcessionItemByIndex(Integer.parseInt(scan.nextLine())-1));
-							if(selectedItems.get(selectedItems.size()-1) instanceof IndividualItem) {
-								int sizeChoice = 0;
-								sizeChoice = Integer.parseInt(scan.nextLine());
-								switch(sizeChoice) {
-								case 1:
-									selectedItems.get(selectedItems.size()-1).setSize(SizeType.MEDIUM);
-									break;
-								case 2:
-									selectedItems.get(selectedItems.size()-1).setSize(SizeType.LARGE);
-									break;
-								default:
-									System.out.println("Invaild.Please choose between Medium or Large");
-									continue; //TODO:Add validation later
-								}
-							}
-							System.out.println("Do you want to add another item to the combo? Y/N");
-							String menuInput = scan.nextLine().trim();
-							if(menuInput.isEmpty() ||Character.toUpperCase(menuInput.charAt(0)) != 'Y') {
-								break;
-							}
-						}
+						selectedItems = menuInvoker.executeCommand(new SelectConcessionItemsCommand(scan,menuInvoker));
+							
 						ConcessionItem[] comboItems = selectedItems.toArray(new ConcessionItem[0]);
 						((Combo) chosenItem).setComboItems(comboItems);
 						ConcessionItemStorage.saveItem();

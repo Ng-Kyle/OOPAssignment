@@ -21,7 +21,7 @@ public class DeleteShowtimeCommand implements Command<Void> {
 	}
 	public Void execute() {
 		while(true) {
-			System.out.println("\n-------------------------DELETE MOVIE------------------------");
+			System.out.println("\n-------------------------DELETE SHOWTIME------------------------");
 			if (filteredShowtimes.isEmpty()) {
 				System.out.println("No movies availanle");
 				return null;

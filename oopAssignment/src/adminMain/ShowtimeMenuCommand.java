@@ -33,9 +33,8 @@ public class ShowtimeMenuCommand implements Command<Void> {
 			if(userMovie == null) {
 				return null;
 			}
-			
-			ArrayList<Showtime> filteredShowtimes = menuInvoker.executeCommand(new FilterShowtimesCommand(userMovie,availableShowtimes));
 			while(true) {
+				ArrayList<Showtime> filteredShowtimes = menuInvoker.executeCommand(new FilterShowtimesCommand(userMovie,availableShowtimes));
 				System.out.println("----------------------------SHOWTIME-----------------------------");
 				System.out.println("Movie: " + userMovie.getTitle());
 				System.out.println("1. View Current Showtimes");
@@ -45,43 +44,41 @@ public class ShowtimeMenuCommand implements Command<Void> {
 				System.out.println("0. Back to Movie Selection");
 				System.out.println("Choice: ");
 				
-			try {
-				int menuChoice = Integer.parseInt(scan.nextLine());
-				if(menuChoice == 0) {
-					return null;
-				}
-				if(menuChoice == 0) {
-					break;
-				}	
-				switch(menuChoice) {
-				case 1:
-					menuInvoker.executeCommand(new ViewShowtimesCommand(filteredShowtimes));
-					break;
-				case 2:
-					menuInvoker.executeCommand(new AddShowtimeCommand(scan, availableShowtimes, userMovie,halls));
-					break;
-				case 3:
-					if (filteredShowtimes.isEmpty()) {
-						System.out.println("No showtimes available for this movie.");
-					}else {
+				try {
+					int menuChoice = Integer.parseInt(scan.nextLine());
+					if(menuChoice == 0) {
+						break;
+					}	
+					switch(menuChoice) {
+					case 1:
+						menuInvoker.executeCommand(new ViewShowtimesCommand(filteredShowtimes));
+						break;
+					case 2:
+						menuInvoker.executeCommand(new AddShowtimeCommand(scan, availableShowtimes, userMovie,halls));
+						break;
+					case 3:
+						if (filteredShowtimes.isEmpty()) {
+							System.out.println("No showtimes available for this movie.");
+							break;
+						}
 						menuInvoker.executeCommand(new UpdateShowtimeCommand(scan, availableShowtimes, filteredShowtimes, halls));
 						break;
-					}
-				case 4:
-					if (filteredShowtimes.isEmpty()) {
-						System.out.println("No showtimes available for this movie.");
-					}else {
+					case 4:
+						if (filteredShowtimes.isEmpty()) {
+							System.out.println("No showtimes available for this movie.");
+							break;
+						}
 						menuInvoker.executeCommand(new DeleteShowtimeCommand(scan,availableShowtimes,filteredShowtimes));
 						break;
-					}
-					;
-				default:
-					System.out.println("Invalid choice! Please enter the correct number.");
-					break;
-				} 
-			} catch (NumberFormatException e) {System.out.println("Invalid Input, Please add a number between 0-4");
+					default:
+						System.out.println("Invalid choice! Please enter the correct number.");
+						break;
 					} 
-				}
+				} 
+				catch (NumberFormatException e) {
+					System.out.println("Invalid Input, Please add a number between 0-4");
+				} 
 			}
 		}
 	}
+}

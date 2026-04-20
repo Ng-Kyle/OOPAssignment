@@ -42,8 +42,7 @@ public class AdminProcessCommand implements Command<Void> {
 			System.out.println("6. ");
 			System.out.println("7. ");
 			System.out.println("8. ");
-			System.out.println("9. ");
-			System.out.println("10.Exit");
+			System.out.println("0.Exit");
 			
 			String input = scan.nextLine().trim();
 			if (input.isEmpty()) {
@@ -84,7 +83,8 @@ public class AdminProcessCommand implements Command<Void> {
 				case 8:
 					menuInvoker.executeCommand(new ReportGenerationMenu(scan,menuInvoker,storedOrders));
 					break;
-					
+				case 0:
+					return null;
 				default:
 					System.out.println("Invalid choice! Please enter the correct number.");
 					break;
