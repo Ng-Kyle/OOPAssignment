@@ -64,7 +64,7 @@ public class Movie implements CSVStored{
 	public static Movie fromCSV(String content) {
 		String[] values = content.split(",");
 		AgeRating ageRating = null;
-		switch(values[2]) {
+		switch(values[3]) {
 		case "U":
 			ageRating = AgeRating.U;
 			break;
