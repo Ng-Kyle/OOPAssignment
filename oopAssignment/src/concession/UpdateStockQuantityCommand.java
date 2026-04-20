@@ -42,7 +42,6 @@ public class UpdateStockQuantityCommand implements Command<Void> {
 			}
 			
 		
-			
 			if (itemChoice < 1 || itemChoice > storedItems.size()) {
 		        System.out.println("Invalid selection. Please choose a number from the list.");
 		        continue;
