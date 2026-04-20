@@ -18,6 +18,7 @@ public class SelectSeatsCommand implements Command<ArrayList<SeatBooking>> {
 	private CommandInvoker menuInvoker;
 	private ArrayList<Order> storedOrders;
 	private Showtime chosenShowtime;
+	
 	public SelectSeatsCommand(Hall hall, Scanner scan, ArrayList<Order> storedOrders, Showtime chosenShowtime,CommandInvoker menuInvoker) {
 		this.hall = hall;
 		this.scan = scan;
@@ -42,55 +43,51 @@ public class SelectSeatsCommand implements Command<ArrayList<SeatBooking>> {
 		ArrayList<Seat> userSeats = new ArrayList<>();
 		
 		while(menuInput != 2) {
-			System.out.println("\nSelect your seats (e.g. A1) or input '2' if done.");
+			System.out.println("\nSelect your seats (e.g. A1).");
 			String seatInput = scan.nextLine().trim().toUpperCase();
 			
-			if(seatInput.equals("2")) {
-				break;
-			}
-			
 			try {
-			char userRow = seatInput.substring(0,1).toUpperCase().charAt(0);
-			int userColumn = Integer.parseInt(seatInput.substring(1));
-			Seat selected  = hall.findSeat(userRow, userColumn);
-			if (selected !=null) {
-				boolean alreadyTaken = false;
-				for (Seat ts : takenSeats) {
-					if (ts.getSeatLocation().toString().equals(selected.getSeatLocation().toString())) {
-						alreadyTaken = true;
-						break;
+				char userRow = seatInput.substring(0,1).toUpperCase().charAt(0);
+				int userColumn = Integer.parseInt(seatInput.substring(1));
+				Seat selected  = hall.findSeat(userRow, userColumn);
+				if (selected !=null) {
+					for (Seat ts : takenSeats) {
+						if (ts.getSeatLocation().toString().equals(selected.getSeatLocation().toString())) {
+							throw new SeatUnavailableException();
+						}
 					}
-				}
-				
-				boolean alreadyInList = false;
-				for (Seat us : userSeats) {
-					if (us.getSeatLocation().toString().equals(selected.getSeatLocation().toString())) {
-						alreadyInList = true;
-						break;
+					for (Seat us : userSeats) {
+						if (us.getSeatLocation().toString().equals(selected.getSeatLocation().toString())) {
+							throw new DuplicateSeatException();
+						}
 					}
-				}
-				if(alreadyTaken) {
-					System.out.println("Error: Seat " + seatInput + " is already booked by another customer!");
-				}else if (alreadyInList) {
-					System.out.println("Error: You have already selected " + seatInput + " for this booking!");
-				}else {
 					userSeats.add(selected);
                     System.out.println("Seat " + seatInput + " added successfully!");
 				}
-			}else {
-				System.out.println("Invalid seat location!");
+				else {
+					System.out.println("Invalid seat location!");
+				}
 			}
-		}catch (Exception a) {
-			System.out.println("Wrong Input, Please use Row+Column (e.g. B5).");
-		}
-		
-		System.out.println("1: Select another seat | 2: Done");
-		try {
-		    menuInput = Integer.parseInt(scan.nextLine());
-		} catch (Exception e) {
-		    System.out.println("Please enter 1 or 2.");
-		    menuInput = 0;
-		}
+			catch (SeatUnavailableException sue) {
+				System.out.println("Error: Seat " + seatInput + " is already booked by another customer!");
+			}
+			catch (DuplicateSeatException dse) {
+				System.out.println("Error: Seat " + seatInput + " is already booked by another customer!");
+			}
+			catch (Exception e) {
+				System.out.println("Wrong Input, Please use Row+Column (e.g. B5).");
+			}
+			while(true) {
+			System.out.println("1: Select another seat | 2: Done");
+				try {
+					menuInput = Integer.parseInt(scan.nextLine());
+					break;
+				}
+				catch (Exception e) {
+					System.out.println("Please enter 1 or 2.");
+					menuInput = 0;
+				}
+			}
 		}
 		ArrayList<SeatBooking> userSeatBookings = new ArrayList<>();
 		for(Seat seat:userSeats) {

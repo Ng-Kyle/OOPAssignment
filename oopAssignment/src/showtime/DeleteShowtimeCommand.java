@@ -6,8 +6,6 @@ import java.util.Scanner;
 import main.CSVLoader;
 import main.Command;
 import main.FilePath;
-import movie.Movie;
-
 
 public class DeleteShowtimeCommand implements Command<Void> {
 	private ArrayList<Showtime> availableShowtimes;
