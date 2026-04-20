@@ -23,6 +23,7 @@ public class SelectConcessionItemsCommand implements Command<ArrayList<Concessio
 			if(menuInput.isEmpty() ||Character.toUpperCase(menuInput.charAt(0)) != 'Y') {
 				break;
 			}
+			while(true) {
 			System.out.println("Select Concession Items");
             System.out.println("+==============================================+");
             System.out.println("|                     MENU                     |");
@@ -38,7 +39,19 @@ public class SelectConcessionItemsCommand implements Command<ArrayList<Concessio
                 }
             }
 			System.out.println("+==============================================+");
+			
+			try {
 			selectedItems.add(ConcessionItemFactory.selectConcessionItemByIndex(Integer.parseInt(scan.nextLine())-1));
+			
+			}catch(Exception e) {
+				System.out.println("Invalid input, try again");
+				continue;
+			}
+			break;
+			}
+			
+		
+			while(true) {
 			
 			Double price_M = showPrice.get(selectedItems.get(selectedItems.size()-1).getName()).get(SizeType.MEDIUM);
 			
@@ -48,11 +61,13 @@ public class SelectConcessionItemsCommand implements Command<ArrayList<Concessio
 				int userInput = 0;
 	            System.out.println("+==============================================+");
 	            System.out.println("|                     SIZE                     |");
-	            System.out.println("+==============================================+");;
+	            System.out.println("+==============================================+");
 				System.out.printf("  1.Medium " +  "RM%.2f%n", price_M);           
 				System.out.printf("  2.Large " + "RM%.2f%n",price_L);
 				System.out.println("+==============================================+");
+				try {
 				userInput = Integer.parseInt(scan.nextLine());
+				
 				switch(userInput) {
 				case 1:
 					selectedItems.get(selectedItems.size()-1).setSize(SizeType.MEDIUM);
@@ -61,13 +76,26 @@ public class SelectConcessionItemsCommand implements Command<ArrayList<Concessio
 					selectedItems.get(selectedItems.size()-1).setSize(SizeType.LARGE);
 					break;
 				default:
-					System.out.println("Invaild.Please choose between Medium or Large");
-					continue; //TODO:Add validation later
+					System.out.println("Invaild.Please choose between 1 or 2");
+					break; //TODO:Add validation later
 					}
+				}catch(NumberFormatException e) {
+					System.out.println("Invaild value.Please enter 1 or 2 in the menu");
+					continue;
+				}catch(Exception e) {
+					System.out.println("Invalid, try again.");
+					continue;
 				}
+				break;
+			
 			}
+			}
+		}
+		
 			return selectedItems;
 	}
-}	
+	
+
+}
 
 
