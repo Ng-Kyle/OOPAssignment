@@ -2,6 +2,6 @@ Caramel Popcorn,INDIVIDUAL,ML,PopcornReductionStrategy
 Coke,INDIVIDUAL,ML,DrinkReductionStrategy
 Water,INDIVIDUAL,ML,PopcornReductionStrategy
 Popcorn Combo,COMBO,Caramel Popcorn:MEDIUM;Coke:LARGE,ComboReductionStrategy
-butter popcorn,INDIVIDUAL,UNIT,PopcornReductionStrategy
+Butter Popcorn,INDIVIDUAL,ML,PopcornReductionStrategy
 Orange Juice,INDIVIDUAL,ML,DrinkReductionStrategy
 Sprite,INDIVIDUAL,ML,DrinkReductionStrategy

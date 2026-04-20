@@ -1,7 +1,18 @@
 Water,3700.0
+<<<<<<< HEAD
 Caramel Popcorn,1750.0
+=======
+Caramel Popcorn,2100.0
+>>>>>>> branch 'master' of git@github.com:Ng-Kyle/OOPAssignment.git
 Sprite,2700.0
+<<<<<<< HEAD
 Coke,680.0
 Orange Juice,1790.0
 butter popcorn,4800.0
 Popcorn,3050.0
+=======
+Butter Popcorn,6100.0
+Coke,1305.0
+Orange Juice,2700.0
+Popcorn,2100.0
+>>>>>>> branch 'master' of git@github.com:Ng-Kyle/OOPAssignment.git

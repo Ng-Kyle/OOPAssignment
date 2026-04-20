@@ -56,7 +56,6 @@ public class AddItemCommand implements Command<Void> {
                         System.out.println("Pick your stock reduction strategy.");
                         System.out.println("1. Popcorn Reduction Strategy.");
                         System.out.println("2. Drink Reduction Strategy.");
-                        System.out.println("3. Popcorn Reduction Strategy.");
                         int strategyChoice = Integer.parseInt(scan.nextLine());
                         StockReductionStrategy itemReductionStrategy = null;
 
@@ -68,7 +67,7 @@ public class AddItemCommand implements Command<Void> {
                                 itemReductionStrategy = new DrinkReductionStrategy();
                                 break;
                             default:
-                                itemReductionStrategy = new PopcornReductionStrategy();
+                                
                         }
                         
                         Map<SizeType, Double> sizePrices = new HashMap<>();
