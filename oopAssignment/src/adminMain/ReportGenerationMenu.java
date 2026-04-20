@@ -44,7 +44,8 @@ public class ReportGenerationMenu implements Command<Void> {
 				}
 			}
 			catch(Exception e) {
-				
+				System.out.println("Invalid input,Please try again");
+				continue;
 			}
 			return null;
 		}
