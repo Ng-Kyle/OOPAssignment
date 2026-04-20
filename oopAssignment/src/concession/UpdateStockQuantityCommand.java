@@ -15,17 +15,13 @@ public class UpdateStockQuantityCommand implements Command<Void> {
 	}
 	public Void execute() {
 		while(true) {
-<<<<<<< HEAD
 			String input = scan.nextLine().trim();
 			if (input.isEmpty()) {
 	            System.out.println("Input cannot be empty.");
 	            continue;
 	        }
-			
-			
-=======
+
 			menuInvoker.executeCommand(new ViewItemCommand());
->>>>>>> branch 'master' of git@github.com:Ng-Kyle/OOPAssignment.git
 			int itemChoice = Integer.parseInt(scan.nextLine()) - 1;
 			ArrayList<ConcessionItem> storedItems = ConcessionItemStorage.getAllItems();
 			if(storedItems.get(itemChoice) instanceof Combo) {

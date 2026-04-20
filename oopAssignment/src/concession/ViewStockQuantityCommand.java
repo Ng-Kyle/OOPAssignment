@@ -1,9 +1,7 @@
 package concession;
 
 import java.util.ArrayList;
-import java.util.Scanner;
-import coupon.CouponCodeStorage;
-import coupon.RealCoupon;
+
 import main.Command;
 
 
@@ -11,8 +9,7 @@ public class ViewStockQuantityCommand implements Command<Void> {
 	public Void execute() {
 		
 		ArrayList<ConcessionItem> items = ConcessionItemStorage.getAllItems();
-		//TODO: DISPLAY STOCK QUANTITIES
-<<<<<<< HEAD
+
 		System.out.println("\n=============================================================");
         System.out.println("                         STOCK QUANTITY                      ");
         System.out.println("=============================================================");
@@ -41,9 +38,7 @@ public class ViewStockQuantityCommand implements Command<Void> {
             }
         }
         System.out.println("=============================================================");
-=======
-		
->>>>>>> branch 'master' of git@github.com:Ng-Kyle/OOPAssignment.git
+
 		return null;
 	}
 }
