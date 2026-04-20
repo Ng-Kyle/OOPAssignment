@@ -30,11 +30,6 @@ public class ReportGenerationMenu implements Command<Void> {
 			System.out.println("Select an option: ");
 			String input = scan.nextLine().trim();
 			
-			if (input.isEmpty()) {
-	            System.out.println("Input cannot be empty.");
-	            continue;
-	        }
-			
 			try {
 				int menuChoice = Integer.parseInt(input);
 				if(menuChoice == 0) {
@@ -50,9 +45,8 @@ public class ReportGenerationMenu implements Command<Void> {
 				}
 			}
 			catch(Exception e) {
-				
+				System.out.println("Invalid Input, Please add a number between 0-4");
 			}
-			return null;
 		}
 	}
 }
