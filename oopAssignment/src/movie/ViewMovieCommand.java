@@ -6,7 +6,6 @@ import main.Command;
 
 public class ViewMovieCommand implements Command<Void> {
 	ArrayList<Movie> availableMovies;
-	Scanner scan;
 	public ViewMovieCommand(ArrayList<Movie> availableMovies){
 		this.availableMovies = availableMovies;
 
