@@ -12,6 +12,13 @@ public class ViewItemCommand implements Command<Void> {
         System.out.println("+==============================================+");
         System.out.println("|                     MENU                     |");
         System.out.println("+==============================================+");;
+        
+        if (showItems == null || showItems.isEmpty() || showPrice == null) {
+            System.out.println("|         No items or prices available currently.          |");
+            System.out.println("+==========================================================+");
+            return null;
+        }
+        
         for(int i = 0; i < showItems.size() ;i++) {
         	System.out.print("| " + (i + 1) + ". " + showItems.get(i).getName());
 
