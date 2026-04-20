@@ -12,6 +12,7 @@ public class DeleteMovieCommand implements Command<Void> {
 	Scanner scan;
 	public DeleteMovieCommand(Scanner scan, ArrayList<Movie> availableMovies){
 		this.scan = scan;
+		this.availableMovies = availableMovies;
 	}
 	public Void execute() {
 		while(true) {
@@ -36,7 +37,7 @@ public class DeleteMovieCommand implements Command<Void> {
 					System.out.println("Invalid Selection! Please enter a number from the list");
 					continue;
 				}
-			Movie movieToDelete = availableMovies.remove(movieChoice-1);
+			Movie movieToDelete = availableMovies.get(movieChoice-1);
 			System.out.println("\nAre you sure you want to DELETE " + movieToDelete + "." ); //confirmation
 			System.out.println("TYPE 'YES' to confirm or 'NO' to cancel.");
 			String confirmation = scan.nextLine().trim().toUpperCase();
@@ -50,7 +51,7 @@ public class DeleteMovieCommand implements Command<Void> {
 			
 			System.out.println("\nDo you want to delete another one? (Y/N):");
 			String exitInput = scan.nextLine().trim().toUpperCase();
-			if(!exitInput.isEmpty() || !exitInput.startsWith("Y")) {
+			if(exitInput.isEmpty() || !exitInput.startsWith("Y")) {
 				break;
 			}
 		}

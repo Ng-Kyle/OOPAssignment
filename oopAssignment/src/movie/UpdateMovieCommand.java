@@ -70,6 +70,7 @@ public class UpdateMovieCommand implements Command<Void> {
 						}
 						System.out.println("Title can't be empty!!!");
 					}
+					break;
 				case 2:
 					while(true) {
 						System.out.println("Enter new Genre: ");
@@ -80,6 +81,7 @@ public class UpdateMovieCommand implements Command<Void> {
 						}
 						System.out.println("Invalid Genre! (Cannot be empty or 0)");
 					}
+					break;
 				case 3:
 					AgeRating ageRating = null;
 					while(ageRating==null) {

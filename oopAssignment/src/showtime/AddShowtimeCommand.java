@@ -9,7 +9,6 @@ import java.time.LocalTime;
 import main.CSVLoader;
 import main.Command;
 import main.FilePath;
-import movie.AgeRating;
 import movie.Movie;
 import seatbooking.Hall;
 
@@ -47,7 +46,7 @@ public class AddShowtimeCommand implements Command<Void> {
 			LocalDateTime userDateTime = null;
 			while(userDateTime == null) {
 				try {
-					System.out.println("Enter Date (YYYY-MM-DD");
+					System.out.println("Enter Date (YYYY-MM-DD)");
 					LocalDate userDate = LocalDate.parse(scan.nextLine());
 					System.out.println("Enter Time (HH:MM)");
 					LocalTime userTime = LocalTime.parse(scan.nextLine());
