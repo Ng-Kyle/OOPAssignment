@@ -36,7 +36,6 @@ public class OrderMenuCommand implements Command<Void> {
 				}
 				switch(menuChoice) {
 				case 1:
-					System.out.println("Debug: Number of orders loaded: " + storedOrders.size());
 					menuInvoker.executeCommand(new ViewOrdersCommand(storedOrders));
 					break;
 				case 2:
