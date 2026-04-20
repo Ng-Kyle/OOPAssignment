@@ -28,6 +28,12 @@ public class MainProgram {
 		
 		
 		while(true) {
+			System.out.println("  	     ____   ____    ____ ");
+			System.out.println(" 	     |  _ \\ |  _ \\  / ___|");
+			System.out.println(" 	     | |_) || |_) || |    ");
+			System.out.println(" 	     |  _ < |  _ < | |    ");
+			System.out.println(" 	     | |_) || |_) || |___ ");
+			System.out.println(" 	     |____/ |____/  \\____|");
 			System.out.println("==============================================");
 			System.out.println("      WELCOME TO BIG BLOCKBUSTER CINEMA       ");
 			System.out.println("==============================================");
