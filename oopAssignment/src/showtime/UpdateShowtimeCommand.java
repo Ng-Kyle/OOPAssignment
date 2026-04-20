@@ -27,7 +27,7 @@ public class UpdateShowtimeCommand implements Command<Void> {
 		while(true) {
 			System.out.println("\n-------------------------UPDATE SHOWTIME------------------------");
 			if (filteredShowtimes.isEmpty()) {
-				System.out.println("No movies availanle");
+				System.out.println("No SHOWTIME availanle");
 				return null;
 			}
 			for (int i = 0; i < filteredShowtimes.size(); i++) {
