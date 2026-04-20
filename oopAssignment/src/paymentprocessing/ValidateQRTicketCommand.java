@@ -28,7 +28,7 @@ public class ValidateQRTicketCommand implements Command<Void> {
 				continue;
 			}
 			try {
-				String fullPath = "storedData/receipts/" + filePath;
+				String fullPath = FilePath.RECEIPT.toString() + filePath;
 				File qrFile = new File(fullPath);
 				
 				if(!qrFile.exists()) {

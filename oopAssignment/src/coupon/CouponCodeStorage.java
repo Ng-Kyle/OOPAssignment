@@ -8,7 +8,7 @@ import main.FilePath;
 public class CouponCodeStorage {
 	private static ArrayList<RealCoupon> availableCoupons = new ArrayList<>();
 	static {
-		ArrayList<String> csvContent = FileIO.readFile("storedData/coupons.csv");
+		ArrayList<String> csvContent = FileIO.readFile(FilePath.COUPONS.toString());
 		for(int i = 0; i < csvContent.size(); i++) {
 			availableCoupons.add(RealCoupon.fromCSV(csvContent.get(i)));
 		}

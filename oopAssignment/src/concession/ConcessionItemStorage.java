@@ -11,7 +11,7 @@ public class ConcessionItemStorage {
 	private static ArrayList<ConcessionItem> availableItems = new ArrayList<>();
 	private static Map<String,Double> stockQuantity = new HashMap<>();
 	static {
-		ArrayList<String> csvContent = FileIO.readFile("storedData/availableItems.csv");
+		ArrayList<String> csvContent = FileIO.readFile(FilePath.CONCESSION_ITEMS.toString());
 		for(int i = 0; i < csvContent.size(); i++) {
 			String[] values = csvContent.get(i).split(",");
 			if(values[1].equals("INDIVIDUAL")) {
@@ -25,7 +25,7 @@ public class ConcessionItemStorage {
 			}
 		}
 		
-		ArrayList<String> csvStockContent = FileIO.readFile("storedData/stockQuantity.csv");
+		ArrayList<String> csvStockContent = FileIO.readFile(FilePath.STOCK.toString());
 		for(int i =0; i<csvStockContent.size();i++) {
 			String[] values = csvStockContent.get(i).split(",");
 			stockQuantity.put(values[0],Double.parseDouble(values[1]));

@@ -11,7 +11,7 @@ public class SeatBooking {
 	private double price;
 	private static Map<SeatType, Double > seatPrices = new HashMap<>();
 	static { 
-		ArrayList<String> csvContent = FileIO.readFile("storedData/seatPrices.csv");
+		ArrayList<String> csvContent = FileIO.readFile(FilePath.SEAT_PRICES.toString());
 		for(int i =0; i<csvContent.size();i++) {
 			String[] values = csvContent.get(i).split(",");
 			seatPrices.put(SeatType.valueOf(values[0]),Double.parseDouble(values[1]));
