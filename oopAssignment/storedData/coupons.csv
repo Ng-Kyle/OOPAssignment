@@ -1,6 +1,6 @@
 25%OFF,0.25,PercentageDiscountStrategy
-RM5OFF,5.0,FlatDiscountStrategy
-OFFRM90,90.0,FlatDiscountStrategy
-6767,67.0,PercentageDiscountStrategy
-VINCENT,100.0,PercentageDiscountStrategy
-VINCENT25,25.0,PercentageDiscountStrategy
+RM5OFF,5,FlatDiscountStrategy
+OFFRM90,90,FlatDiscountStrategy
+6767,67,PercentageDiscountStrategy
+VINCENT,100,PercentageDiscountStrategy
+VINCENT25,0.25,PercentageDiscountStrategy

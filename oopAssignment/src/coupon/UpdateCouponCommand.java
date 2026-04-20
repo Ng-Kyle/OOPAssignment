@@ -57,6 +57,8 @@ public class UpdateCouponCommand implements Command<Void> {
 					System.out.println("Changed Save Successfully 😊");
 					break;
 				}
+				
+				
 				switch(updateChoice) {
 				case 1:
 					System.out.println("Enter a new code: ");
@@ -100,9 +102,12 @@ public class UpdateCouponCommand implements Command<Void> {
 							discountStrategy = new PercentageDiscountStrategy();
 							continue;
 						}
-			        	chosenCoupon.setStrategy(discountStrategy);
 			        	System.out.println("Enter Discount Value: ");
 						double discountValue = Double.parseDouble(scan.nextLine());
+						if(discountValue > 1 && discountStrategy instanceof PercentageDiscountStrategy) {
+							throw new NumberFormatException();
+						}
+						chosenCoupon.setStrategy(discountStrategy);
 						chosenCoupon.setDiscountValue(discountValue);
 						System.out.println("Coupon updated successfully!");
 			        }catch (NumberFormatException e) {

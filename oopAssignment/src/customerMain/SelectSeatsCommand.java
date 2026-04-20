@@ -45,7 +45,6 @@ public class SelectSeatsCommand implements Command<ArrayList<SeatBooking>> {
 		while(menuInput != 2) {
 			System.out.println("\nSelect your seats (e.g. A1).");
 			String seatInput = scan.nextLine().trim().toUpperCase();
-			
 			try {
 				char userRow = seatInput.substring(0,1).toUpperCase().charAt(0);
 				int userColumn = Integer.parseInt(seatInput.substring(1));
@@ -70,15 +69,18 @@ public class SelectSeatsCommand implements Command<ArrayList<SeatBooking>> {
 			}
 			catch (SeatUnavailableException sue) {
 				System.out.println("Error: Seat " + seatInput + " is already booked by another customer!");
+				continue;
 			}
 			catch (DuplicateSeatException dse) {
 				System.out.println("Error: Seat " + seatInput + " is already booked by another customer!");
+				continue;
 			}
 			catch (Exception e) {
 				System.out.println("Wrong Input, Please use Row+Column (e.g. B5).");
+				continue;
 			}
 			while(true) {
-			System.out.println("1: Select another seat | 2: Done");
+				System.out.println("1: Select another seat | 2: Done");
 				try {
 					menuInput = Integer.parseInt(scan.nextLine());
 					break;

@@ -88,21 +88,27 @@ public class AddItemCommand implements Command<Void> {
                         String comboName = scan.nextLine();
                         ArrayList<ConcessionItem> selectedItems = menuInvoker.executeCommand(new SelectConcessionItemsCommand(scan, menuInvoker));
                         
-                        if (selectedItems != null) {
-                            ConcessionItem[] arrayItems = selectedItems.toArray(new ConcessionItem[0]);
-                            Combo newCombo = new Combo(comboName, arrayItems);
-                            
-                            Map<SizeType, Double> comboPrice = new HashMap<>();
-                            System.out.print("Input combo price: ");
-                            comboPrice.put(SizeType.NONE, Double.parseDouble(scan.nextLine()));
-                            
-                            ConcessionItemStorage.addItem(newCombo);
-                            ItemPriceStorage.addPrice(comboName, comboPrice);
-                            System.out.println("Combo added.");
+                        if (selectedItems.size() == 0) {
+                        	throw new NoItemSelectedException();
                         }
+                        ConcessionItem[] arrayItems = selectedItems.toArray(new ConcessionItem[0]);
+                        Combo newCombo = new Combo(comboName, arrayItems);
+                        
+                        Map<SizeType, Double> comboPrice = new HashMap<>();
+                        System.out.print("Input combo price: ");
+                        comboPrice.put(SizeType.NONE, Double.parseDouble(scan.nextLine()));
+                        
+                        ConcessionItemStorage.addItem(newCombo);
+                        ItemPriceStorage.addPrice(comboName, comboPrice);
+                        System.out.println("Combo added.");
+                    
                         break;
                 }
-            } catch (Exception e) {
+            }
+            catch (NoItemSelectedException nise) {
+            	System.out.println("You didn't select any items for your combo!");
+            }
+            catch (Exception e) {
                 System.out.println("Invalid input. Please enter valid numbers and prices.");
             }
 
