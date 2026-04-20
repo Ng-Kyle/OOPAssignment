@@ -15,8 +15,12 @@ public class UpdateStockQuantityCommand implements Command<Void> {
 	}
 	public Void execute() {
 		while(true) {
+
+
+
 			menuInvoker.executeCommand(new ViewStockQuantityCommand());
 			menuInvoker.executeCommand(new ViewItemCommand());
+
 			int itemChoice = Integer.parseInt(scan.nextLine());
 			if(itemChoice == 0) {
 				break;
