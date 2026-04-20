@@ -42,10 +42,14 @@ public class ReportGenerationMenu implements Command<Void> {
 				case 2:
 					menuInvoker.executeCommand(new PeakHoursCommand(storedOrders));
 					break;
+				default:
+					System.out.println("Invalid option");
+						continue;
 				}
 			}
 			catch(Exception e) {
-				System.out.println("Invalid Input, Please add a number between 0-4");
+				System.out.println("Invalid input,Please try again");
+				continue;
 			}
 		}
 	}
